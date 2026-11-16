@@ -11,6 +11,7 @@ Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu
 - Kõik 21 käsku on dokumenteeritud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
 - [Võrgu topoloogia pilt](./vorgu-alused.html#topoloogia) näitab pakiautomaadi, lüliti, ruuteri ja serveri seost ning sama ja eri võrgu vahet.
 - [VPN-i, netmaski ja gateway konspekt](./vpn-konspekt.html) kuvab kasutaja algse teksti muutmata kujul.
+- [Linuxi kaustade pildid](./failisysteem.html) näitavad mõlemat algse PDF-i lehte; [algne PDF](./assets/linux-kaustad-selgitused.pdf) on samuti projektis.
 - [Võrguaadresside õppeosa](./vorgu-alused.html) näitab, kuidas aadress seadmele määratakse, kuidas CIDR-prefiksist mask moodustub ning kuidas binaarne AND-tehe annab võrguaadressi. Kalkulaator võrdleb kahte IPv4 aadressi; [täispikk mõistete selgitus](./docs/vorgu-alused.md) on eraldi Markdowni failis.
 
 Kolm pakiautomaadi juhtumit käsitlevad DNS-i tõrget, täis juurfailisüsteemi ja maas võrguliidest. Logid ning käsuväljundid on väljamõeldud. Nupp „Kuva näidisväljund“ ei käivita midagi seadmes; see näitab, kuidas üks tulemus suunab järgmise kontrollini. Päris seadmes tuleb teenuse nimi, logitee, võrguliides ja aadressid üle kontrollida.

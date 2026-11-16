@@ -1,0 +1,13 @@
+/* Two unchanged pages from the supplied Linux filesystem PDF. */
+.filesystem-page{min-height:calc(100vh - 160px);padding:78px 0 100px;background:radial-gradient(ellipse 680px 400px at 75% 5%,rgba(69,126,126,.14),transparent 72%),#0a111b}
+.filesystem-shell{max-width:1050px}
+.filesystem-page h1{font-size:clamp(39px,5vw,62px);max-width:800px;margin:0 0 18px}
+.filesystem-intro{max-width:690px;color:#bdced6;font-size:17px;line-height:1.65;margin:0 0 25px}
+.filesystem-actions{display:flex;gap:12px;flex-wrap:wrap}
+.filesystem-hint{color:var(--muted);font-size:13px;line-height:1.6;margin:20px 0 42px}
+.filesystem-sheet{margin:0 0 42px}
+.filesystem-sheet figcaption{font:500 11px 'DM Mono',monospace;color:var(--accent2);letter-spacing:.14em;margin:0 0 12px}
+.filesystem-scroll{overflow-x:auto;border:1px solid #3a5362;border-radius:10px;background:#fff;box-shadow:var(--shadow)}
+.filesystem-scroll:focus-visible{outline:3px solid var(--accent2);outline-offset:4px}
+.filesystem-scroll img{display:block;width:100%;min-width:760px;height:auto}
+@media(max-width:700px){.filesystem-page{padding:52px 0 70px}.filesystem-hint{margin-bottom:30px}.filesystem-sheet{margin-bottom:30px}}
