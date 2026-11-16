@@ -1,6 +1,6 @@
 # Linuxi veaotsingu atlas
 
-Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu järjekorraga. [Ava interaktiivne vaade](./index.html) või loe [käskude selgitusi](./docs/kasud.md).
+Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu järjekorraga. [Ava interaktiivne vaade](./index.html), [õpi IP-aadressi ja võrgumaski](./vorgu-alused.html) või loe [käskude selgitusi](./docs/kasud.md).
 
 ## Mida projekt näitab?
 
@@ -9,6 +9,7 @@ Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu
 - Otsi käsku nime või märksõna järgi; ava kaardil selle osad ja kasutusjuht.
 - Kopeeri käsk, asendades enne käivitamist näidisfaili, teenuse, liidese või aadressi oma keskkonna omaga.
 - Kõik 21 käsku on dokumenteeritud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
+- [Võrguaadresside õppeosa](./vorgu-alused.html) näitab, kuidas aadress seadmele määratakse, kuidas CIDR-prefiksist mask moodustub ning kuidas binaarne AND-tehe annab võrguaadressi. Kalkulaator võrdleb kahte IPv4 aadressi; [täispikk mõistete selgitus](./docs/vorgu-alused.md) on eraldi Markdowni failis.
 
 Kolm pakiautomaadi juhtumit käsitlevad DNS-i tõrget, täis juurfailisüsteemi ja maas võrguliidest. Logid ning käsuväljundid on väljamõeldud. Nupp „Kuva näidisväljund“ ei käivita midagi seadmes; see näitab, kuidas üks tulemus suunab järgmise kontrollini. Päris seadmes tuleb teenuse nimi, logitee, võrguliides ja aadressid üle kontrollida.
 
@@ -40,6 +41,8 @@ python3 -m http.server 8000
 ```
 
 Ava brauseris `http://localhost:8000`. Faili `index.html` võib avada ka otse brauseris. Kaardid ja pakiautomaadi juhtumid on õppenäited; leht ei käivita käske sinu arvutis.
+
+Võrgukalkulaatori arvutuste kontrolliks käivita `node tests/network.test.js` (Node.js on vajalik ainult testimiseks).
 
 ## GitHub Pages
 
