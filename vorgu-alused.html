@@ -22,9 +22,25 @@
   <main id="main" class="network-page">
     <section class="network-hero" aria-labelledby="network-title">
       <div class="shell network-hero-grid">
-        <div><p class="eyebrow"><span class="status-dot"></span> Võrguaadresside õppeosa</p><h1 id="network-title">Kuidas IP ja mask<br><em>võrgu määravad?</em></h1><p>IP-aadress ütleb, millise liidesega suhelda. Prefiks eraldab võrgu- ja hostibitid. Marsruutimistabel valib tee, mida mööda pakett päriselt liigub.</p><div class="hero-actions"><a class="button primary" href="#kalkulaator">Proovi binaarkalkulaatorit ↗</a><a class="button secondary" href="docs/vorgu-alused.md">Loe süvitsi</a></div></div>
+        <div><p class="eyebrow"><span class="status-dot"></span> Võrguaadresside õppeosa</p><h1 id="network-title">Kuidas IP ja mask<br><em>võrgu määravad?</em></h1><p>IP-aadress ütleb, millise liidesega suhelda. Prefiks eraldab võrgu- ja hostibitid. Marsruutimistabel valib tee, mida mööda pakett päriselt liigub.</p><div class="hero-actions"><a class="button primary" href="#topoloogia">Vaata võrgu kaarti ↗</a><a class="button secondary" href="#kalkulaator">Proovi binaarkalkulaatorit</a><a class="button secondary" href="docs/vorgu-alused.md">Loe süvitsi</a></div></div>
         <div class="hero-formula" aria-label="Näide: IP 192.168.1.70 ja /26 mask annavad võrguaadressi 192.168.1.64"><div class="formula-top"><span>VÕRGUAADRESS</span><span>IPv4 / 32 bitti</span></div><div class="formula-line"><span>IP-aadress</span><code>192.168.1.70</code></div><div class="formula-line"><span>Mask /26</span><code>255.255.255.192</code></div><div class="formula-op">BITIKAUPA AND ↓</div><div class="formula-result"><span>Võrk</span><strong>192.168.1.64</strong></div><div class="formula-range">64 aadressi · .64 kuni .127</div></div>
       </div>
+    </section>
+
+    <section class="network-section shell topology-section" id="topoloogia" aria-labelledby="topology-heading">
+      <div class="network-heading"><p class="eyebrow">Alusta siit / Võrgu kaart</p><h2 id="topology-heading">Kuidas pakiautomaat serverini jõuab?</h2><p>Vaata kõigepealt seadmete asukohta võrgus. Sama kohtvõrgu seadmed saavad suhelda lüliti kaudu; teise võrku minev liiklus läheb vaikelüüsile.</p></div>
+      <figure class="topology-figure">
+        <div class="topology-scroll" role="region" tabindex="0" aria-label="Võrgu topoloogia skeem, kitsal ekraanil horisontaalselt keritav"><img src="assets/topoloogia.svg" width="1280" height="550" alt="Pakiautomaat 192.168.10.24 ja hooldusarvuti 192.168.10.50 on samas 192.168.10.0/24 kohtvõrgus ning ühendatud lülitiga. Ruuter aadressiga 192.168.10.1 on vaikelüüs, mille kaudu jõuab liiklus internetis asuva rakendusserverini."></div>
+        <figcaption>
+          <p class="topology-scroll-hint">Kitsal ekraanil keri skeemi küljele →</p>
+          <ol class="topology-steps">
+            <li><span>01 / SAMA VÕRK</span><strong>Mask näitab naabrit</strong><p><code>192.168.10.24/24</code> ja <code>192.168.10.50/24</code> on samas alamvõrgus. Nende omavaheline liiklus ei vaja vaikelüüsi.</p></li>
+            <li><span>02 / KOHTVÕRK</span><strong>Lüliti ühendab seadmed</strong><p>Lüliti vahendab kohtvõrgus kaadreid. Ruuter aadressiga <code>192.168.10.1</code> on järgmine samm siis, kui sihtkoht on teises võrgus.</p></li>
+            <li><span>03 / VÄLISVÕRK</span><strong>Ruuter valib edasise tee</strong><p>Server on väljaspool kohalikku alamvõrku. Kui kasutatakse serveri nime, tuleb see enne ühendust DNS-i abil aadressiks lahendada.</p></li>
+          </ol>
+          <p class="topology-caveat">Lihtsustatud näide: päris paigalduse kaablid, ruuterid ja aadressid võivad erineda.</p>
+        </figcaption>
+      </figure>
     </section>
 
     <section class="network-section shell" id="aadressi-teke" aria-labelledby="birth-title">

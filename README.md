@@ -9,6 +9,7 @@ Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu
 - Otsi käsku nime või märksõna järgi; ava kaardil selle osad ja kasutusjuht.
 - Kopeeri käsk, asendades enne käivitamist näidisfaili, teenuse, liidese või aadressi oma keskkonna omaga.
 - Kõik 21 käsku on dokumenteeritud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
+- [Võrgu topoloogia pilt](./vorgu-alused.html#topoloogia) näitab pakiautomaadi, lüliti, ruuteri ja serveri seost ning sama ja eri võrgu vahet.
 - [Võrguaadresside õppeosa](./vorgu-alused.html) näitab, kuidas aadress seadmele määratakse, kuidas CIDR-prefiksist mask moodustub ning kuidas binaarne AND-tehe annab võrguaadressi. Kalkulaator võrdleb kahte IPv4 aadressi; [täispikk mõistete selgitus](./docs/vorgu-alused.md) on eraldi Markdowni failis.
 
 Kolm pakiautomaadi juhtumit käsitlevad DNS-i tõrget, täis juurfailisüsteemi ja maas võrguliidest. Logid ning käsuväljundid on väljamõeldud. Nupp „Kuva näidisväljund“ ei käivita midagi seadmes; see näitab, kuidas üks tulemus suunab järgmise kontrollini. Päris seadmes tuleb teenuse nimi, logitee, võrguliides ja aadressid üle kontrollida.
@@ -36,7 +37,7 @@ flowchart LR
 Projekt ei vaja sõltuvusi ega ehitustööriistu.
 
 ```bash
-cd ~/Projects/webshop/linux-troubleshooting-tutorial
+cd ~/Projects/linux-troubleshooting-tutorial
 python3 -m http.server 8000
 ```
 
@@ -49,7 +50,7 @@ Võrgukalkulaatori arvutuste kontrolliks käivita `node tests/network.test.js` (
 Projektikaust on juba omaette Git-hoidla. Avaldamiseks loo GitHubis samanimeline tühi hoidla ja saada valmis `main` haru sinna:
 
 ```bash
-cd ~/Projects/webshop/linux-troubleshooting-tutorial
+cd ~/Projects/linux-troubleshooting-tutorial
 git remote add origin https://github.com/KASUTAJA/linux-troubleshooting-tutorial.git
 git push -u origin main
 ```

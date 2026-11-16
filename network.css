@@ -20,3 +20,18 @@
 @media(max-width:950px){.network-hero-grid{gap:30px}.birth-grid{grid-template-columns:repeat(2,1fr)}.calc-controls{grid-template-columns:1fr 1fr}.prefix-control{grid-column:1/-1}.term-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.network-section{padding-top:70px;padding-bottom:70px}.network-section.shell{width:min(100% - 32px,1160px)}.network-hero{padding:60px 0}.network-hero-grid{grid-template-columns:1fr}.hero-formula{transform:none}.mask-example{grid-template-columns:1fr}.mask-answer{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}.calc-summary{grid-template-columns:repeat(2,1fr)}.calc-summary>div:nth-child(2){border-right:0}.calc-summary>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.practice-list li{grid-template-columns:1fr;gap:6px}}
 @media(max-width:480px){.birth-grid,.term-grid,.calc-controls{grid-template-columns:1fr}.prefix-control{grid-column:auto}.formula-line code{font-size:12px}.mask-bits{font-size:11px;gap:0}.mask-answer strong{font-size:23px}.calc-summary strong{font-size:17px}.calc-detail{grid-template-columns:1fr}.calc-detail>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* Beginner topology diagram */
+.topology-section{padding-bottom:88px}
+.topology-figure{margin:0}
+.topology-scroll{overflow-x:auto;border:1px solid #3a5663;border-radius:16px;background:#0d1926;box-shadow:var(--shadow)}
+.topology-scroll:focus-visible{outline:3px solid var(--accent2);outline-offset:4px}
+.topology-scroll img{display:block;width:100%;min-width:900px;height:auto}
+.topology-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0;margin:19px 0 0}
+.topology-steps li{border:1px solid var(--line);border-radius:10px;background:#112331;padding:19px 20px;min-width:0}
+.topology-steps li span{display:block;color:var(--accent2);font:500 10px 'DM Mono',monospace;letter-spacing:.1em;margin-bottom:10px}
+.topology-steps li strong{display:block;color:var(--text);font:600 19px 'Space Grotesk',sans-serif;letter-spacing:-.03em}
+.topology-steps li p{color:#b9cad3;font-size:13px;line-height:1.65;margin:7px 0 0}
+.topology-caveat{color:#a9bdc6;font-size:13px;line-height:1.6;margin:17px 0 0}
+.topology-scroll-hint{display:none}
+@media(max-width:700px){.topology-steps{grid-template-columns:1fr}.topology-scroll-hint{display:block;color:var(--accent2);font:12px 'DM Mono',monospace;margin:12px 0 0}}
