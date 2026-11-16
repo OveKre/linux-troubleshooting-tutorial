@@ -40,19 +40,15 @@ Ava brauseris `http://localhost:8000`. Faili `index.html` võib avada ka otse br
 
 ## GitHub Pages
 
-Avaldamiseks loo GitHubis uus hoidla ja tõsta **selle kausta sisu** hoidla juurkausta. Seejärel vali hoidla seadetes **Pages → Deploy from a branch → main → /(root)**. Soovi korral saab kogu projekti ka omaette hoidlana üles laadida:
+Projektikaust on juba omaette Git-hoidla. Avaldamiseks loo GitHubis samanimeline tühi hoidla ja saada valmis `main` haru sinna:
 
 ```bash
 cd linux-veaotsingu-atlas
-git init
-git add .
-git commit -m "Lisa Linuxi veaotsingu atlas"
-git branch -M main
 git remote add origin https://github.com/KASUTAJA/linux-veaotsingu-atlas.git
 git push -u origin main
 ```
 
-Asenda `KASUTAJA` oma GitHubi kasutajanimega ja loo enne `push` käsku samanimeline tühi hoidla.
+Asenda `KASUTAJA` oma GitHubi kasutajanimega. Veebivaate avaldamiseks vali seejärel hoidla seadetes **Pages → Deploy from a branch → main → /(root)**.
 
 ## Ohutu harjutamine
 
