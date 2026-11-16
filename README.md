@@ -36,7 +36,7 @@ flowchart LR
 Projekt ei vaja sõltuvusi ega ehitustööriistu.
 
 ```bash
-cd linux-veaotsingu-atlas
+cd ~/Projects/webshop/linux-troubleshooting-tutorial
 python3 -m http.server 8000
 ```
 
@@ -49,8 +49,8 @@ Võrgukalkulaatori arvutuste kontrolliks käivita `node tests/network.test.js` (
 Projektikaust on juba omaette Git-hoidla. Avaldamiseks loo GitHubis samanimeline tühi hoidla ja saada valmis `main` haru sinna:
 
 ```bash
-cd linux-veaotsingu-atlas
-git remote add origin https://github.com/KASUTAJA/linux-veaotsingu-atlas.git
+cd ~/Projects/webshop/linux-troubleshooting-tutorial
+git remote add origin https://github.com/KASUTAJA/linux-troubleshooting-tutorial.git
 git push -u origin main
 ```
 
