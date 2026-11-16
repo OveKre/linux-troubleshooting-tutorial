@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="VPN-i, VPS-i, netmaski ja gateway konspekt.">
+  <title>VPN ja netmask · Linuxi atlas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="notes.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Liigu sisu juurde</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Linuxi atlas, avalehele"><span class="brand-mark">&gt;_</span><span>Linuxi <strong>atlas</strong></span></a>
+      <nav aria-label="Peamenüü"><a href="index.html">Avaleht</a><a href="vorgu-alused.html">IP ja võrgumask</a><a href="vorgu-alused.html#topoloogia">Topoloogia</a></nav>
+    </div>
+  </header>
+  <main id="main" class="notes-page">
+    <div class="shell notes-shell">
+      <p class="eyebrow"><span class="status-dot"></span> Konspekt</p>
+      <h1>VPN, netmask ja muud</h1>
+      <p class="notes-intro">Algne tekst on säilitatud muutmata kujul.</p>
+      <div class="notes-card"><pre id="original-note">VPN ja VPS tähendus:
+VPN = Virtual Private Network = Virtuaalne Privaatvõrk. See on krüpteeritud tunnel kahe arvuti vahel läbi avaliku interneti. Välismaailm näeb ainult krüpteeritud andmeid, mitte mida saadad.
+VPS = Virtual Private Server = Virtuaalne Privaat Server. See on renditud virtuaalarvuti andmekeskuses (sinu puhul Hetzner Saksamaal). Töötab 24/7, sellel on avalik IP-aadress.
+
+Netmask — mis ja miks:
+Netmask ütleb arvutile mis on võrk ja mis on host:
+IP:       10.0.0.5
+Netmask:  255.255.255.0
+
+255 = see osa on VÕRK (ei muutu)
+0   = see osa on HOST (muutub)
+
+Tulemus:
+Võrk:  10.0.0.x  ← kõik selles vahemikus on &quot;naabrid&quot;
+Host:  10.0.0.5  ← sina oled see
+Eesmärk — arvuti teab kellele saata otse ja kellele saata läbi gateway.
+
+Täielik ühenduse teekond sinu puhul:
+Sinu seadistus on:
+Sinu arvuti (wg0):  10.0.0.5
+VPS (wg0):          10.0.0.1
+VPS avalik IP:      70.34.210.248
+MSSQL andmebaas:    VPS-il (ainult sisevõrgus nähtav)
+Samm 1 — WireGuard käivitub:
+Sinu Ubuntu arvutis tekib virtuaalne võrgukaart wg0
+See saab tunneli-IP: 10.0.0.5
+See on PRIVAATNE IP — internetis seda ei eksisteeri
+Ainult tunneli sees on see aadress olemas
+Samm 2 — Handshake läbi avaliku interneti:
+Sinu arvuti avalik IP (näiteks 85.x.x.x)
+        ↓
+        saadab UDP paketi → 70.34.210.248:51820
+        &quot;Tere! Siin on minu avalik krüptovõti&quot;
+        ↓
+VPS kontrollib: &quot;Kas tunnen seda võtit?&quot; → Jah
+        ↓
+VPS vastab oma avaliku võtmega tagasi
+        ↓
+Tunnel on loodud — mõlemad teavad ühist salavõtit
+Samm 3 — Laravel/PHP teeb andmebaasi ühenduse:
+php// Sinu .env failis on midagi sellist:
+DB_HOST=10.0.0.1
+DB_PORT=1433
+DB_DATABASE=finar_db
+```
+
+**Samm 4 — Andmepakett liigub:**
+```
+Laravel pärib andmeid
+        ↓
+Pakett läheb → 10.0.0.1:1433
+        ↓
+Sinu arvuti näeb: &quot;10.0.0.x kuulub allowed IPs hulka!&quot;
+        ↓
+wg0 krüpteerib paketi
+        ↓
+Krüpteeritud UDP pakett läheb avalikku internetti
+Sinu avalik IP → 70.34.210.248:51820
+        ↓
+VPS võtab paketi vastu, dekrüpteerib
+        ↓
+VPS näeb: &quot;Päring läheb 10.0.0.1:1433 → see olen mina!&quot;
+        ↓
+VPS edastab päringule MSSQL-ile (localhost:1433)
+        ↓
+MSSQL tagastab andmed sama teed pidi tagasi
+        ↓
+Sinu Laravel saab live andmebaasi vastuse
+```
+
+---
+
+**Kokkuvõte visuaalselt:**
+```
+[Sinu laptop]          [Internet]          [Hetzner VPS]
+  10.0.0.5    ═══════════════════════════    10.0.0.1
+  wg0 liides   krüpteeritud UDP :51820       wg0 liides
+                                                  ↓
+                                            [MSSQL :1433]
+                                            live andmebaas
+Välismaailm näeb ainult krüpteeritud UDP pakette — ei tea et sees on andmebaasipäringud. MSSQL port 1433 pole kunagi avalikult internetis avatud — ainult VPN tunneli kaudu ligipääsetav.
+
+Netmask — eesmärk:
+Netmaski eesmärk on vastata ühele küsimusele: &quot;Kas see IP-aadress on minu lähivõrgus või mitte?&quot;
+Miks see oluline on:
+Kui sihtaadress on LÄHIVÕRGUS → saada otse
+Kui sihtaadress on VÄLJASPOOL → saada gateway kaudu
+Näide sinu seadistusega:
+Sinu IP:   10.0.0.5
+Netmask:   255.255.255.0  ehk /24
+
+Lähivõrk on: 10.0.0.1 kuni 10.0.0.254
+
+Päring läheb 10.0.0.1 → lähivõrk → saada otse tunneli kaudu
+Päring läheb 8.8.8.8  → väljaspool → saada gateway kaudu
+Ilma netmaskita arvuti ei teaks kuhu päring saata.
+
+Gateway — mis see on:
+Gateway on värav välismaailma. See on seade (tavaliselt router) mis teab kuidas liiklust edasi saata kui sihtkoht pole lähivõrgus.
+Igapäeva analoogia:
+Sinu kortermaja = lähivõrk
+Naabrid majas   = sama võrgu seadmed (saad otse)
+Ukse valve      = gateway (läbi tema väljud majast)
+Tänav/internet  = avalik võrk
+Võrgu analoogia:
+Sinu arvuti:  10.0.0.5
+Naaber VPS:   10.0.0.1  ← otse, gateway pole vaja
+Google:       8.8.8.8   ← gateway kaudu välja internetti
+
+Kõik kolm koos — kuidas töötavad:
+Sinu arvuti tahab saata paketi 8.8.8.8 (Google)
+
+1. Arvuti küsib netmaskilt:
+   &quot;Kas 8.8.8.8 on minu võrgus 10.0.0.x?&quot;
+   Vastus: EI
+
+2. Arvuti saadab paketi gateway&#x27;le:
+   &quot;Sina tead kuhu see läheb, palun edasta&quot;
+
+3. Gateway (router/VPS) saadab paketi internetti
+   edasi õige suunas
+Sinu arvuti tahab saata paketi 10.0.0.1 (VPS tunnel)
+
+1. Arvuti küsib netmaskilt:
+   &quot;Kas 10.0.0.1 on minu võrgus 10.0.0.x?&quot;
+   Vastus: JAH
+
+2. Arvuti saadab otse läbi wg0 tunneli
+   Gateway pole vaja
+
+Kokkuvõte kolme reaga:
+Netmask — määrab mis on &quot;naaber&quot; ja mis on &quot;kaugel&quot;
+Gateway — uks välismaailma, kuhu saadetakse kõik mis pole naaber
+Netmask + Gateway koos — arvuti navigeerimissüsteem, ilma nendeta ei tea arvuti kuhu ühtegi paketti saata
+
+LOON ÜHENDUSE WIREGUARDIGA---&gt; PrivaatVÕTI+AVALIKVÕTI(MINU ARVUTI)-----&gt; AVALIKVÕTI ANTAKSE VPS -WIREGUARDI CONF FAILI.
+TUNNELI IP - MÄÄRAME 10.0.0.5 ---&gt; SEE SISESTATAKSE IPV4 (MINU MASINASSE JA VPS WIREGUARDI PEERS CONFIGI) ---- ENDPOINT MÄÄRATAKSE AINULT MINU ARVUTIS IP:58210
+[INTERFACE]- SINU ARVUTI------&gt; PEERS(VÄLISVÕRGUS OLEV ARVUTI)
+OMA PRIV.VÕTI [INTERFACE]----&gt; 
+ALLOWED IP----&gt; 10.0.0.X -- X EHK VIIMANE UMBER TÄHISTAB HOSTI (1-254) 10.0.0.250 NÄITEKS
+</pre></div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linuxi veaotsingu atlas</span><span><a href="index.html">Avaleht</a> · <a href="vorgu-alused.html">IP ja võrgumask</a></span></div></footer>
+</body>
+</html>
