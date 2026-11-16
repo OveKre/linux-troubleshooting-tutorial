@@ -4,10 +4,13 @@ Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu
 
 ## Mida projekt näitab?
 
+- Ava [pakiautomaadi näidisjuhtum](./index.html#juhtumid): vealogi, sobiv käsk, selle näidisväljund, tõlgendus ja lõpuks põhjendatud järeldus.
 - Vali olukord (teenus, võrk, ressursid või kell) ja vaata, millises järjekorras kontrollida.
 - Otsi käsku nime või märksõna järgi; ava kaardil selle osad ja kasutusjuht.
 - Kopeeri käsk, asendades enne käivitamist näidisfaili, teenuse, liidese või aadressi oma keskkonna omaga.
 - Kõik 21 käsku on dokumenteeritud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
+
+Kolm pakiautomaadi juhtumit käsitlevad DNS-i tõrget, täis juurfailisüsteemi ja maas võrguliidest. Logid ning käsuväljundid on väljamõeldud. Nupp „Kuva näidisväljund“ ei käivita midagi seadmes; see näitab, kuidas üks tulemus suunab järgmise kontrollini. Päris seadmes tuleb teenuse nimi, logitee, võrguliides ja aadressid üle kontrollida.
 
 ## Veaotsingu kaart
 
@@ -36,7 +39,7 @@ cd linux-veaotsingu-atlas
 python3 -m http.server 8000
 ```
 
-Ava brauseris `http://localhost:8000`. Faili `index.html` võib avada ka otse brauseris. Kaardid on õppenäited; leht ei käivita käske sinu arvutis.
+Ava brauseris `http://localhost:8000`. Faili `index.html` võib avada ka otse brauseris. Kaardid ja pakiautomaadi juhtumid on õppenäited; leht ei käivita käske sinu arvutis.
 
 ## GitHub Pages
 

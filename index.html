@@ -8,13 +8,14 @@
   <title>Linuxi veaotsingu atlas</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
+  <script src="cases.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Linuxi veaotsingu atlas, algusesse"><span class="brand-mark">&gt;_</span><span>Linuxi <strong>atlas</strong></span></a>
-      <nav aria-label="Peamenüü"><a href="#teekond">Veaotsingu teekond</a><a href="#kasud">Kõik käsud</a><a href="docs/kasud.md">Dokument</a></nav>
+      <nav aria-label="Peamenüü"><a href="#juhtumid">Pakiautomaadi näited</a><a href="#teekond">Veaotsingu teekond</a><a href="#kasud">Kõik käsud</a><a href="docs/kasud.md">Dokument</a></nav>
     </div>
   </header>
 
@@ -25,7 +26,7 @@
           <p class="eyebrow"><span class="status-dot"></span> Eestikeelne Linuxi õppeprojekt</p>
           <h1 id="hero-title">Leia põhjus.<br><em>Vali järgmine käsk.</em></h1>
           <p class="hero-copy">21 lugemiseks ja kontrollimiseks mõeldud käsku aitavad liikuda sümptomist tõendini. Vali olukord, vaata soovitatud järjekorda ja uuri iga käsu osi.</p>
-          <div class="hero-actions"><a class="button primary" href="#teekond">Alusta veaotsingut <span aria-hidden="true">↗</span></a><a class="button secondary" href="#kasud">Sirvi käske</a></div>
+          <div class="hero-actions"><a class="button primary" href="#juhtumid">Uuri näidisjuhtumit <span aria-hidden="true">↗</span></a><a class="button secondary" href="#kasud">Sirvi käske</a></div>
           <p class="hero-note">Käsud on õppenäited. See leht ei käivita neid sinu arvutis.</p>
         </div>
         <div class="terminal" role="img" aria-label="Näidis terminali väljundist: teenuse olek, viimased logid ja järgmise sammu soovitus">
@@ -35,11 +36,24 @@
       </div>
     </section>
 
-    <section class="stats shell" aria-label="Projekti ülevaade"><div><strong>21</strong><span>selgitatud käsku</span></div><div><strong>5</strong><span>teemavaldkonda</span></div><div><strong>4</strong><span>veaotsingu teekonda</span></div><div><strong>0</strong><span>vajalikku sõltuvust</span></div></section>
+    <section class="stats shell" aria-label="Projekti ülevaade"><div><strong>21</strong><span>selgitatud käsku</span></div><div><strong>5</strong><span>teemavaldkonda</span></div><div><strong>4</strong><span>veaotsingu teekonda</span></div><div><strong>3</strong><span>pakiautomaadi näidisjuhtumit</span></div></section>
+
+    <section class="section cases-section" id="juhtumid" aria-labelledby="cases-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">01 / Näidisjuhtumid</p><h2 id="cases-title">Logist juurpõhjuseni</h2><p>Vali pakiautomaadi tõrge. Loe vealogi ning ava ükshaaval käsu näidisväljund, et näha, kuidas järgmise kontrollini jõuda.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <p class="case-disclaimer">Kõik logid, aadressid, teenusenimed ja väljundid on väljamõeldud õppematerjal. Nupp „Kuva näidisväljund“ ei käivita käsku.</p>
+        <div class="case-options" id="case-options" role="group" aria-label="Vali pakiautomaadi näidisjuhtum"></div>
+        <div class="case-story" id="case-story">
+          <div class="case-story-head"><div><p class="mini-label">PAKIAUTOMAADI JUHTUM</p><h3 id="case-title"></h3><p id="case-symptom"></p></div><span class="case-status">NÄIDISLOGI</span></div>
+          <div class="case-log" aria-label="Väljamõeldud pakiautomaadi logi"><div class="case-log-bar"><span>locker-agent.log</span><span>ainult näide · ei ole päris seadme logi</span></div><div class="case-log-lines" id="case-log-lines"></div></div>
+          <div class="case-diagnostic"><div class="case-diagnostic-head"><div><p class="mini-label">DIAGNOOSI KÄIK</p><h4>Millise käsuga edasi?</h4></div><span id="case-progress" role="status"></span></div><ol class="case-steps" id="case-steps"></ol><div class="case-conclusion" id="case-conclusion" hidden tabindex="-1"></div></div>
+        </div>
+      </div>
+    </section>
 
     <section class="section journey-section" id="teekond" aria-labelledby="journey-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">01 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <div class="section-heading"><div><p class="eyebrow">02 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">02</span></div>
         <div class="scenario-tabs" id="scenario-tabs" role="tablist" aria-label="Veaotsingu olukord"></div>
         <div class="journey-layout" id="journey-panel" role="tabpanel">
           <div class="journey-steps"><p class="mini-label">SOOVITATUD JÄRJEKORD</p><p class="journey-intro" id="journey-intro"></p><ol id="journey-list"></ol></div>
@@ -51,7 +65,7 @@
 
     <section class="section commands-section" id="kasud" aria-labelledby="commands-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">02 / Käskude kaart</p><h2 id="commands-title">Kõik käsud ühes kohas</h2><p>Otsi, filtreeri ja ava käsu lühike selgitus. Täpsem tekst on ka <a href="docs/kasud.md">Markdowni dokumendis</a>.</p></div><span class="section-number" aria-hidden="true">02</span></div>
+        <div class="section-heading"><div><p class="eyebrow">03 / Käskude kaart</p><h2 id="commands-title">Kõik käsud ühes kohas</h2><p>Otsi, filtreeri ja ava käsu lühike selgitus. Täpsem tekst on ka <a href="docs/kasud.md">Markdowni dokumendis</a>.</p></div><span class="section-number" aria-hidden="true">03</span></div>
         <div class="toolbar"><label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Otsi käsku või märksõna</span><input id="search" type="search" placeholder="Otsi: timeout, võrk, mälu…" autocomplete="off"></label><span id="result-count" role="status"></span></div>
         <div class="filters" id="filters" role="group" aria-label="Filtreeri teema järgi"></div>
         <div class="command-grid" id="command-grid"></div>
@@ -59,7 +73,7 @@
       </div>
     </section>
 
-    <section class="section next-section" aria-labelledby="next-title"><div class="shell next-grid"><div><p class="eyebrow">03 / Edasiarendus</p><h2 id="next-title">Kuidas atlas veel visuaalsemaks muuta?</h2></div><div class="idea-grid"><article><span>01</span><h3>Otsustuspuu</h3><p>Jah/ei küsimused juhatavad mõõtmise tulemusest järgmise käsuni.</p></article><article><span>02</span><h3>Väljundi anatoomia</h3><p>Klõpsa terminali näidisväljundis väljale, et näha selle tähendust.</p></article><article><span>03</span><h3>Harjutusrežiim</h3><p>Fiktiivse tõrke puhul vali järgmine käsk ja saa kohene selgitus.</p></article><article><span>04</span><h3>Mõõdikute ajajoon</h3><p>Võrdle logikirjeid CPU, mälu ja kettaruumi muutustega.</p></article></div></div></section>
+    <section class="section next-section" aria-labelledby="next-title"><div class="shell next-grid"><div><p class="eyebrow">04 / Edasiarendus</p><h2 id="next-title">Kuidas atlas veel visuaalsemaks muuta?</h2></div><div class="idea-grid"><article><span>01</span><h3>Otsustuspuu</h3><p>Jah/ei küsimused juhatavad mõõtmise tulemusest järgmise käsuni.</p></article><article><span>02</span><h3>Väljundi anatoomia</h3><p>Klõpsa terminali näidisväljundis väljale, et näha selle tähendust.</p></article><article><span>03</span><h3>Harjutusrežiim</h3><p>Fiktiivse tõrke puhul vali järgmine käsk ja saa kohene selgitus.</p></article><article><span>04</span><h3>Mõõdikute ajajoon</h3><p>Võrdle logikirjeid CPU, mälu ja kettaruumi muutustega.</p></article></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linuxi veaotsingu atlas</span><span>Õppimiseks loodud näited · <a href="docs/kasud.md">Loe täielikku selgitust</a></span></div></footer>
