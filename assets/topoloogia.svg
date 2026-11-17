@@ -2,61 +2,61 @@
   <title id="topology-title">Pakiautomaadi võrgu topoloogia</title>
   <desc id="topology-desc">Pakiautomaat ja hooldusarvuti on samas 192.168.10.0/24 kohtvõrgus. Nad on ühendatud lülitiga. Ruuter on vaikelüüs 192.168.10.1 ning ühendab kohtvõrgu interneti kaudu rakendusserveriga.</desc>
   <defs>
-    <marker id="local-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#b9f46b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
-    <marker id="remote-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#75c6d1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="local-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ffbe9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="remote-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#e3d2e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
   </defs>
-  <rect width="1280" height="550" rx="20" fill="#0d1926"/>
-  <rect x="28" y="68" width="772" height="405" rx="19" fill="#142b32" stroke="#447468" stroke-width="2"/>
-  <rect x="820" y="68" width="432" height="405" rx="19" fill="#122435" stroke="#3a5969" stroke-width="2"/>
-  <text x="54" y="108" fill="#b9f46b" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">KOHTVÕRK</text>
+  <rect width="1280" height="550" rx="20" fill="#2c001e"/>
+  <rect x="28" y="68" width="772" height="405" rx="19" fill="#3e1735" stroke="#a85a67" stroke-width="2"/>
+  <rect x="820" y="68" width="432" height="405" rx="19" fill="#421a39" stroke="#9a5d75" stroke-width="2"/>
+  <text x="54" y="108" fill="#ffbe9d" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">KOHTVÕRK</text>
   <text x="230" y="108" fill="#c9ded9" font-size="16" font-family="Arial, sans-serif">192.168.10.0/24</text>
-  <text x="846" y="108" fill="#75c6d1" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">TEINE VÕRK</text>
+  <text x="846" y="108" fill="#e3d2e2" font-size="16" font-family="Arial, sans-serif" font-weight="700" letter-spacing="2">TEINE VÕRK</text>
 
-  <path d="M284 205 L352 270" fill="none" stroke="#b9f46b" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
-  <path d="M284 386 L352 320" fill="none" stroke="#b9f46b" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
-  <path d="M535 295 L588 295" fill="none" stroke="#b9f46b" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
-  <path d="M775 295 L845 295" fill="none" stroke="#75c6d1" stroke-width="5" stroke-linecap="round" marker-end="url(#remote-arrow)"/>
-  <path d="M984 295 L1032 295" fill="none" stroke="#75c6d1" stroke-width="5" stroke-linecap="round" marker-end="url(#remote-arrow)"/>
+  <path d="M284 205 L352 270" fill="none" stroke="#ffbe9d" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
+  <path d="M284 386 L352 320" fill="none" stroke="#ffbe9d" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
+  <path d="M535 295 L588 295" fill="none" stroke="#ffbe9d" stroke-width="5" stroke-linecap="round" marker-end="url(#local-arrow)"/>
+  <path d="M775 295 L845 295" fill="none" stroke="#e3d2e2" stroke-width="5" stroke-linecap="round" marker-end="url(#remote-arrow)"/>
+  <path d="M984 295 L1032 295" fill="none" stroke="#e3d2e2" stroke-width="5" stroke-linecap="round" marker-end="url(#remote-arrow)"/>
 
-  <rect x="55" y="151" width="229" height="108" rx="14" fill="#1b3940" stroke="#73a58f" stroke-width="2"/>
-  <rect x="73" y="174" width="48" height="62" rx="5" fill="#0e222b" stroke="#b9f46b" stroke-width="2"/>
-  <rect x="81" y="182" width="14" height="17" rx="2" fill="#427266"/>
-  <rect x="99" y="182" width="14" height="17" rx="2" fill="#427266"/>
-  <rect x="81" y="205" width="14" height="17" rx="2" fill="#427266"/>
-  <rect x="99" y="205" width="14" height="17" rx="2" fill="#427266"/>
+  <rect x="55" y="151" width="229" height="108" rx="14" fill="#502542" stroke="#df8a71" stroke-width="2"/>
+  <rect x="73" y="174" width="48" height="62" rx="5" fill="#2c001e" stroke="#ffbe9d" stroke-width="2"/>
+  <rect x="81" y="182" width="14" height="17" rx="2" fill="#a15c6a"/>
+  <rect x="99" y="182" width="14" height="17" rx="2" fill="#a15c6a"/>
+  <rect x="81" y="205" width="14" height="17" rx="2" fill="#a15c6a"/>
+  <rect x="99" y="205" width="14" height="17" rx="2" fill="#a15c6a"/>
   <text x="134" y="194" fill="#f0f5f2" font-size="20" font-family="Arial, sans-serif" font-weight="700">Pakiautomaat</text>
-  <text x="134" y="222" fill="#b9f46b" font-size="17" font-family="Arial, sans-serif">192.168.10.24</text>
+  <text x="134" y="222" fill="#ffbe9d" font-size="17" font-family="Arial, sans-serif">192.168.10.24</text>
 
-  <rect x="55" y="332" width="229" height="108" rx="14" fill="#1b3940" stroke="#73a58f" stroke-width="2"/>
-  <rect x="74" y="357" width="48" height="33" rx="3" fill="#0e222b" stroke="#b9f46b" stroke-width="2"/>
-  <path d="M69 396 H128 L123 402 H74 Z" fill="#427266" stroke="#b9f46b" stroke-width="1.5"/>
+  <rect x="55" y="332" width="229" height="108" rx="14" fill="#502542" stroke="#df8a71" stroke-width="2"/>
+  <rect x="74" y="357" width="48" height="33" rx="3" fill="#2c001e" stroke="#ffbe9d" stroke-width="2"/>
+  <path d="M69 396 H128 L123 402 H74 Z" fill="#a15c6a" stroke="#ffbe9d" stroke-width="1.5"/>
   <text x="134" y="376" fill="#f0f5f2" font-size="18" font-family="Arial, sans-serif" font-weight="700">Hooldusarvuti</text>
-  <text x="134" y="404" fill="#b9f46b" font-size="17" font-family="Arial, sans-serif">192.168.10.50</text>
+  <text x="134" y="404" fill="#ffbe9d" font-size="17" font-family="Arial, sans-serif">192.168.10.50</text>
 
-  <rect x="352" y="238" width="183" height="114" rx="14" fill="#1b3940" stroke="#73a58f" stroke-width="2"/>
-  <rect x="377" y="262" width="133" height="31" rx="5" fill="#0e222b" stroke="#b9f46b" stroke-width="1.5"/>
-  <circle cx="392" cy="278" r="3" fill="#b9f46b"/><circle cx="409" cy="278" r="3" fill="#b9f46b"/><circle cx="426" cy="278" r="3" fill="#b9f46b"/><circle cx="443" cy="278" r="3" fill="#b9f46b"/>
+  <rect x="352" y="238" width="183" height="114" rx="14" fill="#502542" stroke="#df8a71" stroke-width="2"/>
+  <rect x="377" y="262" width="133" height="31" rx="5" fill="#2c001e" stroke="#ffbe9d" stroke-width="1.5"/>
+  <circle cx="392" cy="278" r="3" fill="#ffbe9d"/><circle cx="409" cy="278" r="3" fill="#ffbe9d"/><circle cx="426" cy="278" r="3" fill="#ffbe9d"/><circle cx="443" cy="278" r="3" fill="#ffbe9d"/>
   <text x="443" y="324" text-anchor="middle" fill="#f0f5f2" font-size="21" font-family="Arial, sans-serif" font-weight="700">Lüliti</text>
 
-  <rect x="588" y="238" width="187" height="114" rx="14" fill="#1b3940" stroke="#73a58f" stroke-width="2"/>
-  <path d="M626 277 V258 M735 277 V258" stroke="#b9f46b" stroke-width="3" stroke-linecap="round"/>
-  <rect x="620" y="278" width="121" height="19" rx="5" fill="#0e222b" stroke="#b9f46b" stroke-width="1.5"/>
-  <circle cx="726" cy="287" r="3" fill="#b9f46b"/>
+  <rect x="588" y="238" width="187" height="114" rx="14" fill="#502542" stroke="#df8a71" stroke-width="2"/>
+  <path d="M626 277 V258 M735 277 V258" stroke="#ffbe9d" stroke-width="3" stroke-linecap="round"/>
+  <rect x="620" y="278" width="121" height="19" rx="5" fill="#2c001e" stroke="#ffbe9d" stroke-width="1.5"/>
+  <circle cx="726" cy="287" r="3" fill="#ffbe9d"/>
   <text x="682" y="322" text-anchor="middle" fill="#f0f5f2" font-size="20" font-family="Arial, sans-serif" font-weight="700">Ruuter</text>
-  <text x="682" y="343" text-anchor="middle" fill="#b9f46b" font-size="14" font-family="Arial, sans-serif">lüüs 192.168.10.1</text>
+  <text x="682" y="343" text-anchor="middle" fill="#ffbe9d" font-size="14" font-family="Arial, sans-serif">lüüs 192.168.10.1</text>
 
-  <path d="M852 292 C845 268 863 250 885 252 C891 228 919 220 937 235 C954 228 975 239 976 257 C997 260 1003 286 987 299 C981 305 972 308 958 308 H878 C865 308 856 303 852 292 Z" fill="#1b3d4c" stroke="#75c6d1" stroke-width="2"/>
+  <path d="M852 292 C845 268 863 250 885 252 C891 228 919 220 937 235 C954 228 975 239 976 257 C997 260 1003 286 987 299 C981 305 972 308 958 308 H878 C865 308 856 303 852 292 Z" fill="#693450" stroke="#e3d2e2" stroke-width="2"/>
   <text x="918" y="279" text-anchor="middle" fill="#edf4f5" font-size="17" font-family="Arial, sans-serif" font-weight="700">Internet</text>
 
-  <rect x="1032" y="238" width="194" height="114" rx="14" fill="#1a3445" stroke="#75c6d1" stroke-width="2"/>
-  <rect x="1055" y="260" width="44" height="52" rx="4" fill="#0e222b" stroke="#75c6d1" stroke-width="2"/>
-  <path d="M1062 273 H1092 M1062 285 H1092 M1062 297 H1092" stroke="#75c6d1" stroke-width="2"/>
-  <circle cx="1088" cy="304" r="2.5" fill="#b9f46b"/>
+  <rect x="1032" y="238" width="194" height="114" rx="14" fill="#5f2f4c" stroke="#e3d2e2" stroke-width="2"/>
+  <rect x="1055" y="260" width="44" height="52" rx="4" fill="#2c001e" stroke="#e3d2e2" stroke-width="2"/>
+  <path d="M1062 273 H1092 M1062 285 H1092 M1062 297 H1092" stroke="#e3d2e2" stroke-width="2"/>
+  <circle cx="1088" cy="304" r="2.5" fill="#ffbe9d"/>
   <text x="1111" y="281" fill="#f0f5f2" font-size="18" font-family="Arial, sans-serif" font-weight="700">Rakendus-</text>
   <text x="1111" y="305" fill="#f0f5f2" font-size="18" font-family="Arial, sans-serif" font-weight="700">server</text>
 
-  <circle cx="58" cy="515" r="7" fill="#b9f46b"/>
-  <text x="75" y="521" fill="#d7e5df" font-size="16" font-family="Arial, sans-serif">Roheline: ühendused kohtvõrgus</text>
-  <circle cx="435" cy="515" r="7" fill="#75c6d1"/>
-  <text x="452" y="521" fill="#d7e5df" font-size="16" font-family="Arial, sans-serif">Sinine: tee väljapoole kohtvõrku</text>
+  <circle cx="58" cy="515" r="7" fill="#ffbe9d"/>
+  <text x="75" y="521" fill="#d7e5df" font-size="16" font-family="Arial, sans-serif">Oranž: ühendused kohtvõrgus</text>
+  <circle cx="435" cy="515" r="7" fill="#e3d2e2"/>
+  <text x="452" y="521" fill="#d7e5df" font-size="16" font-family="Arial, sans-serif">Lilla: tee väljapoole kohtvõrku</text>
 </svg>

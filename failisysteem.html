@@ -4,17 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#E95420">
   <meta name="description" content="Linuxi juurkaustade tähendused kahel PDF-lehest tehtud pildil.">
-  <title>Linuxi kaustad · Linuxi atlas</title>
+  <title>Linuxi kaustad · Veaotsingu teejuht</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="navigation.js" defer></script>
   <link rel="stylesheet" href="filesystem.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="Linuxi atlas, avalehele"><span class="brand-mark">&gt;_</span><span>Linuxi <strong>atlas</strong></span></a>
-      <nav aria-label="Peamenüü"><a href="index.html">Avaleht</a><a href="vorgu-alused.html">IP ja võrgumask</a><a href="vpn-konspekt.html">VPN-konspekt</a></nav>
+      <a class="brand" href="index.html" aria-label="Veaotsingu teejuht, avalehele"><span class="brand-mark">&gt;_</span><span>Veaotsingu teejuht</span></a>
+      <nav aria-label="Peamenüü">
+        <button type="button" class="nav-item" data-nav-target="index.html#kasud">Linux</button>
+        <a class="nav-item" href="index.html#juhtumid">Näidisjuhtumid</a>
+        <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
+        <a class="nav-item" href="docs/vorgu-alused.md">Täispikk selgitus</a>
+      </nav>
     </div>
   </header>
   <main id="main" class="filesystem-page">
@@ -28,6 +36,6 @@
       <figure class="filesystem-sheet" id="leht-2"><figcaption>LEHT 2 / 2</figcaption><div class="filesystem-scroll" role="region" tabindex="0" aria-label="Linuxi kaustade dokumendi teine leht, kitsal ekraanil horisontaalselt keritav"><img src="assets/linux-kaustad-2.png" width="1241" height="1754" alt="Linuxi kaustade selgituste teine leht: srv/, sys/, tmp/, usr/ ja var/." loading="lazy" decoding="async"></div></figure>
     </div>
   </main>
-  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linuxi veaotsingu atlas</span><span><a href="index.html">Avaleht</a> · <a href="assets/linux-kaustad-selgitused.pdf">Algne PDF</a></span></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Veaotsingu teejuht</span><span><a href="index.html">Avaleht</a> · <a href="assets/linux-kaustad-selgitused.pdf">Algne PDF</a></span></div></footer>
 </body>
 </html>

@@ -35,3 +35,30 @@
 .topology-caveat{color:#a9bdc6;font-size:13px;line-height:1.6;margin:17px 0 0}
 .topology-scroll-hint{display:none}
 @media(max-width:700px){.topology-steps{grid-template-columns:1fr}.topology-scroll-hint{display:block;color:var(--accent2);font:12px 'DM Mono',monospace;margin:12px 0 0}}
+
+/* Network chapter in the same Ubuntu orange and aubergine palette. */
+.network-page{background:#E95420}
+.network-hero{background:radial-gradient(ellipse 640px 380px at 72% 28%,rgba(255,226,208,.4),transparent 72%),linear-gradient(145deg,#E95420,#f4763c 72%,#E95420);color:#2c001e}
+.network-hero .eyebrow,.network-hero h1 em{color:#2c001e}
+.network-hero .status-dot{background:#2c001e;box-shadow:0 0 14px rgba(44,0,30,.25)}
+.network-hero p:not(.eyebrow){color:#37112b}
+.network-hero .button.primary{background:#2c001e;color:#fff9f6}
+.network-hero .button.primary:hover{background:#4c2040}
+.network-hero .button.secondary{background:rgba(255,255,255,.14);border-color:#2c001e;color:#2c001e}
+.network-hero .button.secondary:hover{background:rgba(255,255,255,.35)}
+.network-section{background:#2c001e;border-top:8px solid #E95420}
+.network-section.shell{box-sizing:border-box;padding-left:clamp(18px,4vw,50px);padding-right:clamp(18px,4vw,50px);border-radius:16px;margin-top:16px;margin-bottom:16px}
+.mask-section,.terms-section{background:#39132f}
+.hero-formula,.birth-grid li,.topology-steps li,.calc-card,.worked-example,.term-grid article,.practice-list li{background:#35132d;border-color:#80516b}
+.hero-formula{background:#2c001e}
+.topology-scroll{background:#2c001e;border-color:#a66a7c}
+.formula-line{border-color:#80516b}
+.mask-answer,.calc-summary,.calc-detail,.binary-board{border-color:#80516b}
+.calc-controls input[type=text],.binary-board{background:#26071e}
+.calc-controls input[type=range]{accent-color:#E95420}
+.binary-digits .bit-network{color:#ffe2d2;background:#6c3855}
+.binary-digits .bit-host{color:#e6cedc;background:#4c2941}
+.binary-row.result .bit-network{background:#984b50;color:#fff9f6}
+.term-grid article>span,.network-sources a{color:#ffd7c2}
+.network-sources{background:#2c001e;border-top:8px solid #E95420}
+@media(max-width:700px){.network-section.shell{width:min(100% - 32px,1160px)}}

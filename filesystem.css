@@ -11,3 +11,6 @@
 .filesystem-scroll:focus-visible{outline:3px solid var(--accent2);outline-offset:4px}
 .filesystem-scroll img{display:block;width:100%;min-width:760px;height:auto}
 @media(max-width:700px){.filesystem-page{padding:52px 0 70px}.filesystem-hint{margin-bottom:30px}.filesystem-sheet{margin-bottom:30px}}
+.filesystem-page{background:radial-gradient(ellipse 680px 400px at 75% 5%,rgba(233,84,32,.24),transparent 72%),#2c001e;border-top:8px solid #E95420}
+.filesystem-intro{color:#e6cedc}
+.filesystem-scroll{border-color:#a66a7c}

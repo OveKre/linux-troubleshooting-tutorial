@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#E95420">
   <meta name="description" content="IP-aadressi, võrgumaski ja CIDR-i eestikeelne selgitus koos interaktiivse binaarkalkulaatoriga.">
-  <title>IP ja võrgumask · Linuxi atlas</title>
+  <title>IP ja võrgumask · Veaotsingu teejuht</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="navigation.js" defer></script>
   <link rel="stylesheet" href="network.css">
   <script src="network.js" defer></script>
 </head>
@@ -14,8 +16,14 @@
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="Linuxi atlas, avalehele"><span class="brand-mark">&gt;_</span><span>Linuxi <strong>atlas</strong></span></a>
-      <nav aria-label="Peamenüü"><a href="index.html#juhtumid">Näidisjuhtumid</a><a href="#kalkulaator">Binaarkalkulaator</a><a href="#terminid">Terminid</a><a href="docs/vorgu-alused.md">Täispikk selgitus</a></nav>
+      <a class="brand" href="index.html" aria-label="Veaotsingu teejuht, avalehele"><span class="brand-mark">&gt;_</span><span>Veaotsingu teejuht</span></a>
+      <nav aria-label="Peamenüü">
+        <button type="button" class="nav-item" data-nav-target="index.html#kasud">Linux</button>
+        <a class="nav-item" href="index.html#juhtumid">Näidisjuhtumid</a>
+        <a class="nav-item" href="#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="#terminid">Terminid</a>
+        <a class="nav-item" href="docs/vorgu-alused.md">Täispikk selgitus</a>
+      </nav>
     </div>
   </header>
 
@@ -78,10 +86,10 @@
         <article><span>12 · IPv6</span><h3>IPv6 prefiks ja SLAAC</h3><p>IPv6 kasutab 128-bitist aadressi ja kaldkriipsuga prefiksit, mitte IPv4 punktidega maski. Seade võib ruuteri reklaamitud prefiksist aadressi ise moodustada ning seejärel konflikti kontrollida.</p></article>
       </div><p class="terms-full"><a class="button secondary" href="docs/vorgu-alused.md">Loe iga sammu pikemat selgitust →</a></p></div></section>
 
-    <section class="network-section shell" id="praktika" aria-labelledby="practice-title"><div class="network-heading"><p class="eyebrow">05 / Pakiautomaadi näide</p><h2 id="practice-title">Kui seade ei jõua serverisse</h2><p>Näidisseadmel on <code>192.168.10.24/24</code> ja lüüs <code>192.168.10.1</code>. Kontrolli kihte selles järjekorras; väärtused tuleb päris seadme järgi asendada.</p></div><ol class="practice-list"><li><code>ip -br address</code><span>Kas IP ja prefiks on liidesel olemas?</span></li><li><code>ip route</code><span>Kas vaikemarsruut osutab oodatud lüüsile?</span></li><li><code>ip route get 1.1.1.1</code><span>Milline liides ja lähteaadress valitaks?</span></li><li><code>ping -c 4 192.168.10.1</code><span>Kas kohalik lüüs vastab ICMP-le?</span></li><li><code>resolvectl query example.com</code><span>Kas DNS saab nime lahendada?</span></li><li><code>curl -I --connect-timeout 5 https://example.com/</code><span>Kas HTTPS ühendus ja esmane vastus toimivad?</span></li></ol><p class="network-note">Näidislogidest alustamiseks ava <a href="index.html#juhtumid">pakiautomaadi veajuhtumid</a>. Need käsud piiritlevad tõrget, kuid üksik tulemus ei tõesta alati kogu juurpõhjust.</p></section>
+
 
     <section class="network-sources"><div class="shell"><h2>Allikad</h2><p><a href="https://www.rfc-editor.org/info/rfc791/">IPv4</a> · <a href="https://www.rfc-editor.org/info/rfc4632/">CIDR</a> · <a href="https://www.rfc-editor.org/info/rfc1812/">Marsruudid</a> · <a href="https://www.rfc-editor.org/info/rfc2131/">DHCP</a> · <a href="https://www.rfc-editor.org/info/rfc2132/">DHCP valikud</a> · <a href="https://www.iana.org/help/private-addresses">IANA privaatplokid</a> · <a href="https://www.rfc-editor.org/info/rfc4291/">IPv6</a> · <a href="https://www.rfc-editor.org/info/rfc4862/">SLAAC</a> · <a href="https://www.rfc-editor.org/info/rfc826/">ARP</a> · <a href="https://www.rfc-editor.org/info/rfc3021/">/31</a> · <a href="https://www.rfc-editor.org/info/rfc9724/">MAC-aadressid</a> · <a href="https://www.rfc-editor.org/info/rfc3022/">NAT</a></p></div></section>
   </main>
-  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linuxi veaotsingu atlas</span><span><a href="index.html">Avaleht</a> · <a href="docs/vorgu-alused.md">Täispikk selgitus</a> · <a href="failisysteem.html">Linuxi kaustad</a></span></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Veaotsingu teejuht</span><span><a href="index.html#kasud">Linuxi käsud</a> · <a href="docs/vorgu-alused.md">Täispikk selgitus</a> · <a href="failisysteem.html">Linuxi kaustad</a></span></div></footer>
 </body>
 </html>

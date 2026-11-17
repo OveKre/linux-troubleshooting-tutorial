@@ -1,10 +1,10 @@
-# Linuxi veaotsingu atlas
+# Linuxi veaotsingu teejuht
 
-Väike eestikeelne õppeprojekt, mis seob 21 Linuxi käsku praktilise veaotsingu järjekorraga. [Ava interaktiivne vaade](./index.html), [õpi IP-aadressi ja võrgumaski](./vorgu-alused.html) või loe [käskude selgitusi](./docs/kasud.md).
+Väike eestikeelne õppeprojekt, mis koondab 21 Linuxi käsku, pakiautomaadi näidisjuhtumid, Linuxi failisüsteemi dokumendi ja võrguõppe eraldi vaatesse. [Ava interaktiivne vaade](./index.html), [õpi IP-aadressi ja võrgumaski](./vorgu-alused.html) või loe [käskude selgitusi](./docs/kasud.md).
 
 ## Mida projekt näitab?
 
-- Ava [pakiautomaadi näidisjuhtum](./index.html#juhtumid): vealogi, sobiv käsk, selle näidisväljund, tõlgendus ja lõpuks põhjendatud järeldus.
+- Linuxi käsud ja failisüsteemi pildid on avalehel. Ava [pakiautomaadi näidisjuhtum](./index.html#juhtumid): vealogi, sobiv käsk, selle näidisväljund, tõlgendus ja lõpuks põhjendatud järeldus.
 - Vali olukord (teenus, võrk, ressursid või kell) ja vaata, millises järjekorras kontrollida.
 - Otsi käsku nime või märksõna järgi; ava kaardil selle osad ja kasutusjuht.
 - Kopeeri käsk, asendades enne käivitamist näidisfaili, teenuse, liidese või aadressi oma keskkonna omaga.
