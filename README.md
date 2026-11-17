@@ -1,6 +1,6 @@
-# Linuxi veaotsingu teejuht
+# Linuxi failisüsteem ja käsud
 
-Väike eestikeelne õppeprojekt, mis koondab 21 Linuxi käsku, pakiautomaadi näidisjuhtumid, Linuxi failisüsteemi dokumendi ja võrguõppe eraldi vaatesse. [Ava interaktiivne vaade](./index.html), [õpi IP-aadressi ja võrgumaski](./vorgu-alused.html) või loe [käskude selgitusi](./docs/kasud.md).
+Eestikeelne Linuxi õppeprojekt. Avalehel on failisüsteemi sissejuhatus ja kaustade tabel; järgnevad käsud ning näidisjuhtumid. [Ava interaktiivne vaade](./index.html) ja [õpi IP-aadressi ning võrgumaski](./vorgu-alused.html).
 
 ## Mida projekt näitab?
 
@@ -12,7 +12,7 @@ Väike eestikeelne õppeprojekt, mis koondab 21 Linuxi käsku, pakiautomaadi nä
 - [Võrgu topoloogia pilt](./vorgu-alused.html#topoloogia) näitab pakiautomaadi, lüliti, ruuteri ja serveri seost ning sama ja eri võrgu vahet.
 - [VPN-i, netmaski ja gateway konspekt](./vpn-konspekt.html) kuvab kasutaja algse teksti muutmata kujul.
 - [Linuxi kaustade pildid](./failisysteem.html) näitavad mõlemat algse PDF-i lehte; [algne PDF](./assets/linux-kaustad-selgitused.pdf) on samuti projektis.
-- [Võrguaadresside õppeosa](./vorgu-alused.html) näitab, kuidas aadress seadmele määratakse, kuidas CIDR-prefiksist mask moodustub ning kuidas binaarne AND-tehe annab võrguaadressi. Kalkulaator võrdleb kahte IPv4 aadressi; [täispikk mõistete selgitus](./docs/vorgu-alused.md) on eraldi Markdowni failis.
+- [Võrguaadresside õppeosa](./vorgu-alused.html) näitab, kuidas aadress seadmele määratakse, kuidas CIDR-prefiksist mask moodustub ning kuidas binaarne AND-tehe annab võrguaadressi. Kalkulaator võrdleb kahte IPv4 aadressi.
 
 Kolm pakiautomaadi juhtumit käsitlevad DNS-i tõrget, täis juurfailisüsteemi ja maas võrguliidest. Logid ning käsuväljundid on väljamõeldud. Nupp „Kuva näidisväljund“ ei käivita midagi seadmes; see näitab, kuidas üks tulemus suunab järgmise kontrollini. Päris seadmes tuleb teenuse nimi, logitee, võrguliides ja aadressid üle kontrollida.
 

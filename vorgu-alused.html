@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a111b">
   <meta name="description" content="IP-aadressi, võrgumaski ja CIDR-i eestikeelne selgitus koos interaktiivse binaarkalkulaatoriga.">
-  <title>IP ja võrgumask · Veaotsingu teejuht</title>
+  <title>IP ja võrgumask · Linux</title>
   <link rel="stylesheet" href="styles.css">
   <script src="navigation.js" defer></script>
   <link rel="stylesheet" href="network.css">
@@ -16,13 +16,11 @@
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="Veaotsingu teejuht, avalehele"><span class="brand-mark">&gt;_</span><span>Veaotsingu teejuht</span></a>
       <nav aria-label="Peamenüü">
-        <button type="button" class="nav-item" data-nav-target="index.html#kasud">Linux</button>
+        <button type="button" class="nav-item" data-nav-target="index.html">Linux</button>
         <a class="nav-item" href="index.html#juhtumid">Näidisjuhtumid</a>
         <a class="nav-item" href="#kalkulaator">Binaarkalkulaator</a>
         <a class="nav-item" href="#terminid">Terminid</a>
-        <a class="nav-item" href="docs/vorgu-alused.md">Täispikk selgitus</a>
       </nav>
     </div>
   </header>
@@ -30,7 +28,7 @@
   <main id="main" class="network-page">
     <section class="network-hero" aria-labelledby="network-title">
       <div class="shell network-hero-grid">
-        <div><p class="eyebrow"><span class="status-dot"></span> Võrguaadresside õppeosa</p><h1 id="network-title">Kuidas IP ja mask<br><em>võrgu määravad?</em></h1><p>IP-aadress ütleb, millise liidesega suhelda. Prefiks eraldab võrgu- ja hostibitid. Marsruutimistabel valib tee, mida mööda pakett päriselt liigub.</p><div class="hero-actions"><a class="button primary" href="#topoloogia">Vaata võrgu kaarti ↗</a><a class="button secondary" href="#kalkulaator">Proovi binaarkalkulaatorit</a><a class="button secondary" href="docs/vorgu-alused.md">Loe süvitsi</a></div></div>
+        <div><p class="eyebrow"><span class="status-dot"></span> Võrguaadresside õppeosa</p><h1 id="network-title">Kuidas IP ja mask<br><em>võrgu määravad?</em></h1><p>IP-aadress ütleb, millise liidesega suhelda. Prefiks eraldab võrgu- ja hostibitid. Marsruutimistabel valib tee, mida mööda pakett päriselt liigub.</p><div class="hero-actions"><a class="button primary" href="#topoloogia">Vaata võrgu kaarti ↗</a><a class="button secondary" href="#kalkulaator">Proovi binaarkalkulaatorit</a></div></div>
         <div class="hero-formula" aria-label="Näide: IP 192.168.1.70 ja /26 mask annavad võrguaadressi 192.168.1.64"><div class="formula-top"><span>VÕRGUAADRESS</span><span>IPv4 / 32 bitti</span></div><div class="formula-line"><span>IP-aadress</span><code>192.168.1.70</code></div><div class="formula-line"><span>Mask /26</span><code>255.255.255.192</code></div><div class="formula-op">BITIKAUPA AND ↓</div><div class="formula-result"><span>Võrk</span><strong>192.168.1.64</strong></div><div class="formula-range">64 aadressi · .64 kuni .127</div></div>
       </div>
     </section>
@@ -84,12 +82,10 @@
         <article><span>10 · TÕLGE</span><h3>NAT ja NAPT</h3><p>NAT tõlgib aadresse; koduvõrgu NAPT tõlgib lisaks porte, et mitu siseseadet saaks jagada üht välist IPv4 aadressi. NAT ei ole sama mis tulemüür.</p></article>
         <article><span>11 · DIAGNOSTIKA</span><h3>ICMP ja ping</h3><p><code>ping</code> kasutab ICMP kajapäringut, et vastust ja viivitust mõõta. Kui vastust ei tule, võib ICMP olla lihtsalt blokeeritud; see ei tõesta kogu teenuse tõrget.</p></article>
         <article><span>12 · IPv6</span><h3>IPv6 prefiks ja SLAAC</h3><p>IPv6 kasutab 128-bitist aadressi ja kaldkriipsuga prefiksit, mitte IPv4 punktidega maski. Seade võib ruuteri reklaamitud prefiksist aadressi ise moodustada ning seejärel konflikti kontrollida.</p></article>
-      </div><p class="terms-full"><a class="button secondary" href="docs/vorgu-alused.md">Loe iga sammu pikemat selgitust →</a></p></div></section>
-
-
+      </div></div></section>
 
     <section class="network-sources"><div class="shell"><h2>Allikad</h2><p><a href="https://www.rfc-editor.org/info/rfc791/">IPv4</a> · <a href="https://www.rfc-editor.org/info/rfc4632/">CIDR</a> · <a href="https://www.rfc-editor.org/info/rfc1812/">Marsruudid</a> · <a href="https://www.rfc-editor.org/info/rfc2131/">DHCP</a> · <a href="https://www.rfc-editor.org/info/rfc2132/">DHCP valikud</a> · <a href="https://www.iana.org/help/private-addresses">IANA privaatplokid</a> · <a href="https://www.rfc-editor.org/info/rfc4291/">IPv6</a> · <a href="https://www.rfc-editor.org/info/rfc4862/">SLAAC</a> · <a href="https://www.rfc-editor.org/info/rfc826/">ARP</a> · <a href="https://www.rfc-editor.org/info/rfc3021/">/31</a> · <a href="https://www.rfc-editor.org/info/rfc9724/">MAC-aadressid</a> · <a href="https://www.rfc-editor.org/info/rfc3022/">NAT</a></p></div></section>
   </main>
-  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Veaotsingu teejuht</span><span><a href="index.html#kasud">Linuxi käsud</a> · <a href="docs/vorgu-alused.md">Täispikk selgitus</a> · <a href="failisysteem.html">Linuxi kaustad</a></span></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span><a href="index.html#kasud">Linuxi käsud</a> · <a href="failisysteem.html">Linuxi kaustad</a></span></div></footer>
 </body>
 </html>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a111b">
-  <meta name="description" content="21 Linuxi käsku ja visuaalne veaotsingu teejuht eesti keeles.">
-  <title>Veaotsingu teejuht</title>
+  <meta name="description" content="Linuxi failisüsteemi sissejuhatus, kaustade ülevaade ja praktilised käsud eesti keeles.">
+  <title>Linux</title>
   <link rel="stylesheet" href="styles.css">
   <script src="navigation.js" defer></script>
   <script src="app.js" defer></script>
@@ -16,37 +16,65 @@
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="index.html" aria-label="Veaotsingu teejuht, avalehele"><span class="brand-mark">&gt;_</span><span>Veaotsingu teejuht</span></a>
       <nav aria-label="Peamenüü">
-        <button type="button" class="nav-item" data-nav-target="#kasud" aria-current="page">Linux</button>
+        <button type="button" class="nav-item" data-nav-target="#top" aria-current="page">Linux</button>
         <a class="nav-item" href="#juhtumid">Näidisjuhtumid</a>
         <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
         <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
-        <a class="nav-item" href="docs/kasud.md">Täispikk selgitus</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero filesystem-hero" id="top" aria-labelledby="hero-title">
       <div class="shell hero-grid">
         <div>
-          <p class="eyebrow"><span class="status-dot"></span> Eestikeelne Linuxi õppeprojekt</p>
-          <h1 id="hero-title">Leia põhjus.<br><em>Vali järgmine käsk.</em></h1>
-          <p class="hero-copy">21 Linuxi käsku aitavad liikuda sümptomist tõendini. Vali olukord, vaata soovitatud järjekorda ja uuri iga käsu osi.</p>
-          <div class="hero-actions"><a class="button primary" href="#kasud">Vaata Linuxi käske <span aria-hidden="true">↗</span></a><a class="button secondary" href="#juhtumid">Uuri näidisjuhtumit</a><a class="button secondary" href="#linuxi-dokumendid">Linuxi dokumendid</a></div>
-          <p class="hero-note">Käsud on õppenäited. See leht ei käivita neid sinu arvutis.</p>
+          <p class="eyebrow"><span class="status-dot"></span> Linuxi alused</p>
+          <h1 id="hero-title">Linuxi failisüsteem<br><em>algab juurkaustast /</em></h1>
+          <p class="hero-copy">Linuxis paiknevad failid ja kaustad ühe puu kujul. Selle algus on juurkataloog <code>/</code>. Sealt hargnevad kasutajate failid, süsteemi seadistused, programmid ja muutuvad andmed eri kaustadesse.</p>
+          <p class="hero-copy">Absoluutne failitee näitab asukohta alates juurkataloogist, näiteks <code>/var/log</code>. Kataloog <code>/root</code> on administraatori kodukaust ja erineb juurkataloogist <code>/</code>.</p>
+          <div class="hero-actions"><a class="button primary" href="#linuxi-dokumendid">Tutvu kaustadega <span aria-hidden="true">↓</span></a><a class="button secondary" href="#kasud">Vaata Linuxi käske</a></div>
         </div>
-        <div class="terminal" role="img" aria-label="Näidis terminali väljundist: teenuse olek, viimased logid ja järgmise sammu soovitus">
-          <div class="terminal-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span>diagnostic-session</span><span class="terminal-live">● LIVE GUIDE</span></div>
-          <div class="terminal-body"><p><span class="prompt">$</span> systemctl status example.service</p><p><span class="line-no">01</span> ● example.service - Sample service</p><p><span class="line-no">02</span> Active: <span class="warn">failed</span> (Result: exit-code)</p><p class="terminal-gap"><span class="prompt">$</span> journalctl -u example.service -n 100</p><p><span class="line-no">03</span> ... <span class="warn">timeout</span> while connecting</p><p class="terminal-tip"><span class="line-no">→</span> Järgmine kontroll: võrk ja DNS</p></div>
+        <figure class="filesystem-tree" aria-labelledby="filesystem-tree-title">
+          <figcaption id="filesystem-tree-title">Näide Linuxi kaustapuust</figcaption>
+          <div class="tree-root"><code>/</code><span>juurkataloog</span></div>
+          <ul>
+            <li><code>home/</code><span>kasutajate failid</span></li>
+            <li><code>etc/</code><span>süsteemi seadistused</span></li>
+            <li><code>usr/</code><span>programmid ja jagatud failid</span></li>
+            <li><code>var/</code><span>muutuvad andmed ja logid</span></li>
+          </ul>
+          <p>Absoluutsed failiteed algavad märgiga <code>/</code>.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section linux-docs-section" id="linuxi-dokumendid" aria-labelledby="linux-docs-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">01 / Linuxi failisüsteem</p><h2 id="linux-docs-title">Esimesed kaustad ja nende roll</h2><p>Alusta neljast olulisest asukohast. Algse kaustade dokumendi mõlemad lehed on tabeli järel piltidena; neid saab avada ka <a href="failisysteem.html">suuremas vaates</a>.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <div class="filesystem-table-wrap" role="region" tabindex="0" aria-label="Linuxi kaustade esmane tabel, kitsal ekraanil keritav">
+          <table class="filesystem-table">
+            <thead><tr><th scope="col">Kaust</th><th scope="col">Mille jaoks?</th><th scope="col">Näide</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>/</code></th><td>Kogu kaustapuu algus ehk juurkataloog.</td><td><code>/home</code> asub selle all.</td></tr>
+              <tr><th scope="row"><code>/home</code></th><td>Kasutajate kodukaustad ja isiklikud failid.</td><td><code>/home/kasutaja</code></td></tr>
+              <tr><th scope="row"><code>/etc</code></th><td>Süsteemi ja teenuste seadistusfailid.</td><td><code>/etc/hosts</code></td></tr>
+              <tr><th scope="row"><code>/var</code></th><td>Andmed, mis süsteemi töö käigus muutuvad.</td><td><code>/var/log</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="filesystem-table-source">Kaustade rollid: <a href="https://specifications.freedesktop.org/fhs/latest/rootRequirements.html">Filesystem Hierarchy Standard</a>.</p>
+        <h3 class="filesystem-docs-subtitle">Algne kaustade dokument</h3>
+        <div class="linux-docs-grid">
+          <a href="failisysteem.html#leht-1"><img src="assets/linux-kaustad-1.png" width="1241" height="1754" loading="lazy" alt="Linuxi kaustade selgituste esimene leht"><span>Linuxi kaustad · leht 1</span></a>
+          <a href="failisysteem.html#leht-2"><img src="assets/linux-kaustad-2.png" width="1241" height="1754" loading="lazy" alt="Linuxi kaustade selgituste teine leht"><span>Linuxi kaustad · leht 2</span></a>
         </div>
       </div>
     </section>
 
     <section class="section commands-section" id="kasud" aria-labelledby="commands-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">01 / Käskude kaart</p><h2 id="commands-title">Kõik käsud ühes kohas</h2><p>Otsi, filtreeri ja ava käsu lühike selgitus. Täpsem tekst on ka <a href="docs/kasud.md">Markdowni dokumendis</a>.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <div class="section-heading"><div><p class="eyebrow">02 / Käskude kaart</p><h2 id="commands-title">Kõik käsud ühes kohas</h2><p>Otsi, filtreeri ja ava Linuxi käsu selgitus ning kasutusnäide.</p></div><span class="section-number" aria-hidden="true">02</span></div>
         <div class="toolbar"><label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Otsi käsku või märksõna</span><input id="search" type="search" placeholder="Otsi: timeout, võrk, mälu…" autocomplete="off"></label><span id="result-count" role="status"></span></div>
         <div class="filters" id="filters" role="group" aria-label="Filtreeri teema järgi"></div>
         <div class="command-grid" id="command-grid"></div>
@@ -64,7 +92,7 @@
 
     <section class="section cases-section" id="juhtumid" aria-labelledby="cases-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">02 / Näidisjuhtumid</p><h2 id="cases-title">Logist juurpõhjuseni</h2><p>Vali pakiautomaadi tõrge. Loe vealogi ning ava ükshaaval käsu näidisväljund, et näha, kuidas järgmise kontrollini jõuda.</p></div><span class="section-number" aria-hidden="true">02</span></div>
+        <div class="section-heading"><div><p class="eyebrow">03 / Näidisjuhtumid</p><h2 id="cases-title">Logist juurpõhjuseni</h2><p>Vali pakiautomaadi tõrge. Loe vealogi ning ava ükshaaval käsu näidisväljund, et näha, kuidas järgmise kontrollini jõuda.</p></div><span class="section-number" aria-hidden="true">03</span></div>
         <p class="case-disclaimer">Kõik logid, aadressid, teenusenimed ja väljundid on väljamõeldud õppematerjal. Nupp „Kuva näidisväljund“ ei käivita käsku.</p>
         <div class="case-options" id="case-options" role="group" aria-label="Vali pakiautomaadi näidisjuhtum"></div>
         <div class="case-story" id="case-story">
@@ -77,7 +105,7 @@
 
     <section class="section journey-section" id="teekond" aria-labelledby="journey-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">03 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">03</span></div>
+        <div class="section-heading"><div><p class="eyebrow">04 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">04</span></div>
         <div class="scenario-tabs" id="scenario-tabs" role="tablist" aria-label="Veaotsingu olukord"></div>
         <div class="journey-layout" id="journey-panel" role="tabpanel">
           <div class="journey-steps"><p class="mini-label">SOOVITATUD JÄRJEKORD</p><p class="journey-intro" id="journey-intro"></p><ol id="journey-list"></ol></div>
@@ -88,19 +116,9 @@
     </section>
 
 
-
-    <section class="section linux-docs-section" id="linuxi-dokumendid" aria-labelledby="linux-docs-title">
-      <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">04 / Linuxi dokumendid</p><h2 id="linux-docs-title">Linuxi failisüsteem</h2><p>Vaata sinu algse dokumendi mõlemat lehte. Ava <a href="failisysteem.html">suurem pildivaade</a> või <a href="assets/linux-kaustad-selgitused.pdf">algne PDF</a>.</p></div><span class="section-number" aria-hidden="true">04</span></div>
-        <div class="linux-docs-grid">
-          <a href="failisysteem.html#leht-1"><img src="assets/linux-kaustad-1.png" width="1241" height="1754" loading="lazy" alt="Linuxi kaustade selgituste esimene leht"><span>Linuxi kaustad · leht 1</span></a>
-          <a href="failisysteem.html#leht-2"><img src="assets/linux-kaustad-2.png" width="1241" height="1754" loading="lazy" alt="Linuxi kaustade selgituste teine leht"><span>Linuxi kaustad · leht 2</span></a>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Veaotsingu teejuht</span><span>Õppimiseks loodud näited · <a href="docs/kasud.md">Loe täielikku selgitust</a></span></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span>Failisüsteem · Linuxi käsud · näidisjuhtumid</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

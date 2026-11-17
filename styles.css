@@ -144,3 +144,42 @@ body{background:var(--bg)}
 .practice-list li+li{border-top:1px solid #76516c}
 .practice-list span{color:#e6cedc;font-size:14px}
 @media(max-width:700px){.practice-list li{grid-template-columns:1fr;gap:5px}.linux-practice{padding:20px}}
+
+/* Linux home: one clear navigation row and a filesystem-first introduction. */
+.site-header .header-inner{justify-content:center}
+.site-header nav{grid-template-columns:repeat(4,minmax(0,1fr));width:min(780px,100%)}
+.filesystem-hero{padding:88px 0 96px}
+.filesystem-hero .hero-grid{grid-template-columns:1.04fr .96fr;gap:58px}
+.filesystem-hero h1{font-size:clamp(42px,4.7vw,68px);line-height:1.1}
+.filesystem-hero .hero-copy{margin-bottom:18px}
+.filesystem-hero .hero-actions{margin-top:29px}
+.filesystem-hero code{color:#ffd7c2;font-family:'DM Mono',monospace;font-size:.9em}
+.filesystem-tree{margin:0;padding:30px;border:1px solid #985f7a;border-radius:16px;background:linear-gradient(145deg,#35132d,#210a1c);box-shadow:var(--shadow)}
+.filesystem-tree figcaption{color:#ffd7c2;font:500 11px 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase;margin-bottom:24px}
+.tree-root{display:flex;align-items:center;gap:15px;padding:13px 18px;border:1px solid #e4776e;border-radius:9px;background:#502443}
+.tree-root code{font:700 29px 'DM Mono',monospace;color:#ffbe9d}
+.tree-root span{color:#ead7df;font-size:13px}
+.filesystem-tree ul{list-style:none;border-left:1px solid #a86e86;margin:0 0 0 30px;padding:12px 0 0 24px}
+.filesystem-tree li{position:relative;display:flex;align-items:baseline;gap:14px;padding:11px 0;color:#e5cfda}
+.filesystem-tree li:before{content:'';position:absolute;left:-24px;top:23px;width:17px;border-top:1px solid #a86e86}
+.filesystem-tree li code{min-width:74px;font:600 15px 'DM Mono',monospace;color:#ffbe9d}
+.filesystem-tree li span{font-size:12px}
+.filesystem-tree p{border-top:1px solid #80516b;color:#d8bacb;font-size:12px;margin:17px 0 0;padding-top:18px}
+.filesystem-table-wrap{overflow-x:auto;border:1px solid #99667e;border-radius:12px;background:#35132d;box-shadow:var(--shadow)}
+.filesystem-table{width:100%;min-width:680px;border-collapse:collapse;text-align:left}
+.filesystem-table thead{background:#E95420;color:#2c001e}
+.filesystem-table th,.filesystem-table td{padding:17px 21px;vertical-align:top}
+.filesystem-table thead th{font-size:12px;letter-spacing:.04em}
+.filesystem-table tbody tr+tr{border-top:1px solid #76516c}
+.filesystem-table tbody tr:nth-child(even){background:#3d1933}
+.filesystem-table tbody th{width:20%;white-space:nowrap}
+.filesystem-table tbody th code{color:#ffbe9d;font:600 15px 'DM Mono',monospace}
+.filesystem-table tbody td{color:#ead8e1;font-size:14px}
+.filesystem-table tbody td code{color:#ffd7c2;font:12px 'DM Mono',monospace}
+.filesystem-table-source{color:#c6aebb;font-size:12px;margin:11px 0 42px}
+.filesystem-table-source a{color:#ffd7c2}
+.filesystem-docs-subtitle{font-size:24px;margin:0 0 18px}
+@media(max-width:1080px){.site-header .header-inner{flex-direction:row;align-items:center}}
+@media(max-width:800px){.filesystem-hero .hero-grid{grid-template-columns:1fr;gap:35px}.filesystem-tree{max-width:650px}}
+@media(max-width:700px){.site-header nav{grid-template-columns:repeat(2,minmax(0,1fr))}.filesystem-hero{padding:60px 0 70px}}
+@media(max-width:460px){.filesystem-tree{padding:20px}.filesystem-tree li{gap:8px}.filesystem-tree li code{min-width:65px;font-size:13px}}
