@@ -183,3 +183,25 @@ body{background:var(--bg)}
 @media(max-width:800px){.filesystem-hero .hero-grid{grid-template-columns:1fr;gap:35px}.filesystem-tree{max-width:650px}}
 @media(max-width:700px){.site-header nav{grid-template-columns:repeat(2,minmax(0,1fr))}.filesystem-hero{padding:60px 0 70px}}
 @media(max-width:460px){.filesystem-tree{padding:20px}.filesystem-tree li{gap:8px}.filesystem-tree li code{min-width:65px;font-size:13px}}
+
+/* The directory map is drawn with HTML and CSS, so the lesson stays readable and responsive. */
+.filesystem-intro-note{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:start;margin:0 0 28px;padding:21px 24px;border:1px solid #99667e;border-left:4px solid #E95420;border-radius:10px;background:#35132d}
+.filesystem-intro-note strong{font-family:'Space Grotesk',sans-serif;font-size:19px;line-height:1.3}
+.filesystem-intro-note p{margin:0;color:#ead8e1;font-size:14px}
+.filesystem-intro-note code,.root-directory-map code{font-family:'DM Mono',monospace;color:#ffd7c2}
+.root-directory-map{margin:0 0 32px;padding:28px;border:1px solid #99667e;border-radius:14px;background:linear-gradient(145deg,#35132d,#250c20);box-shadow:var(--shadow)}
+.root-directory-map figcaption{margin:0 0 19px;color:#ffd7c2;font:500 11px/1.4 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase}
+.root-directory-node{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:max-content;margin:0 auto 32px;padding:9px 21px;border:1px solid #e4776e;border-radius:9px;background:#502443}
+.root-directory-node code{font-size:28px;font-weight:700;color:#ffbe9d}
+.root-directory-node span{font-size:13px;color:#ead7df}
+.root-directory-node:after{content:'';position:absolute;top:100%;left:50%;height:32px;border-left:1px solid #bd8198}
+.root-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.root-directory-grid a{display:flex;align-items:center;min-height:52px;padding:10px 16px;border:1px solid #80516b;border-left:3px solid #77a9cf;border-radius:8px;background:#48203b;text-decoration:none;transition:background .18s,border-color .18s,transform .18s}
+.root-directory-grid a:hover{background:#5a2b4a;border-color:#ffbe9d;transform:translateY(-2px)}
+.root-directory-grid a code{font-size:14px;font-weight:500;color:#fff9f6}
+.root-directory-map>p{margin:22px 0 0;padding-top:18px;border-top:1px solid #80516b;color:#ead8e1;font-size:13px}
+.filesystem-table tbody tr{scroll-margin-top:18px}
+.filesystem-table tbody tr:target{background:#643149}
+.filesystem-table tbody tr:target th code{color:#ffe0ac}
+@media(max-width:700px){.filesystem-intro-note{grid-template-columns:1fr;gap:8px;padding:19px}.root-directory-map{padding:20px}.root-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:380px){.root-directory-grid a{padding:9px 10px}.root-directory-grid a code{font-size:12px}}

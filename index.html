@@ -33,6 +33,7 @@
           <h1 id="hero-title">Linuxi failisüsteem<br><em>algab juurkaustast /</em></h1>
           <p class="hero-copy">Linuxis paiknevad failid ja kaustad ühe puu kujul. Selle algus on juurkataloog <code>/</code>. Sealt hargnevad kasutajate failid, süsteemi seadistused, programmid ja muutuvad andmed eri kaustadesse.</p>
           <p class="hero-copy">Absoluutne failitee näitab asukohta alates juurkataloogist, näiteks <code>/var/log</code>. Kataloog <code>/root</code> on administraatori kodukaust ja erineb juurkataloogist <code>/</code>.</p>
+          <p class="hero-copy">Kui ühendad Linuxi sülearvutiga USB-mälupulga, ei muutu see Windowsi moodi <code>E:</code> kettaks. Selle sisu avaneb olemasoleva failipuu kaustas, näiteks <code>/media/usb-stick</code>. Ka serveri lisaketas ühendatakse mõne kausta külge, näiteks <code>/mnt/andmed</code>. Sellist kausta nimetatakse ühenduspunktiks; täpne tee sõltub süsteemi seadistusest.</p>
           <div class="hero-actions"><a class="button primary" href="#linuxi-dokumendid">Tutvu kaustadega <span aria-hidden="true">↓</span></a><a class="button secondary" href="#kasud">Vaata Linuxi käske</a></div>
         </div>
         <figure class="filesystem-tree" aria-labelledby="filesystem-tree-title">
@@ -51,19 +52,59 @@
 
     <section class="section linux-docs-section" id="linuxi-dokumendid" aria-labelledby="linux-docs-title">
       <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">01 / Linuxi failisüsteem</p><h2 id="linux-docs-title">Esimesed kaustad ja nende roll</h2><p>Alusta neljast olulisest asukohast. Algse kaustade dokumendi mõlemad lehed on tabeli järel piltidena; neid saab avada ka <a href="failisysteem.html">suuremas vaates</a>.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <div class="section-heading"><div><p class="eyebrow">01 / Linuxi failisüsteem</p><h2 id="linux-docs-title">Üks juur, palju kaustu</h2><p>Kõik absoluutsed failiteed algavad samast <code>/</code> juurkataloogist. Allolev skeem näitab 16 levinud kausta; vali kaust, et liikuda selle selgituse juurde. Sinu süsteemis võib kaustade valik erineda.</p></div><span class="section-number" aria-hidden="true">01</span></div>
+        <div class="filesystem-intro-note">
+          <strong>Linuxi server ja töölaud</strong>
+          <p>Paljud serverid töötavad graafilise töölaua ja failihaldurita. Linuxi töölauaarvutil võivad mõlemad olemas olla. Windowsi kettatähtede asemel asuvad ka ühendatud andmekandjad ühe <code>/</code> juurest algava failipuu all.</p>
+        </div>
+        <figure class="root-directory-map" aria-labelledby="root-directory-map-title">
+          <figcaption id="root-directory-map-title">Kaustapuu algab juurkataloogist</figcaption>
+          <div class="root-directory-node"><code>/</code><span>juurkataloog</span></div>
+          <div class="root-directory-grid">
+            <a href="#kaust-bin"><code>/bin</code></a>
+            <a href="#kaust-boot"><code>/boot</code></a>
+            <a href="#kaust-dev"><code>/dev</code></a>
+            <a href="#kaust-etc"><code>/etc</code></a>
+            <a href="#kaust-home"><code>/home</code></a>
+            <a href="#kaust-lib"><code>/lib</code></a>
+            <a href="#kaust-media"><code>/media</code></a>
+            <a href="#kaust-mnt"><code>/mnt</code></a>
+            <a href="#kaust-opt"><code>/opt</code></a>
+            <a href="#kaust-proc"><code>/proc</code></a>
+            <a href="#kaust-root"><code>/root</code></a>
+            <a href="#kaust-sbin"><code>/sbin</code></a>
+            <a href="#kaust-sys"><code>/sys</code></a>
+            <a href="#kaust-tmp"><code>/tmp</code></a>
+            <a href="#kaust-usr"><code>/usr</code></a>
+            <a href="#kaust-var"><code>/var</code></a>
+          </div>
+          <p>Näide ühendatud mälupulgast: <code>/</code> → <code>media</code> → <code>usb-stick</code>. Selle tee viimane nimi on vaid näide.</p>
+        </figure>
         <div class="filesystem-table-wrap" role="region" tabindex="0" aria-label="Linuxi kaustade esmane tabel, kitsal ekraanil keritav">
           <table class="filesystem-table">
             <thead><tr><th scope="col">Kaust</th><th scope="col">Mille jaoks?</th><th scope="col">Näide</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><code>/</code></th><td>Kogu kaustapuu algus ehk juurkataloog.</td><td><code>/home</code> asub selle all.</td></tr>
-              <tr><th scope="row"><code>/home</code></th><td>Kasutajate kodukaustad ja isiklikud failid.</td><td><code>/home/kasutaja</code></td></tr>
-              <tr><th scope="row"><code>/etc</code></th><td>Süsteemi ja teenuste seadistusfailid.</td><td><code>/etc/hosts</code></td></tr>
-              <tr><th scope="row"><code>/var</code></th><td>Andmed, mis süsteemi töö käigus muutuvad.</td><td><code>/var/log</code></td></tr>
+              <tr id="kaust-juur"><th scope="row"><code>/</code></th><td>Kogu failipuu algus ehk juurkataloog.</td><td><code>/home</code> asub selle all.</td></tr>
+              <tr id="kaust-bin"><th scope="row"><code>/bin</code></th><td>Süsteemi põhikäsud, mida kasutavad ka tavakasutajad.</td><td><code>/bin/ls</code></td></tr>
+              <tr id="kaust-boot"><th scope="row"><code>/boot</code></th><td>Süsteemi käivitamiseks vajalikud failid.</td><td><code>/boot</code></td></tr>
+              <tr id="kaust-dev"><th scope="row"><code>/dev</code></th><td>Seadmeid tähistavad failid.</td><td><code>/dev/null</code></td></tr>
+              <tr id="kaust-etc"><th scope="row"><code>/etc</code></th><td>Süsteemi ja teenuste seadistusfailid.</td><td><code>/etc/hosts</code></td></tr>
+              <tr id="kaust-home"><th scope="row"><code>/home</code></th><td>Kasutajate kodukaustad ja isiklikud failid.</td><td><code>/home/kasutaja</code></td></tr>
+              <tr id="kaust-lib"><th scope="row"><code>/lib</code></th><td>Süsteemi põhiprogrammidele vajalikud teegid.</td><td><code>/lib</code></td></tr>
+              <tr id="kaust-media"><th scope="row"><code>/media</code></th><td>Eemaldatavate andmekandjate ühenduspunktid.</td><td><code>/media/usb-stick</code></td></tr>
+              <tr id="kaust-mnt"><th scope="row"><code>/mnt</code></th><td>Ajutiselt käsitsi ühendatavad failisüsteemid.</td><td><code>/mnt/andmed</code></td></tr>
+              <tr id="kaust-opt"><th scope="row"><code>/opt</code></th><td>Valikuline, eraldi paigaldatud tarkvara.</td><td><code>/opt/rakendus</code></td></tr>
+              <tr id="kaust-proc"><th scope="row"><code>/proc</code></th><td>Virtuaalne vaade protsesside ja kerneli teabele.</td><td><code>/proc/cpuinfo</code></td></tr>
+              <tr id="kaust-root"><th scope="row"><code>/root</code></th><td>Ülemkasutaja kodukaust; see ei ole sama mis <code>/</code>.</td><td><code>/root</code></td></tr>
+              <tr id="kaust-sbin"><th scope="row"><code>/sbin</code></th><td>Süsteemi haldamiseks vajalikud käsud.</td><td><code>/sbin</code></td></tr>
+              <tr id="kaust-sys"><th scope="row"><code>/sys</code></th><td>Virtuaalne vaade kerneli ja seadmete teabele.</td><td><code>/sys/class</code></td></tr>
+              <tr id="kaust-tmp"><th scope="row"><code>/tmp</code></th><td>Ajutised failid.</td><td><code>/tmp</code></td></tr>
+              <tr id="kaust-usr"><th scope="row"><code>/usr</code></th><td>Programmid, teegid ja jagatud andmed.</td><td><code>/usr/bin</code></td></tr>
+              <tr id="kaust-var"><th scope="row"><code>/var</code></th><td>Andmed, mis süsteemi töö käigus muutuvad.</td><td><code>/var/log</code></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="filesystem-table-source">Kaustade rollid: <a href="https://specifications.freedesktop.org/fhs/latest/rootRequirements.html">Filesystem Hierarchy Standard</a>.</p>
+        <p class="filesystem-table-source">Kaustade rollid: <a href="https://specifications.freedesktop.org/fhs/latest/rootRequirements.html">Filesystem Hierarchy Standard</a>. Mõnes Linuxi süsteemis on <code>/bin</code>, <code>/lib</code> ja <code>/sbin</code> viited <code>/usr</code> all olevatele kaustadele.</p>
         <h3 class="filesystem-docs-subtitle">Algne kaustade dokument</h3>
         <div class="linux-docs-grid">
           <a href="failisysteem.html#leht-1"><img src="assets/linux-kaustad-1.png" width="1241" height="1754" loading="lazy" alt="Linuxi kaustade selgituste esimene leht"><span>Linuxi kaustad · leht 1</span></a>
