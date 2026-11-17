@@ -243,3 +243,42 @@ body{background:var(--bg)}
 .filesystem-guide-sources a{color:#ffd7c2}
 @media(max-width:860px){.filesystem-guides{grid-template-columns:1fr}.filesystem-guide-root{grid-template-columns:1fr;gap:22px}}
 @media(max-width:520px){.filesystem-example-list>div{grid-template-columns:1fr;gap:5px}.root-paths>div{grid-template-columns:1fr}.root-paths>div:before{display:none}.root-paths>div span{padding:10px 12px}}
+
+/* Commands and paths: examples from the filesystem lesson. */
+.command-primer,.nginx-primer{margin-bottom:24px;padding:30px;border:1px solid #99667e;border-radius:14px;background:#35132d}
+.command-primer>.mini-label,.nginx-primer .mini-label{margin:0 0 10px}
+.command-primer h3,.nginx-primer h3{font-size:clamp(27px,3vw,37px);line-height:1.15;margin:0 0 14px}
+.command-primer>p:not(.mini-label),.nginx-primer p:not(.mini-label){max-width:850px;color:#ead8e1;font-size:14px;line-height:1.65}
+.command-primer code,.nginx-primer code{font-family:'DM Mono',monospace;color:#ffd7c2;font-size:.92em}
+.command-route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center;margin:22px 0;padding:19px;border:1px solid #80516b;border-radius:10px;background:#24091e}
+.command-route>div{display:flex;flex-direction:column;gap:6px;min-width:0;padding:12px 14px;border:1px solid #80516b;border-radius:8px;background:#48203b}
+.command-route small{color:#c6aebb;font:500 10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
+.command-route code{font-size:14px;overflow-wrap:anywhere}
+.command-route>span{color:#ffbe9d;font-size:22px;font-weight:700}
+.command-primer>p.command-primer-note{max-width:none;margin:0 0 22px;color:#d7bdcb;font-size:13px}
+.command-table-wrap{overflow-x:auto;border:1px solid #99667e;border-radius:10px;background:#24091e}
+.command-explanation-table{width:100%;min-width:750px;border-collapse:collapse;text-align:left}
+.command-explanation-table thead{background:#E95420;color:#2c001e}
+.command-explanation-table th,.command-explanation-table td{padding:15px 17px;vertical-align:top}
+.command-explanation-table thead th{font-size:12px;letter-spacing:.03em}
+.command-explanation-table tbody tr+tr{border-top:1px solid #76516c}
+.command-explanation-table tbody tr:nth-child(even){background:#421c36}
+.command-explanation-table tbody th{width:29%;font-weight:600}
+.command-explanation-table tbody td{width:35.5%;color:#ead8e1;font-size:13px}
+.command-explanation-table tbody code{overflow-wrap:anywhere;word-break:break-word}
+.path-meaning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 10px}
+.path-meaning-grid>div{padding:16px;border:1px solid #80516b;border-radius:9px;background:#48203b}
+.path-meaning-grid>div>code{font-size:15px;font-weight:600}
+.path-meaning-grid p{margin:8px 0 0;color:#ead8e1;font-size:13px;line-height:1.55}
+.command-primer>p.command-primer-sources,.nginx-primer>p.command-primer-sources{margin:15px 0 0;color:#c6aebb;font-size:12px}
+.command-primer-sources a{color:#ffd7c2}
+.nginx-primer-head{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(180px,.5fr);gap:26px;align-items:center;margin-bottom:24px}
+.nginx-primer-head p:not(.mini-label){margin:0;color:#ead8e1;font-size:14px;line-height:1.65}
+.nginx-error-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:155px;padding:18px;border:1px solid #99667e;border-radius:10px;background:#24091e;text-align:center}
+.nginx-error-card span{align-self:stretch;overflow-wrap:anywhere;color:#c6aebb;font:11px 'DM Mono',monospace}
+.nginx-error-card strong{color:#ff828e;font:700 52px/1 'Space Grotesk',sans-serif}
+.nginx-error-card small{color:#ead8e1;font-size:12px}
+.nginx-primer>p.nginx-primer-note{margin:17px 0 0;color:#d7bdcb;font-size:13px}
+.command-catalog-title{font-size:26px;margin:42px 0 16px}
+@media(max-width:800px){.nginx-primer-head{grid-template-columns:1fr}.nginx-error-card{min-height:125px}.command-route{grid-template-columns:1fr}.command-route>span{text-align:center;line-height:1}}
+@media(max-width:600px){.command-primer,.nginx-primer{padding:20px}.path-meaning-grid{grid-template-columns:1fr}}
