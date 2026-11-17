@@ -6,6 +6,6 @@
 .notes-card{border:1px solid #3a5362;border-radius:12px;background:#101e2b;box-shadow:var(--shadow);padding:clamp(18px,3vw,36px)}
 .notes-card pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;color:#d8e6eb;font:14px/1.8 'DM Mono',ui-monospace,monospace;tab-size:4}
 @media(max-width:700px){.notes-page{padding:52px 0 70px}.notes-card pre{font-size:12px;line-height:1.7}}
-.notes-page{background:radial-gradient(ellipse 650px 380px at 78% 10%,rgba(233,84,32,.24),transparent 72%),#2c001e;border-top:8px solid #E95420}
+.notes-page{background:radial-gradient(ellipse 650px 380px at 78% 10%,rgba(69,126,126,.14),transparent 72%),#0a111b;border-top:1px solid var(--line)}
 .notes-card{background:#35132d;border-color:#a66a7c}
 .notes-card pre{color:#fff9f6}

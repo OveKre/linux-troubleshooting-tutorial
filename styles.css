@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-:root{color-scheme:dark;--bg:#E95420;--panel:#35132d;--panel2:#48203b;--line:#76516c;--text:#fff9f6;--muted:#e6cedc;--accent:#ffbe9d;--accent2:#ffd7c2;--warn:#ffe0ac;--shadow:0 24px 70px rgba(0,0,0,.22)}
+:root{color-scheme:dark;--bg:#0a111b;--panel:#35132d;--panel2:#48203b;--line:#76516c;--text:#fff9f6;--muted:#e6cedc;--accent:#ffbe9d;--accent2:#ffd7c2;--warn:#ffe0ac;--shadow:0 24px 70px rgba(0,0,0,.22)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55}
@@ -70,16 +70,16 @@ h1{font-size:clamp(46px,5.1vw,76px);line-height:1.06;margin:0 0 25px;font-weight
 @media(max-width:460px){nav a:nth-child(2){display:none}.hero-copy{font-size:16px}.terminal-body{padding:20px 15px}.terminal-live{display:none}.stats strong{font-size:27px}.stats>div{padding:17px}.journey-steps,.focus-panel{padding:20px}.scenario-tab{flex:1 1 45%;font-size:12px;padding:9px}.code-row{align-items:flex-start;flex-direction:column}.parts-list{grid-template-columns:1fr;gap:3px}.parts-list dd{margin-bottom:8px}.idea-grid{grid-template-columns:1fr}.footer-inner{align-items:flex-start;flex-direction:column}.toolbar{align-items:flex-start;flex-direction:column}.search-wrap{max-width:none;width:100%}.case-options{display:grid;grid-template-columns:1fr}.case-story-head{flex-direction:column}.case-log{margin:0 15px 18px}.case-log-bar{flex-direction:column;gap:2px}.case-log-lines{padding:12px}.case-log-line{grid-template-columns:1fr;gap:1px}.case-diagnostic{padding:18px}.case-diagnostic-head{align-items:flex-start;flex-direction:column}.case-command-row{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
-/* Ubuntu palette: the page canvas and hero use Ubuntu orange; reading surfaces use aubergine. */
+/* Original dark page background with Ubuntu orange controls. */
 :root{
-  --bg:#E95420;--panel:#35132d;--panel2:#48203b;--line:#76516c;
+  --bg:#0a111b;--panel:#35132d;--panel2:#48203b;--line:#76516c;
   --text:#fff9f6;--muted:#e6cedc;--accent:#ffbe9d;--accent2:#ffd7c2;--warn:#ffe0ac;
 }
 body{background:var(--bg)}
 ::selection{background:#ffbe9d;color:#2c001e}
 :focus-visible{outline-color:#ffd7c2}
 .skip-link{background:#ffbe9d;color:#2c001e}
-.site-header{position:relative;z-index:5;background:#2c001e;border-bottom:3px solid #ffae86}
+.site-header{position:relative;z-index:5;background:#0a111b;border-bottom:1px solid var(--line)}
 .header-inner{min-height:88px}
 .brand{flex-shrink:0;font-size:18px;color:#fff9f6}
 .brand-mark{color:#ffbe9d;border-color:#ffbe9d}
@@ -87,15 +87,15 @@ body{background:var(--bg)}
 .site-header nav .nav-item{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px 10px;border:1px solid #ffad85;border-radius:9px;background:#E95420;color:#2c001e;text-align:center;text-decoration:none;font:700 13px/1.2 'DM Sans',system-ui,sans-serif;cursor:pointer;transition:background .18s,transform .18s}
 .site-header nav .nav-item:hover{background:#ffad85;color:#2c001e;transform:translateY(-2px)}
 .site-header nav .nav-item[aria-current="page"]{box-shadow:inset 0 0 0 2px #2c001e}
-.hero{background:radial-gradient(ellipse 650px 360px at 75% 30%,rgba(255,225,206,.4),transparent 70%),linear-gradient(145deg,#E95420,#f4763c 72%,#E95420);color:#2c001e}
-.hero:after{background-image:linear-gradient(rgba(44,0,30,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(44,0,30,.065) 1px,transparent 1px)}
-.hero .eyebrow,.hero h1 em{color:#2c001e}
-.hero .status-dot{background:#2c001e;box-shadow:0 0 14px rgba(44,0,30,.25)}
-.hero-copy,.hero-note{color:#37112b}
-.hero .button.primary{background:#2c001e;color:#fff9f6}
-.hero .button.primary:hover{background:#4c2040}
-.hero .button.secondary{border-color:#2c001e;color:#2c001e;background:rgba(255,255,255,.14)}
-.hero .button.secondary:hover{background:rgba(255,255,255,.35)}
+.hero{background:radial-gradient(ellipse 650px 400px at 72% 35%,rgba(44,91,96,.17),transparent 70%),linear-gradient(180deg,#0d1825,#0a111b);color:var(--text)}
+.hero:after{background-image:linear-gradient(rgba(145,192,188,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(145,192,188,.025) 1px,transparent 1px)}
+.hero .eyebrow,.hero h1 em{color:var(--accent)}
+.hero .status-dot{background:var(--accent);box-shadow:0 0 16px var(--accent)}
+.hero-copy{color:#bfced6}.hero-note{color:#90a3af}
+.hero .button.primary{background:#E95420;color:#2c001e}
+.hero .button.primary:hover{background:#ffac82}
+.hero .button.secondary{border-color:#526272;color:var(--text);background:transparent}
+.hero .button.secondary:hover{background:var(--panel2)}
 .button.primary,.scenario-tab.active,.filter.active,.case-option.active,.copy-button,.small-copy,.toast{background:#E95420;border-color:#E95420;color:#2c001e}
 .button.primary:hover,.copy-button:hover,.small-copy:hover{background:#ffac82}
 .button.secondary{border-color:#bd7d91}
@@ -104,11 +104,11 @@ body{background:var(--bg)}
 .terminal-bar{border-color:#704258;color:#dfc1cb}
 .terminal-body .line-no{color:#bd90a2}
 .terminal-tip{background:#4d2540;color:#ffe5d7}
-.stats{background:#35132d;margin-top:0}
+.stats{background:#101b29;margin-top:0}
 .stats strong{color:#ffbe9d}
-.section{border-top:8px solid #E95420}
-.commands-section,.cases-section,.journey-section,.next-section,.linux-docs-section{background:#2c001e}
-.journey-section,.linux-docs-section{background:#39132f}
+.section{border-top:1px solid var(--line)}
+.commands-section{background:#0a111b}.cases-section{background:#0b1420}.journey-section{background:#0e1825}.linux-docs-section{background:#101b29}
+.journey-section{background:#0e1825}.linux-docs-section{background:#101b29}
 .section-number{color:#79536e}
 .scenario-tab,.filter,.case-option{background:#48203b;color:#fff0e9}
 .scenario-tab:hover,.filter:hover,.case-option:hover{border-color:#ffbe9d}
@@ -122,7 +122,7 @@ body{background:var(--bg)}
 .case-story,.case-step,.case-diagnostic{background:#35132d}
 .case-log-bar{background:#48203b}
 .case-disclaimer{background:#502443}
-.site-footer{background:#2c001e;color:#d6bdc9;border-top:8px solid #E95420}
+.site-footer{background:#0a111b;color:#91a7b3;border-top:1px solid var(--line)}
 .site-footer a{color:#ffd7c2}
 .toast{color:#2c001e}
 .linux-docs-section a{color:#ffd7c2}
