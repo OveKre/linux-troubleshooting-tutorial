@@ -116,6 +116,47 @@
           </article>
         </div>
         <p class="filesystem-guide-sources">Lisalugemine: <a href="https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/filesystem-hierarchy-standard/">Ubuntu failisüsteemi hierarhia</a> ja <a href="https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html">Bashi <code>~</code> selgitus</a>.</p>
+        <section class="program-folders" aria-labelledby="program-folders-title">
+          <p class="mini-label">Programmid ja teegid</p>
+          <h3 id="program-folders-title">Miks on olemas <code>/bin</code>, <code>/sbin</code> ja <code>/lib</code>?</h3>
+          <p><code>/bin</code> ja <code>/sbin</code> on seotud käivitatavate programmidega, <code>/lib</code> nende tööks vajalike teekidega. Kaustanimi kirjeldab programmi otstarvet, kuid ei otsusta üksi, kellel on õigus käsku kasutada. <code>/usr</code> sisaldab omakorda programme, teeke ja jagatud faile; kasutaja isiklik kodukaust asub tavaliselt <code>/home</code> all.</p>
+          <figure class="program-folder-tree" aria-labelledby="program-folder-tree-title">
+            <figcaption id="program-folder-tree-title">Programmi asukoht Linuxi failipuus</figcaption>
+            <ul class="program-tree-list">
+              <li><span class="program-tree-node program-tree-root"><code>/</code><small>kogu failipuu algus</small></span>
+                <ul>
+                  <li><span class="program-tree-node"><code>/bin</code><small>põhikäsud</small></span></li>
+                  <li><span class="program-tree-node"><code>/sbin</code><small>süsteemi haldamise käsud</small></span></li>
+                  <li><span class="program-tree-node"><code>/lib</code><small>põhiprogrammide teegid</small></span></li>
+                  <li><span class="program-tree-node"><code>/opt</code><small>lisatarkvara paketid</small></span></li>
+                  <li><span class="program-tree-node program-tree-usr"><code>/usr</code><small>programmid ja jagatud failid</small></span>
+                    <ul>
+                      <li><span class="program-tree-node"><code>/usr/bin</code><small>kasutaja käivitatavad programmid</small></span></li>
+                      <li><span class="program-tree-node"><code>/usr/sbin</code><small>haldusprogrammid</small></span></li>
+                      <li><span class="program-tree-node"><code>/usr/lib</code><small>programmiteegid</small></span></li>
+                      <li><span class="program-tree-node"><code>/usr/local</code><small>kohalikult paigaldatud tarkvara</small></span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </figure>
+          <div class="program-folder-table-wrap" role="region" tabindex="0" aria-label="Programmikaustade võrdlustabel, kitsal ekraanil keritav">
+            <table class="program-folder-table">
+              <thead><tr><th scope="col">Kaust või tee</th><th scope="col">Mida seal hoitakse?</th><th scope="col">Kuidas seda mõista?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>/bin</code></th><td>Süsteemi põhilised käsuprogrammid, näiteks <code>ls</code>, <code>cp</code> ja <code>cat</code>.</td><td><code>/bin/ls</code> on üks võimalik täistee programmi <code>ls</code> failini.</td></tr>
+                <tr><th scope="row"><code>/sbin</code></th><td>Käivitamiseks, taastamiseks ja haldamiseks olulised süsteemiprogrammid.</td><td>Mõni toiming nõuab administraatori õigusi, kuid <code>/sbin</code> nimi ei tee kõiki seal olevaid programme ainult <code>root</code>-kasutajale käivitatavaks.</td></tr>
+                <tr><th scope="row"><code>/lib</code></th><td>Põhiprogrammidele vajalikud jagatud teegid ja süsteemi osad.</td><td>Teek on kood, mida programm saab kasutada; tavaliselt ei käivitata seda eraldi käsuna.</td></tr>
+                <tr><th scope="row"><code>/usr/bin</code>, <code>/usr/sbin</code>, <code>/usr/lib</code></th><td>Programmid, haldusprogrammid ja teegid <code>/usr</code> hierarhias.</td><td><code>/usr</code> on süsteemi tarkvara asukoht, mitte sinu isiklik kodukaust.</td></tr>
+                <tr><th scope="row"><code>/usr/local</code></th><td>Süsteemihalduri kohapeal paigaldatud tarkvara; käivitatavad failid võivad olla näiteks <code>/usr/local/bin</code> all.</td><td>See eraldab kohaliku paigalduse distributsiooni hallatavatest failidest. Tarkvara ei pea olema ise lähtekoodist ehitatud.</td></tr>
+                <tr><th scope="row"><code>/opt</code></th><td>Valikulised lisarakenduste paketid, sageli oma alamkaustas, näiteks <code>/opt/rakendus</code>.</td><td>See on teine tavapärane koht eraldi paigaldatud tarkvarale.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="program-folder-note"><strong>Miks on <code>/bin</code> ja <code>/usr/bin</code> mõlemad olemas?</strong><p>Need nimed pärinevad ajaloolisest kaustajaotusest. Tänapäeva Ubuntus võib <code>/bin</code> olla sümbollink, mis viitab <code>/usr/bin</code> kaustale; sarnased viited võivad olla ka <code>/sbin</code> ja <code>/lib</code> puhul. Vaata oma süsteemi tegelikku olukorda käsuga <code>ls -ld /bin /sbin /lib</code>. See kuvab kaustade või linkide kirjed ega muuda faile.</p></div>
+          <p class="program-folder-sources">Allikad: <a href="https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/filesystem-hierarchy-standard/">Ubuntu kaustade kirjeldus</a> ja <a href="https://ubuntu.com/containers/rockcraft/docs/latest/explanation/usrmerge/">Ubuntu selgitus <code>/usr</code> ühendamisest</a>.</p>
+        </section>
         <div class="filesystem-table-wrap" role="region" tabindex="0" aria-label="Linuxi kaustade esmane tabel, kitsal ekraanil keritav">
           <table class="filesystem-table">
             <thead><tr><th scope="col">Kaust</th><th scope="col">Mille jaoks?</th><th scope="col">Näide</th></tr></thead>

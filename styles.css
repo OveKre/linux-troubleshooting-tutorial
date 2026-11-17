@@ -282,3 +282,42 @@ body{background:var(--bg)}
 .command-catalog-title{font-size:26px;margin:42px 0 16px}
 @media(max-width:800px){.nginx-primer-head{grid-template-columns:1fr}.nginx-error-card{min-height:125px}.command-route{grid-template-columns:1fr}.command-route>span{text-align:center;line-height:1}}
 @media(max-width:600px){.command-primer,.nginx-primer{padding:20px}.path-meaning-grid{grid-template-columns:1fr}}
+
+/* Program files, libraries, and the /usr hierarchy. */
+.program-folders{margin:0 0 32px;padding:30px;border:1px solid #99667e;border-radius:14px;background:#35132d}
+.program-folders>.mini-label{margin:0 0 10px}
+.program-folders h3{margin:0 0 13px;font-size:clamp(26px,2.9vw,36px);line-height:1.18}
+.program-folders>p:not(.mini-label):not(.program-folder-sources){max-width:900px;margin:0 0 22px;color:#ead8e1;font-size:14px;line-height:1.65}
+.program-folders code{font-family:'DM Mono',monospace;color:#ffd7c2;font-size:.92em}
+.program-folder-tree{margin:0 0 24px;padding:22px;border:1px solid #80516b;border-radius:10px;background:#24091e}
+.program-folder-tree figcaption{margin-bottom:20px;color:#fff9f6;font-size:14px;font-weight:700}
+.program-tree-list,.program-tree-list ul{list-style:none}
+.program-tree-list{margin:0;padding:0}
+.program-tree-list>li{display:flex;flex-direction:column;align-items:center}
+.program-tree-list>li>ul{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;margin:30px 0 0;padding:19px 0 0;border-top:1px solid #99667e}
+.program-tree-list>li>ul:before{content:'';position:absolute;bottom:100%;left:50%;height:30px;border-left:1px solid #99667e}
+.program-tree-list>li>ul>li:last-child{grid-column:1/-1;margin-top:4px}
+.program-tree-list>li>ul>li:last-child>ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:17px 0 0;padding:0 0 0 22px;border-left:1px solid #99667e}
+.program-tree-node{display:flex;flex-direction:column;gap:3px;min-height:68px;padding:11px 13px;border:1px solid #80516b;border-left:3px solid #77a9cf;border-radius:8px;background:#48203b}
+.program-tree-node code{font-size:14px;font-weight:700;overflow-wrap:anywhere}
+.program-tree-node small{color:#ead8e1;font-size:11px;line-height:1.35}
+.program-tree-root{min-height:0;padding:9px 22px;border-left-color:#E95420}
+.program-tree-root code{font-size:22px}
+.program-tree-usr{border-left-color:#e9a96b}
+.program-folder-table-wrap{overflow-x:auto;border:1px solid #80516b;border-radius:10px;background:#24091e}
+.program-folder-table{width:100%;min-width:760px;border-collapse:collapse;text-align:left}
+.program-folder-table thead{background:#E95420;color:#2c001e}
+.program-folder-table th,.program-folder-table td{padding:15px 17px;vertical-align:top}
+.program-folder-table thead th{font-size:12px;letter-spacing:.03em}
+.program-folder-table tbody tr+tr{border-top:1px solid #76516c}
+.program-folder-table tbody tr:nth-child(even){background:#421c36}
+.program-folder-table tbody th{width:27%;font-size:13px;font-weight:600}
+.program-folder-table tbody td{width:36.5%;color:#ead8e1;font-size:13px;line-height:1.55}
+.program-folder-table tbody code{overflow-wrap:anywhere;word-break:break-word}
+.program-folder-note{margin-top:20px;padding:17px 19px;border:1px solid #ac7863;border-left:4px solid #E95420;border-radius:9px;background:#48203b}
+.program-folder-note strong{font-size:14px}
+.program-folder-note p{margin:6px 0 0;color:#ead8e1;font-size:13px;line-height:1.6}
+.program-folders>p.program-folder-sources{margin:14px 0 0;color:#c6aebb;font-size:12px}
+.program-folder-sources a{color:#ffd7c2}
+@media(max-width:760px){.program-tree-list>li>ul{grid-template-columns:repeat(2,minmax(0,1fr))}.program-tree-list>li>ul>li:last-child>ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.program-folders{padding:20px}.program-folder-tree{padding:15px}.program-tree-list>li>ul{gap:9px}.program-tree-list>li>ul>li:last-child>ul{gap:9px;padding-left:12px}.program-tree-node{padding:9px;min-height:65px}.program-tree-node code{font-size:12px}.program-tree-node small{font-size:10px}}
