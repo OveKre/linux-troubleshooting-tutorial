@@ -80,6 +80,42 @@
           </div>
           <p>Näide ühendatud mälupulgast: <code>/</code> → <code>media</code> → <code>usb-stick</code>. Selle tee viimane nimi on vaid näide.</p>
         </figure>
+        <div class="filesystem-guides" aria-label="Failisüsteemi näited">
+          <article class="filesystem-guide" aria-labelledby="mount-guide-title">
+            <p class="mini-label">Ühendatud andmekandjad</p>
+            <h3 id="mount-guide-title">Ketas saab failipuus asukoha</h3>
+            <p>Kui andmekandja ühendatakse, muutub selle sisu kättesaadavaks valitud kausta kaudu. Seda nimetatakse <strong>ühendamiseks</strong> (<em>mounting</em>) ja kausta <strong>ühenduspunktiks</strong>.</p>
+            <dl class="filesystem-example-list">
+              <div><dt>USB-mälupulk</dt><dd><code>/</code><span aria-hidden="true">→</span><code>media</code><span aria-hidden="true">→</span><code>usb-stick</code></dd></div>
+              <div><dt>Serveri lisaketas</dt><dd><code>/</code><span aria-hidden="true">→</span><code>mnt</code><span aria-hidden="true">→</span><code>data</code></dd></div>
+            </dl>
+            <p class="filesystem-guide-note">Näidisteed on <code>/media/usb-stick</code> ja <code>/mnt/data</code>. Ühenduspunkti nimi ning asukoht võivad erineda.</p>
+          </article>
+          <article class="filesystem-guide" aria-labelledby="home-guide-title">
+            <p class="mini-label">Sisselogimine</p>
+            <h3 id="home-guide-title">Tavaliselt alustad oma kodukaustast</h3>
+            <p>Kasutajal <code>alex</code> võib olla kodukaust <code>/home/alex</code> ja kasutajal <code>sam</code> kodukaust <code>/home/sam</code>. Sisselogimisel alustab käsureaseanss tavaliselt kasutaja kodukaustast. Seal võivad olla näiteks dokumendid, projektid ja allalaaditud failid.</p>
+            <div class="home-path-example" aria-label="Näidisteed /home/alex ja /home/sam"><code>/</code><span aria-hidden="true">→</span><code>home</code><span aria-hidden="true">→</span><code>alex</code><span class="home-path-separator">või</span><code>sam</code></div>
+            <p class="prompt-label">Näidisviip terminalis</p>
+            <div class="home-prompt"><code><span class="prompt-user">alex</span>@<span class="prompt-host">web-01</span>:<span class="prompt-home">~</span>$</code></div>
+            <dl class="prompt-parts">
+              <div><dt><code>alex</code></dt><dd>kasutajanimi</dd></div>
+              <div><dt><code>web-01</code></dt><dd>arvuti nimi</dd></div>
+              <div><dt><code>~</code></dt><dd>kasutaja kodukausta lühend; selles näites <code>/home/alex</code></dd></div>
+              <div><dt><code>$</code></dt><dd>näidisviiba lõpp, tavaliselt tavakasutaja puhul</dd></div>
+            </dl>
+            <p class="filesystem-guide-note">Viiba kujundust saab muuta. Käsureal kirjutatud <code>~</code> viitab kasutaja kodukaustale.</p>
+          </article>
+          <article class="filesystem-guide filesystem-guide-root" aria-labelledby="root-guide-title">
+            <div>
+              <p class="mini-label">Üks kasutaja on erand</p>
+              <h3 id="root-guide-title">Ülemkasutaja <code>root</code> kodukaust</h3>
+              <p>Ülemkasutaja <code>root</code> kodukaust on tavaliselt <code>/root</code>, mitte <code>/home/root</code>. See paikneb juurkataloogi <code>/</code> all samal tasemel kui <code>/home</code>. Sõna „root“ tähistab siin kasutajakontot; üksik <code>/</code> tähistab kogu failipuu algust.</p>
+            </div>
+            <div class="root-paths" aria-label="Juurkataloogi all on nii /home kui ka /root"><code>/</code><div><span><code>/home</code><small>tavakasutajate kodukaustad</small></span><span><code>/root</code><small>ülemkasutaja kodukaust</small></span></div></div>
+          </article>
+        </div>
+        <p class="filesystem-guide-sources">Lisalugemine: <a href="https://documentation.ubuntu.com/project/how-ubuntu-is-made/concepts/filesystem-hierarchy-standard/">Ubuntu failisüsteemi hierarhia</a> ja <a href="https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html">Bashi <code>~</code> selgitus</a>.</p>
         <div class="filesystem-table-wrap" role="region" tabindex="0" aria-label="Linuxi kaustade esmane tabel, kitsal ekraanil keritav">
           <table class="filesystem-table">
             <thead><tr><th scope="col">Kaust</th><th scope="col">Mille jaoks?</th><th scope="col">Näide</th></tr></thead>

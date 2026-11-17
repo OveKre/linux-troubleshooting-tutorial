@@ -205,3 +205,41 @@ body{background:var(--bg)}
 .filesystem-table tbody tr:target th code{color:#ffe0ac}
 @media(max-width:700px){.filesystem-intro-note{grid-template-columns:1fr;gap:8px;padding:19px}.root-directory-map{padding:20px}.root-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:380px){.root-directory-grid a{padding:9px 10px}.root-directory-grid a code{font-size:12px}}
+
+/* Follow-up examples: mounts, a login shell, and the root account. */
+.filesystem-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:0 0 12px}
+.filesystem-guide{min-width:0;padding:25px;border:1px solid #99667e;border-radius:13px;background:#35132d}
+.filesystem-guide .mini-label{margin:0 0 10px}
+.filesystem-guide h3{font-size:clamp(23px,2.4vw,30px);line-height:1.16;margin:0 0 14px}
+.filesystem-guide p:not(.mini-label){color:#ead8e1;font-size:14px;line-height:1.65}
+.filesystem-guide code,.filesystem-guide-sources code{font-family:'DM Mono',monospace;color:#ffd7c2;font-size:.92em}
+.filesystem-guide strong{color:#fff9f6}
+.filesystem-example-list{margin:21px 0 15px;border:1px solid #80516b;border-radius:9px;overflow:hidden}
+.filesystem-example-list>div{display:grid;grid-template-columns:160px 1fr;gap:10px;align-items:center;padding:15px 17px;background:#48203b}
+.filesystem-example-list>div+div{border-top:1px solid #80516b}
+.filesystem-example-list dt{font-size:13px;font-weight:700}
+.filesystem-example-list dd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;font-size:13px}
+.filesystem-example-list dd span,.home-path-example>span:not(.home-path-separator){color:#ffbe9d}
+.filesystem-guide p.filesystem-guide-note{margin:14px 0 0;color:#cfb8c6;font-size:12px}
+.home-path-example{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:13px 16px;border:1px solid #80516b;border-radius:9px;background:#48203b}
+.home-path-separator{margin-inline:4px;color:#cfb8c6;font-size:12px}
+.filesystem-guide p.prompt-label{margin:20px 0 8px;color:#cfb8c6;font-size:12px;font-weight:700}
+.home-prompt{padding:11px 15px;border:1px solid #80516b;border-radius:8px;background:#24091e;overflow-x:auto}
+.home-prompt code{white-space:nowrap;font-size:clamp(16px,2vw,22px);color:#fff9f6}
+.home-prompt .prompt-user{color:#85e5b1}.home-prompt .prompt-host{color:#a8d6fa}.home-prompt .prompt-home{color:#ffbe9d}
+.prompt-parts{margin:14px 0 0;border-top:1px solid #80516b}
+.prompt-parts>div{display:grid;grid-template-columns:85px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid #80516b;font-size:12px}
+.prompt-parts dt{font-weight:700}.prompt-parts dd{margin:0;color:#ead8e1}
+.filesystem-guide-root{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+.filesystem-guide-root p:last-child{margin-bottom:0}
+.root-paths{display:flex;flex-direction:column;align-items:center;min-width:0}
+.root-paths>code{padding:8px 20px;border:1px solid #e4776e;border-radius:8px;background:#502443;font-size:22px;color:#ffbe9d}
+.root-paths>div{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;margin-top:25px;border-top:1px solid #bd8198;padding-top:19px}
+.root-paths>div:before{content:'';position:absolute;bottom:100%;left:50%;height:25px;border-left:1px solid #bd8198}
+.root-paths>div span{display:flex;flex-direction:column;gap:3px;min-width:0;padding:11px 13px;border:1px solid #80516b;border-radius:8px;background:#48203b}
+.root-paths>div code{font-size:15px}
+.root-paths small{color:#ead8e1;font-size:11px}
+.filesystem-guide-sources{margin:0 0 28px;color:#c6aebb;font-size:12px}
+.filesystem-guide-sources a{color:#ffd7c2}
+@media(max-width:860px){.filesystem-guides{grid-template-columns:1fr}.filesystem-guide-root{grid-template-columns:1fr;gap:22px}}
+@media(max-width:520px){.filesystem-example-list>div{grid-template-columns:1fr;gap:5px}.root-paths>div{grid-template-columns:1fr}.root-paths>div:before{display:none}.root-paths>div span{padding:10px 12px}}
