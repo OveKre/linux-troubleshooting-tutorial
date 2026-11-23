@@ -162,17 +162,22 @@ function renderCards() {
   });
 }
 
-$("#search").addEventListener("input", (event) => { state.query = event.target.value; renderCards(); });
-$("#scenario-tabs").addEventListener("keydown", (event) => {
-  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-  event.preventDefault();
-  const current = scenarios.findIndex((item) => item.id === state.scenario);
-  const next = event.key === "Home" ? 0 : event.key === "End" ? scenarios.length - 1 : (current + (event.key === "ArrowRight" ? 1 : -1) + scenarios.length) % scenarios.length;
-  state.scenario = scenarios[next].id;
-  state.step = 0;
+if ($("#search")) {
+  $("#search").addEventListener("input", (event) => { state.query = event.target.value; renderCards(); });
+  renderFilters();
+  renderCards();
+}
+
+if ($("#scenario-tabs")) {
+  $("#scenario-tabs").addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const current = scenarios.findIndex((item) => item.id === state.scenario);
+    const next = event.key === "Home" ? 0 : event.key === "End" ? scenarios.length - 1 : (current + (event.key === "ArrowRight" ? 1 : -1) + scenarios.length) % scenarios.length;
+    state.scenario = scenarios[next].id;
+    state.step = 0;
+    renderJourney();
+    $("#scenario-tabs .active").focus();
+  });
   renderJourney();
-  $("#scenario-tabs .active").focus();
-});
-renderJourney();
-renderFilters();
-renderCards();
+}

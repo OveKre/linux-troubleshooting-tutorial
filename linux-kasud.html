@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a111b">
+  <meta name="description" content="Linuxi põhikäsud, näidisjuhtumite käsud ja veaotsingu käsukataloog eesti keeles.">
+  <title>Linux käsud · Linux</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="navigation.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Liigu sisu juurde</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <nav aria-label="Peamenüü">
+        <button type="button" class="nav-item" data-nav-target="index.html">Linux</button>
+        <a class="nav-item" href="#kasud" aria-current="page">Linux käsud</a>
+        <a class="nav-item" href="index.html#juhtumid">Näidisjuhtumid</a>
+        <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="commands-page">
+    <section class="section commands-section" id="kasud" aria-labelledby="commands-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">02 / Linuxi käsud</p><h1 id="commands-title">Linuxi käsud</h1><p>Alusta terminali põhikäskudest. Seejärel vaata, kuidas samad võtted aitavad logisid, teenuseid ja võrku uurida.</p></div><span class="section-number" aria-hidden="true">02</span></div>
+        <article class="basic-commands" aria-labelledby="basic-commands-title">
+          <p class="mini-label">Alusta siit · põhikäsud</p>
+          <h2 id="basic-commands-title">Esimesed käsud terminalis</h2>
+          <p>Alusta asukoha vaatamisest, siis liigu kaustades ja alles seejärel tööta failidega. Allolevad teed on näited. <code>cd</code> on käsukesta sisseehitatud käsk; ülejäänud võivad olla eraldi programmid või samuti kestas olemas.</p>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="Linuxi põhikäskude tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Käsk</th><th scope="col">Mida tähendab ja teeb?</th><th scope="col">Näide või oluline märkus</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>pwd</code></th><td><em>Print working directory</em>: näitab praeguse kausta täielikku teed.</td><td>Väljund võib olla <code>/home/alex</code>. Vaata asukoht üle enne failidega töötamist.</td></tr>
+                <tr><th scope="row"><code>ls</code></th><td><em>List</em>: loetleb praeguse kausta nähtavad failid ja alamkaustad.</td><td><code>ls /home/alex</code> loetleb etteantud kausta sisu.</td></tr>
+                <tr><th scope="row"><code>cd /home/alex</code></th><td><em>Change directory</em>: muudab käsukesta praegust kausta.</td><td><code>/home/alex</code> on absoluutne tee. Asenda <code>alex</code> oma kasutajanimega.</td></tr>
+                <tr><th scope="row"><code>cd ..</code></th><td>Liigub praeguse kausta ülemkausta.</td><td><code>..</code> tähendab üht taset üles; näiteks <code>/home/alex</code> → <code>/home</code>.</td></tr>
+                <tr><th scope="row"><code>cd ~</code></th><td>Liigub kasutaja kodukausta.</td><td><code>~</code> tähistab siin sinu kodukausta; see ei ole sama mis juurkataloog <code>/</code>.</td></tr>
+                <tr><th scope="row"><code>mkdir harjutus</code></th><td><em>Make directory</em>: loob kausta.</td><td><code>harjutus</code> on suhteline tee, seega uus kaust tekib praegusesse kausta.</td></tr>
+                <tr><th scope="row"><code>touch harjutus/naide.txt</code></th><td>Loob puuduva tühja faili või uuendab olemasoleva faili ajatemplid.</td><td>Eeldab, et kaust <code>harjutus</code> on juba olemas. Olemasoleva faili sisu see käsk ei tühjenda.</td></tr>
+                <tr><th scope="row"><code>cat harjutus/naide.txt</code></th><td><em>Concatenate</em>: kuvab faili sisu terminalis; oskab ka faile ühendada.</td><td>Sobib lühikese tekstifaili vaatamiseks. Suure faili jaoks kasuta näiteks <code>less</code>.</td></tr>
+                <tr><th scope="row"><code>less harjutus/naide.txt</code></th><td>Avab tekstifaili keritavas vaates.</td><td>Väljumiseks vajuta <kbd>q</kbd>. Käsk ei muuda faili.</td></tr>
+                <tr><th scope="row"><code>cp -i naide.txt koopia.txt</code></th><td><em>Copy</em>: kopeerib faili; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist.</td><td>Esimene tee on allikas, teine koopia nimi. Mõlemad on siin suhtelised teed.</td></tr>
+                <tr><th scope="row"><code>mv -i koopia.txt uus.txt</code></th><td><em>Move</em>: teisaldab või nimetab ümber; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist.</td><td>Siin nimetatakse <code>koopia.txt</code> ümber failiks <code>uus.txt</code>.</td></tr>
+                <tr><th scope="row"><code>rm -i uus.txt</code></th><td><em>Remove</em>: eemaldab faili; <code>-i</code> küsib enne eemaldamist kinnitust.</td><td>Kontrolli teed hoolikalt: eemaldamine ei vii faili tavaliselt töölaua prügikasti.</td></tr>
+                <tr><th scope="row"><code>man ls</code></th><td><em>Manual</em>: avab käsu <code>ls</code> käsiraamatu.</td><td>Väljumiseks vajuta <kbd>q</kbd>; käsiraamatust saad valikute täpse tähenduse.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="basic-commands-note">Harjutamisel loo oma kodukausta eraldi proovikaust. Siinsed näited on lugemiseks; leht ei käivita neid sinu arvutis.</p>
+        </article>
+
+        <article class="command-primer" aria-labelledby="command-primer-title">
+          <p class="mini-label">Käsk ja failitee</p>
+          <h2 id="command-primer-title">Mida terminalis kirjutatud tee tähendab?</h2>
+          <p>Käsk on terminalis antud juhis. Näites <code>ls /var/log</code> on <code>ls</code> programmi nimi ja <code>/var/log</code> kaust, mille sisu küsitakse. Kui sisestad välise programmi nime ilma kaldkriipsuta, otsib käsukest seda oma <code>PATH</code> loendis olevatest kaustadest. Mõned käsud, näiteks Bashi <code>pwd</code>, võivad olla kesta sisse ehitatud.</p>
+          <div class="command-route" aria-label="Näide: ls on programmi nimi ja /var/log on uuritav kaust">
+            <div><small>Kirjutad</small><code>ls /var/log</code></div><span aria-hidden="true">→</span>
+            <div><small>Programmi näidistee</small><code>/bin/ls</code></div><span aria-hidden="true">+</span>
+            <div><small>Sihtkaust</small><code>/var/log</code></div>
+          </div>
+          <p class="command-primer-note"><code>/bin/ls</code> ja <code>/bin/cp</code> on võimalikud programmitäisteed. Mõnes süsteemis asuvad programmid tegelikult <code>/usr/bin</code> all ning <code>/bin</code> on sinna viitav link. Kontrolli oma masinas käsuga <code>type -a ls</code>.</p>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="Käskude tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Terminalis</th><th scope="col">Mida teeb?</th><th scope="col">Mida tee või valik tähendab?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>ls</code></th><td>Loetleb praeguse kausta sisu.</td><td>Teed pole antud; siht on praegune kaust.</td></tr>
+                <tr><th scope="row"><code>ls /var/log</code></th><td>Loetleb logikausta sisu.</td><td><code>/var/log</code> on uuritava kausta absoluutne tee, mitte käsu programmifail.</td></tr>
+                <tr><th scope="row"><code>cp -i raport.txt koopia.txt</code></th><td>Teeb failist koopia; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist kinnitust.</td><td><code>raport.txt</code> on lähtefail ja <code>koopia.txt</code> sihtfail. Mõlemad on suhtelised teed praeguses kaustas.</td></tr>
+                <tr><th scope="row"><code>pwd</code></th><td>Näitab praeguse kausta absoluutset teed.</td><td>Väljund võib olla näiteks <code>/home/alex</code>. Bashis on <code>pwd</code> ka sisseehitatud käsk.</td></tr>
+                <tr><th scope="row"><code>type -a ls</code></th><td>Näitab, kuidas Bash nime <code>ls</code> tõlgendab.</td><td>Tulemuses võib olla alias, funktsioon ja üks või mitu programmifaili teed.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="path-meaning-grid" aria-label="Failiteede osad">
+            <div><code>/bin/ls</code><p><code>/</code> on failipuu juur, <code>bin</code> viitab käivitatavatele programmidele (<em>binaries</em>) ja <code>ls</code> on programmi nimi.</p></div>
+            <div><code>/bin/cp</code><p>Sama kaust, teine programmifail: <code>cp</code> kopeerib faile. Kaustade kopeerimiseks on vaja näiteks valikut <code>-R</code>.</p></div>
+            <div><code>/var/log</code><p>See on andmete kaust. Käsk <code>ls</code> võib selle tee argumendina vastu võtta.</p></div>
+            <div><code>raport.txt</code><p>Alguses pole <code>/</code> märki: see on suhteline tee praeguse kausta suhtes.</p></div>
+          </div>
+          <p class="command-primer-sources">Lisalugemine: <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Search-and-Execution.html">Bashi käsuotsing</a> ja <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutilsi käsud</a>.</p>
+        </article>
+
+        <article class="case-command-overview" aria-labelledby="case-command-overview-title">
+          <p class="mini-label">Olemasolevad näidisjuhtumite käsud</p>
+          <h2 id="case-command-overview-title">Kuidas käsud veaotsingus kokku tulevad?</h2>
+          <p>Need on <a href="index.html#juhtumid">pakiautomaadi näidisjuhtumites</a> kasutatud käsud. Tabel koondab korduvad kontrollid ühe korra ning näitab, mida iga käsk selles olukorras uurib. Teenus, failitee, liides ja aadress tuleb päris seadme järgi asendada.</p>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="Näidisjuhtumite käskude tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Näidisjuhtumi käsk</th><th scope="col">Mida kontrollib?</th><th scope="col">Tee või sihtkoha tähendus</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>systemctl status locker-agent.service --no-pager</code></th><td>Kas pakiautomaadi teenus töötab või on tõrkes?</td><td><code>locker-agent.service</code> on näidisteenuse nimi, mitte failitee.</td></tr>
+                <tr><th scope="row"><code>journalctl -u locker-agent.service --since "1 hour ago" -n 100 --no-pager</code></th><td>Millised on teenuse viimase tunni kuni 100 logikirjet?</td><td><code>-u</code> piirab väljundi selle näidisteenusega.</td></tr>
+                <tr><th scope="row"><code>ip -br address</code></th><td>Kas võrguliides on üleval ja sellel on IP-aadress?</td><td><code>address</code> tähendab liideste aadresse; failiteed pole.</td></tr>
+                <tr><th scope="row"><code>ip route</code></th><td>Kas marsruutimistabelis on vaikelüüs?</td><td><code>default via</code> väljundis viitab järgmisele võrguhüppele.</td></tr>
+                <tr><th scope="row"><code>ip route get 1.1.1.1</code></th><td>Millise marsruudi süsteem näidissihtkohale valiks?</td><td><code>1.1.1.1</code> on IP-aadress; käsk ise sihtkohta paketti ei saada.</td></tr>
+                <tr><th scope="row"><code>ping -c 4 192.168.10.1</code></th><td>Kas näidisvaikelüüs vastab neljale ICMP päringule?</td><td><code>192.168.10.1</code> on näite kohalik lüüs; vastuse puudumine võib tähendada ka ICMP blokeerimist.</td></tr>
+                <tr><th scope="row"><code>resolvectl query api.example.com</code></th><td>Kas süsteem lahendab API nime IP-aadressiks?</td><td><code>api.example.com</code> on näidisdomeen; käsk eeldab sobivat <code>systemd-resolved</code> seadistust.</td></tr>
+                <tr><th scope="row"><code>curl -I --connect-timeout 5 https://api.example.com/</code></th><td>Kas HTTPS-ühendus ja <code>HEAD</code> päring jõuavad vastuseni?</td><td>URL on veebiaadress, mitte Linuxi failitee. Ühendusaja piirang ei piira kogu päringut.</td></tr>
+                <tr><th scope="row"><code>df -h /</code></th><td>Kas juurfailisüsteemis on kirjutamiseks ruumi?</td><td><code>/</code> on juurfailisüsteemi asukoht; rakenduse andmed võivad olla ka teisel kettal.</td></tr>
+                <tr><th scope="row"><code>ls -lah /var/log</code></th><td>Millised logifailid on olemas ja kui suured need on?</td><td><code>/var/log</code> on süsteemi logide kaust.</td></tr>
+                <tr><th scope="row"><code>tail -n 50 /var/log/locker-agent.log</code></th><td>Millised on näidislogi viimased 50 rida?</td><td><code>/var/log/locker-agent.log</code> on väljamõeldud logifaili absoluutne tee.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="nginx-primer" aria-labelledby="nginx-primer-title">
+          <div class="nginx-primer-head"><div><p class="mini-label">Näidisjuhtum · veebileht</p><h2 id="nginx-primer-title">Veebileht vastab „404 Not Found“</h2><p>Näidispildil annab nginx HTTP vastuse <code>404</code>: küsitud ressurssi ei leitud. Vastus näitab, et päringule vastati, kuid üksi ei ütle, kas viga on aadressis, veebiserveri seadistuses või rakenduse marsruudis.</p></div><div class="nginx-error-card" aria-label="Väljamõeldud veebilehe 404 vastus"><span>shop.example.com</span><strong>404</strong><small>Not Found · näidis</small></div></div>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="404 vea kontrollkäigu tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Samm ja käsk</th><th scope="col">Mida kontrollib?</th><th scope="col">Kuidas teed lugeda?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1. <code>curl -i --max-time 10 https://shop.example.com/</code></th><td>Teeb GET-päringu ning kuvab HTTP päised ja vastuse; <code>--max-time 10</code> piirab kogu toimingu kümne sekundiga.</td><td><code>https://shop.example.com/</code> on veebiaadress. Lõpus olev <code>/</code> on URL-i tee, mitte Linuxi juurkataloog.</td></tr>
+                <tr><th scope="row">2. <code>systemctl status nginx --no-pager</code></th><td>Näitab, kas nginx-i teenus töötab; oleku vaatamine ei taaskäivita seda.</td><td><code>nginx</code> on teenuse nimi, siin pole failiteed.</td></tr>
+                <tr><th scope="row">3. <code>nginx -T</code></th><td>Kontrollib seadistust ja väljastab selle. Otsi sobiva saidi <code>server_name</code>, <code>location</code> ja <code>root</code> määrangud.</td><td>Seadistuses olev <code>root</code> võib määrata kohaliku failikausta; käsk võib vajada õigusi ja väljundit ei tasu avalikult jagada.</td></tr>
+                <tr><th scope="row">4. <code>ls -lah /var/www/html</code></th><td>Vaatab faile näidiskaustas, kui seadistus suunab saidi just sinna.</td><td><code>/var/www/html</code> on Linuxi failitee. Tegelik veebikaust võib olla mujal või vastuse võib koostada rakendus.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nginx-primer-note">Aadress <code>shop.example.com</code>, vastus ja failitee on väljamõeldud näited. <code>404</code> ei tõesta ühte kindlat juurpõhjust.</p>
+          <p class="command-primer-sources">Allikad: <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.5">HTTP 404 tähendus</a> ja <a href="https://nginx.org/en/docs/switches.html">nginx-i käsureavalikud</a>.</p>
+        </article>
+        <h2 class="command-catalog-title">21 Linuxi veaotsingu käsku</h2>
+        <div class="toolbar"><label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Otsi käsku või märksõna</span><input id="search" type="search" placeholder="Otsi: timeout, võrk, mälu…" autocomplete="off"></label><span id="result-count" role="status"></span></div>
+        <div class="filters" id="filters" role="group" aria-label="Filtreeri teema järgi"></div>
+        <div class="command-grid" id="command-grid"></div>
+        <p class="no-results" id="no-results" hidden>Ühtegi käsku ei leitud. Proovi teist märksõna või vali „Kõik“.</p>
+        <div class="linux-practice">
+          <h3>Võrgutõrke kontrollkäik Linuxis</h3>
+          <p>Näidispakiautomaadil on <code>192.168.10.24/24</code> ja lüüs <code>192.168.10.1</code>. Kontrolli kihte selles järjekorras; väärtused tuleb päris seadme järgi asendada.</p>
+          <ol class="practice-list"><li><code>ip -br address</code><span>Kas IP ja prefiks on liidesel olemas?</span></li><li><code>ip route</code><span>Kas vaikemarsruut osutab oodatud lüüsile?</span></li><li><code>ip route get 1.1.1.1</code><span>Milline liides ja lähteaadress valitaks?</span></li><li><code>ping -c 4 192.168.10.1</code><span>Kas kohalik lüüs vastab ICMP-le?</span></li><li><code>resolvectl query example.com</code><span>Kas DNS saab nime lahendada?</span></li><li><code>curl -I --connect-timeout 5 https://example.com/</code><span>Kas HTTPS ühendus ja esmane vastus toimivad?</span></li></ol>
+          <p>Need käsud piiritlevad tõrget, kuid üksik tulemus ei tõesta alati kogu juurpõhjust. <a href="index.html#juhtumid">Vaata näidislogidega juhtumeid →</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span><a href="index.html">Failisüsteem</a> · <a href="index.html#juhtumid">Näidisjuhtumid</a></span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

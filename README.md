@@ -1,14 +1,14 @@
 # Linuxi failisüsteem ja käsud
 
-Eestikeelne Linuxi õppeprojekt. Avalehel on failisüsteemi sissejuhatus ja kaustade tabel; järgnevad käsud ning näidisjuhtumid. [Ava interaktiivne vaade](./index.html) ja [õpi IP-aadressi ning võrgumaski](./vorgu-alused.html).
+Eestikeelne Linuxi õppeprojekt. Avalehel on failisüsteemi sissejuhatus ja kaustade tabel. Eraldi [Linuxi käskude lehel](./linux-kasud.html) on põhikäsud, näidisjuhtumites kasutatud käsud ja veaotsingu kataloog. [Ava avaleht](./index.html) ja [õpi IP-aadressi ning võrgumaski](./vorgu-alused.html).
 
 ## Mida projekt näitab?
 
-- Linuxi käsud ja failisüsteemi pildid on avalehel. Ava [pakiautomaadi näidisjuhtum](./index.html#juhtumid): vealogi, sobiv käsk, selle näidisväljund, tõlgendus ja lõpuks põhjendatud järeldus.
+- Failisüsteemi sissejuhatus on avalehel ning käsud on eraldi [Linuxi käskude lehel](./linux-kasud.html). Ava [pakiautomaadi näidisjuhtum](./index.html#juhtumid): vealogi, sobiv käsk, selle näidisväljund, tõlgendus ja lõpuks põhjendatud järeldus.
 - Vali olukord (teenus, võrk, ressursid või kell) ja vaata, millises järjekorras kontrollida.
 - Otsi käsku nime või märksõna järgi; ava kaardil selle osad ja kasutusjuht.
 - Kopeeri käsk, asendades enne käivitamist näidisfaili, teenuse, liidese või aadressi oma keskkonna omaga.
-- Kõik 21 käsku on dokumenteeritud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
+- Kõik 21 veaotsingu kataloogi käsku on dokumenteeritud; enne neid on põhikäsud ja näidisjuhtumite käsud. `tcpdump`i näites on liikluse püüdmine piiratud 20 paketiga.
 - [Võrgu topoloogia pilt](./vorgu-alused.html#topoloogia) näitab pakiautomaadi, lüliti, ruuteri ja serveri seost ning sama ja eri võrgu vahet.
 - [VPN-i, netmaski ja gateway konspekt](./vpn-konspekt.html) kuvab kasutaja algse teksti muutmata kujul.
 - [Linuxi kaustade pildid](./failisysteem.html) näitavad mõlemat algse PDF-i lehte; [algne PDF](./assets/linux-kaustad-selgitused.pdf) on samuti projektis.

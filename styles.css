@@ -321,3 +321,17 @@ body{background:var(--bg)}
 .program-folder-sources a{color:#ffd7c2}
 @media(max-width:760px){.program-tree-list>li>ul{grid-template-columns:repeat(2,minmax(0,1fr))}.program-tree-list>li>ul>li:last-child>ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.program-folders{padding:20px}.program-folder-tree{padding:15px}.program-tree-list>li>ul{gap:9px}.program-tree-list>li>ul>li:last-child>ul{gap:9px;padding-left:12px}.program-tree-node{padding:9px;min-height:65px}.program-tree-node code{font-size:12px}.program-tree-node small{font-size:10px}}
+
+/* The separate Linux commands page starts with the terminal basics. */
+.commands-page .commands-section{min-height:calc(100vh - 164px)}
+.commands-page .section-heading h1{font-size:clamp(42px,5vw,66px);line-height:1.08;margin:0 0 14px}
+.basic-commands,.case-command-overview{margin-bottom:24px;padding:30px;border:1px solid #99667e;border-radius:14px;background:#35132d}
+.basic-commands>.mini-label,.case-command-overview>.mini-label{margin:0 0 10px}
+.basic-commands h2,.case-command-overview h2{font-size:clamp(26px,3vw,37px);line-height:1.16;margin:0 0 14px}
+.basic-commands>p:not(.mini-label),.case-command-overview>p:not(.mini-label){max-width:900px;color:#ead8e1;font-size:14px;line-height:1.65}
+.basic-commands code,.case-command-overview code{font-family:'DM Mono',monospace;color:#ffd7c2;font-size:.92em}
+.basic-commands kbd{padding:2px 6px;border:1px solid #99667e;border-radius:4px;background:#48203b;color:#fff9f6;font-family:'DM Mono',monospace;font-size:11px}
+.basic-commands>p.basic-commands-note{max-width:none;margin:16px 0 0;color:#d7bdcb;font-size:13px}
+.case-command-overview a{color:#ffd7c2}
+@media(max-width:600px){.basic-commands,.case-command-overview{padding:20px}}
+.commands-page .command-primer h2,.commands-page .nginx-primer h2{font-size:clamp(27px,3vw,37px);line-height:1.15;margin:0 0 14px}
