@@ -32,28 +32,61 @@
         <article class="basic-commands" aria-labelledby="basic-commands-title">
           <p class="mini-label">Alusta siit · põhikäsud</p>
           <h2 id="basic-commands-title">Esimesed käsud terminalis</h2>
-          <p>Alusta asukoha vaatamisest, siis liigu kaustades ja alles seejärel tööta failidega. Allolevad teed on näited. <code>cd</code> on käsukesta sisseehitatud käsk; ülejäänud võivad olla eraldi programmid või samuti kestas olemas.</p>
+          <p>Käsud on jaotatud viide teemasse. Nurksulgudes sõnad, näiteks <code>[fail]</code> ja <code>[kaust]</code>, on asendatavad kohatäited: kirjuta nende asemele oma faili või kausta nimi ilma nurksulgudeta. Näited ei käivitu sellel lehel.</p>
           <div class="command-table-wrap" role="region" tabindex="0" aria-label="Linuxi põhikäskude tabel, kitsal ekraanil keritav">
             <table class="command-explanation-table">
               <thead><tr><th scope="col">Käsk</th><th scope="col">Mida tähendab ja teeb?</th><th scope="col">Näide või oluline märkus</th></tr></thead>
               <tbody>
-                <tr><th scope="row"><code>pwd</code></th><td><em>Print working directory</em>: näitab praeguse kausta täielikku teed.</td><td>Väljund võib olla <code>/home/alex</code>. Vaata asukoht üle enne failidega töötamist.</td></tr>
-                <tr><th scope="row"><code>ls</code></th><td><em>List</em>: loetleb praeguse kausta nähtavad failid ja alamkaustad.</td><td><code>ls /home/alex</code> loetleb etteantud kausta sisu.</td></tr>
-                <tr><th scope="row"><code>cd /home/alex</code></th><td><em>Change directory</em>: muudab käsukesta praegust kausta.</td><td><code>/home/alex</code> on absoluutne tee. Asenda <code>alex</code> oma kasutajanimega.</td></tr>
-                <tr><th scope="row"><code>cd ..</code></th><td>Liigub praeguse kausta ülemkausta.</td><td><code>..</code> tähendab üht taset üles; näiteks <code>/home/alex</code> → <code>/home</code>.</td></tr>
-                <tr><th scope="row"><code>cd ~</code></th><td>Liigub kasutaja kodukausta.</td><td><code>~</code> tähistab siin sinu kodukausta; see ei ole sama mis juurkataloog <code>/</code>.</td></tr>
-                <tr><th scope="row"><code>mkdir harjutus</code></th><td><em>Make directory</em>: loob kausta.</td><td><code>harjutus</code> on suhteline tee, seega uus kaust tekib praegusesse kausta.</td></tr>
-                <tr><th scope="row"><code>touch harjutus/naide.txt</code></th><td>Loob puuduva tühja faili või uuendab olemasoleva faili ajatemplid.</td><td>Eeldab, et kaust <code>harjutus</code> on juba olemas. Olemasoleva faili sisu see käsk ei tühjenda.</td></tr>
-                <tr><th scope="row"><code>cat harjutus/naide.txt</code></th><td><em>Concatenate</em>: kuvab faili sisu terminalis; oskab ka faile ühendada.</td><td>Sobib lühikese tekstifaili vaatamiseks. Suure faili jaoks kasuta näiteks <code>less</code>.</td></tr>
-                <tr><th scope="row"><code>less harjutus/naide.txt</code></th><td>Avab tekstifaili keritavas vaates.</td><td>Väljumiseks vajuta <kbd>q</kbd>. Käsk ei muuda faili.</td></tr>
-                <tr><th scope="row"><code>cp -i naide.txt koopia.txt</code></th><td><em>Copy</em>: kopeerib faili; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist.</td><td>Esimene tee on allikas, teine koopia nimi. Mõlemad on siin suhtelised teed.</td></tr>
-                <tr><th scope="row"><code>mv -i koopia.txt uus.txt</code></th><td><em>Move</em>: teisaldab või nimetab ümber; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist.</td><td>Siin nimetatakse <code>koopia.txt</code> ümber failiks <code>uus.txt</code>.</td></tr>
-                <tr><th scope="row"><code>rm -i uus.txt</code></th><td><em>Remove</em>: eemaldab faili; <code>-i</code> küsib enne eemaldamist kinnitust.</td><td>Kontrolli teed hoolikalt: eemaldamine ei vii faili tavaliselt töölaua prügikasti.</td></tr>
-                <tr><th scope="row"><code>man ls</code></th><td><em>Manual</em>: avab käsu <code>ls</code> käsiraamatu.</td><td>Väljumiseks vajuta <kbd>q</kbd>; käsiraamatust saad valikute täpse tähenduse.</td></tr>
+                <tr class="basic-command-group"><th scope="rowgroup" colspan="3">1. Failisüsteemis liikumine ja failide haldus</th></tr>
+                <tr><th scope="row"><code>pwd</code></th><td>Näitab praeguse kausta täielikku teekonda (<em>print working directory</em>).</td><td>Väljund võib olla <code>/home/alex</code>. Kontrolli asukohta enne failidega töötamist.</td></tr>
+                <tr><th scope="row"><code>cd [kaust]</code></th><td>Muudab terminali praegust kausta (<em>change directory</em>).</td><td><code>cd ..</code> liigub ülemkausta, <code>cd ~</code> kodukausta; <code>cd /var/log</code> kasutab absoluutset teed.</td></tr>
+                <tr><th scope="row"><code>ls</code></th><td>Loetleb praeguse kausta nähtavad failid ja alamkaustad.</td><td>Teed pole antud, seega siht on praegune kaust. <code>ls /var/log</code> vaatab teist kausta.</td></tr>
+                <tr><th scope="row"><code>ls -la</code></th><td><code>-l</code> näitab üksikasju ja <code>-a</code> ka punktiga algavaid peidetud kirjeid.</td><td>Näed muu hulgas õigusi, omanikku, suurust ja muutmise aega. Suurused on siin tavaliselt baitides.</td></tr>
+                <tr><th scope="row"><code>mkdir [nimi]</code></th><td>Loob uue kausta (<em>make directory</em>).</td><td><code>mkdir harjutus</code> loob kausta praegusesse asukohta; <code>-p</code> loob vajadusel ka ülemkaustad.</td></tr>
+                <tr><th scope="row"><code>touch [fail]</code></th><td>Loob puuduva tühja faili või uuendab olemasoleva faili ajatempleid.</td><td><code>touch naide.txt</code> ei kustuta olemasoleva faili sisu.</td></tr>
+                <tr><th scope="row"><code>cp [allikas] [sihtkoht]</code></th><td>Kopeerib faili allikast sihtkohta (<em>copy</em>).</td><td><code>cp -i naide.txt koopia.txt</code> küsib enne ülekirjutamist. Kausta kopeerimiseks kasuta näiteks <code>cp -r</code>.</td></tr>
+                <tr><th scope="row"><code>mv [allikas] [sihtkoht]</code></th><td>Teisaldab faili või nimetab selle ümber (<em>move</em>).</td><td><code>mv -i vana.txt uus.txt</code> küsib enne olemasoleva sihtfaili ülekirjutamist.</td></tr>
+                <tr><th scope="row"><code>rm [fail]</code></th><td>Eemaldab etteantud faili (<em>remove</em>).</td><td><code>rm -i naide.txt</code> küsib kinnitust. <code>rm -rf</code> eemaldab kaustu rekursiivselt ja jõuga; kontrolli sihtteed eriti hoolikalt.</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="basic-command-group"><th scope="rowgroup" colspan="3">2. Failide vaatamine ja otsimine</th></tr>
+                <tr><th scope="row"><code>cat [fail]</code></th><td>Kuvab faili kogu sisu terminali; oskab ka faile kokku liita.</td><td><code>cat naide.txt</code> sobib lühikese teksti jaoks. Suure logifaili korral kasuta <code>less</code>.</td></tr>
+                <tr><th scope="row"><code>less [fail]</code></th><td>Avab faili keritavas vaates ilma seda muutmata.</td><td>Lehekülgede vahel liikumiseks kasuta nooleklahve või tühikut; väljumiseks vajuta <kbd>q</kbd>.</td></tr>
+                <tr><th scope="row"><code>head -n 10 [fail]</code></th><td>Näitab faili esimesed 10 rida.</td><td><code>head -n 10 naide.txt</code> aitab vaadata faili algust ilma kogu sisu avamata.</td></tr>
+                <tr><th scope="row"><code>tail -n 10 [fail]</code></th><td>Näitab faili viimased 10 rida.</td><td><code>tail -f rakendus.log</code> jääb lisanduvaid ridu jälgima; lõpeta klahvidega <kbd>Ctrl</kbd>+<kbd>C</kbd>.</td></tr>
+                <tr><th scope="row"><code>grep "[otsingusõna]" [fail]</code></th><td>Otsib failist otsingusõna või mustriga sobivaid ridu.</td><td><code>grep "timeout" rakendus.log</code>; <code>-n</code> lisab reanumbri ja <code>-i</code> eirab tähesuurust.</td></tr>
+                <tr><th scope="row"><code>find [kaust] -name "[failinimi]"</code></th><td>Otsib etteantud kaustast ja selle alamkaustadest nimele vastavaid kirjeid.</td><td><code>find /var/log -name '*.log'</code> otsib logifailide nimesid; jutumärgid hoiavad mustri <code>find</code>-i jaoks alles.</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="basic-command-group"><th scope="rowgroup" colspan="3">3. Süsteemi jälgimine ja protsessid</th></tr>
+                <tr><th scope="row"><code>top</code></th><td>Näitab töötavaid protsesse ning protsessori ja mälu kasutust jooksvalt.</td><td>Väljumiseks vajuta <kbd>q</kbd>. Kõrge protsessorikasutus ühel hetkel ei tõesta veel vea põhjust.</td></tr>
+                <tr><th scope="row"><code>htop</code></th><td>Interaktiivne protsesside ja ressursikasutuse vaade.</td><td>Ei pruugi olla paigaldatud. Väljumiseks vajuta <kbd>F10</kbd> või <kbd>q</kbd>.</td></tr>
+                <tr><th scope="row"><code>ps aux</code></th><td>Annab hetktõmmise töötavatest protsessidest koos kasutaja ja ressursikasutusega.</td><td>Otsi väljundist <code>PID</code>, kui vajad konkreetse protsessi numbrit.</td></tr>
+                <tr><th scope="row"><code>kill [PID]</code></th><td>Saadab protsessile vaikimisi lõpetamissignaali <code>SIGTERM</code>.</td><td><code>kill 1234</code> kasutab protsessi ID-d. <code>kill -9</code> sunnib lõpetama ja sobib viimaseks abinõuks.</td></tr>
+                <tr><th scope="row"><code>df -h</code></th><td>Näitab ühendatud failisüsteemide kasutatud ja vaba ruumi loetavates ühikutes.</td><td><code>df -h /</code> keskendub juurfailisüsteemile; muul kettal võib olla teine vaba ruumi hulk.</td></tr>
+                <tr><th scope="row"><code>free -h</code></th><td>Näitab operatiivmälu ja saaleala (<em>swap</em>) kasutust loetavates ühikutes.</td><td>Vaata ka veergu <code>available</code>, mis hindab uutele protsessidele kättesaadavat mälu.</td></tr>
+                <tr><th scope="row"><code>uptime</code></th><td>Näitab, kui kaua süsteem on töötanud, ning koormuskeskmisi.</td><td>Aitab näha, kas seade on hiljuti taaskäivitatud.</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="basic-command-group"><th scope="rowgroup" colspan="3">4. Võrgundus</th></tr>
+                <tr><th scope="row"><code>nslookup [domeen]</code></th><td>Küsib DNS-ist domeeni kohta teavet, näiteks IP-aadressi.</td><td><code>nslookup example.com</code>. Tööriist ei pruugi igas paigalduses olemas olla.</td></tr>
+                <tr><th scope="row"><code>dig [domeen]</code></th><td>Kuvab üksikasjalikuma DNS-päringu ja selle vastuse.</td><td><code>dig example.com</code>; soovi korral küsi kindlat kirjet, näiteks <code>dig example.com AAAA</code>.</td></tr>
+                <tr><th scope="row"><code>ping [aadress]</code></th><td>Saadab ICMP kajapäringuid ja näitab vastuseid ning viiteaega.</td><td><code>ping -c 4 192.168.10.1</code> peatub nelja päringu järel. Vastuse puudumine võib tulla ka ICMP blokeerimisest.</td></tr>
+                <tr><th scope="row"><code>ip a</code></th><td>Näitab võrguliideste aadresse; <code>a</code> on <code>address</code>-käsu lühend.</td><td>Vanem <code>ifconfig</code> võib puududa; see ei kuva kõiki samu üksikasju.</td></tr>
+                <tr><th scope="row"><code>curl [URL]</code></th><td>Teeb päringu antud veebiaadressile ja kuvab vastuse vaikimisi terminali.</td><td><code>curl https://example.com/</code>; faili salvestamiseks kasuta näiteks valikut <code>-o</code>. Sobib ka API-päringute uurimiseks.</td></tr>
+                <tr><th scope="row"><code>ss -tulnp</code></th><td>Näitab kuulavaid TCP ja UDP pesi numbriliste aadressidega ning võimalusel neid kasutavaid protsesse.</td><td><code>-p</code> protsessiandmete nägemiseks võib vaja minna kõrgemaid õigusi. Vanem <code>netstat</code> võib puududa.</td></tr>
+                <tr><th scope="row"><code>ssh [kasutaja]@[ip]</code></th><td>Loob krüpteeritud kaugseansi valitud kasutajana teise seadmesse.</td><td><code>ssh alex@192.168.10.24</code>; sihtseadmes peab SSH teenus töötama ning sul peab olema ligipääs.</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="basic-command-group"><th scope="rowgroup" colspan="3">5. Õigused ja paketihaldus</th></tr>
+                <tr><th scope="row"><code>sudo [käsk]</code></th><td>Käivitab käsu tavaliselt administraatori ehk <code>root</code>-kasutaja õigustes.</td><td>Kasuta ainult siis, kui käsk nõuab kõrgemaid õigusi; see võib süsteemi muuta.</td></tr>
+                <tr><th scope="row"><code>chmod +x [fail]</code></th><td>Lisab failile käivitamisõiguse.</td><td><code>chmod +x skript.sh</code> muudab õigusi, kuid ei käivita skripti.</td></tr>
+                <tr><th scope="row"><code>chown [kasutaja]:[grupp] [fail]</code></th><td>Muudab faili omanikku ja gruppi.</td><td><code>chown alex:alex naide.txt</code>; teise kasutaja faili muutmine vajab tavaliselt administraatoriõigusi.</td></tr>
+                <tr><th scope="row"><code>apt update &amp;&amp; apt upgrade</code></th><td><code>apt update</code> värskendab paketiloendit; <code>apt upgrade</code> paigaldab saadaolevad uuendused. <code>&amp;&amp;</code> käivitab teise ainult esimese õnnestumisel.</td><td>Ubuntu/Debiani süsteemis vajad tavaliselt <code>sudo apt update &amp;&amp; sudo apt upgrade</code>. Enne muudatuste kinnitamist vaata paketiloend üle.</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="basic-commands-note">Harjutamisel loo oma kodukausta eraldi proovikaust. Siinsed näited on lugemiseks; leht ei käivita neid sinu arvutis.</p>
+          <p class="basic-commands-note">Harjutamiseks loo kodukausta eraldi proovikaust. Faili muutvate käskude puhul kontrolli alati praegust asukohta ja sihtteed; leht ise käske ei käivita.</p>
         </article>
 
         <article class="command-primer" aria-labelledby="command-primer-title">
