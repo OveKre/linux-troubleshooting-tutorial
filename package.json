@@ -1,0 +1,28 @@
+{
+  "name": "linux-troubleshooting-tutorial",
+  "version": "1.0.0",
+  "description": "Eestikeelne Linuxi õppeprojekt. [Avalehel](./index.html) on failisüsteemi sissejuhatus ja kaustade tabel. [Linuxi käskude lehel](./linux-kasud.html) on põhikäsud ning SSH ja logide juhend. [Veaotsingu käskude lehel](./veaotsingu-kasud.html#kataloog) on 21 käsku viies tabelis. [Näidisjuhtumite lehel](./naidisjuhtumid.html#juhtumid) on pakiautomaadi tõrked, 404 näide ja kontrollkäigud. [IP-võrkude lehel](./vorgu-alused.html) on IP-aadressi ja alamvõrgu õpetus, binaarkalkulaator ning mõistete tabelid.",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite-build",
+    "preview": "vite-preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+  
+}
