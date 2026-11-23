@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a111b">
+  <meta name="description" content="Pakiautomaadi näidislogid, Linuxi veaotsingu kontrollkäigud ja veebiserveri 404 näide.">
+  <title>Näidisjuhtumid · Linux</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="navigation.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="cases.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Liigu sisu juurde</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <nav aria-label="Peamenüü">
+        <button type="button" class="nav-item" data-nav-target="index.html">Linux</button>
+        <a class="nav-item" href="linux-kasud.html">Linux käsud</a>
+        <a class="nav-item" href="#juhtumid" aria-current="page">Näidisjuhtumid</a>
+        <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="cases-page">
+    <section class="section cases-section" id="juhtumid" aria-labelledby="cases-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">03 / Näidisjuhtumid</p><h1 id="cases-title">Näidisjuhtumid: logist juurpõhjuseni</h1><p>Vali pakiautomaadi tõrge. Loe vealogi ning ava ükshaaval käsu näidisväljund, et näha, kuidas järgmise kontrollini jõuda.</p></div><span class="section-number" aria-hidden="true">03</span></div>
+        <p class="case-disclaimer">Kõik logid, aadressid, teenusenimed ja väljundid on väljamõeldud õppematerjal. Nupp „Kuva näidisväljund“ ei käivita käsku.</p>
+        <div class="case-options" id="case-options" role="group" aria-label="Vali pakiautomaadi näidisjuhtum"></div>
+        <div class="case-story" id="case-story">
+          <div class="case-story-head"><div><p class="mini-label">PAKIAUTOMAADI JUHTUM</p><h3 id="case-title"></h3><p id="case-symptom"></p></div><span class="case-status">NÄIDISLOGI</span></div>
+          <div class="case-log" aria-label="Väljamõeldud pakiautomaadi logi"><div class="case-log-bar"><span>locker-agent.log</span><span>ainult näide · ei ole päris seadme logi</span></div><div class="case-log-lines" id="case-log-lines"></div></div>
+          <div class="case-diagnostic"><div class="case-diagnostic-head"><div><p class="mini-label">DIAGNOOSI KÄIK</p><h4>Millise käsuga edasi?</h4></div><span id="case-progress" role="status"></span></div><ol class="case-steps" id="case-steps"></ol><div class="case-conclusion" id="case-conclusion" hidden tabindex="-1"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section case-extras-section" aria-labelledby="case-extras-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">Juhtumite lisamaterjal</p><h2 id="case-extras-title">Käsud ja järgmised kontrollid</h2><p>Juhtumite käsud, eraldi 404 näide ja võrgu kontrollkäik aitavad nähtud veateateid tõlgendada.</p></div></div>
+        <article class="case-command-overview" aria-labelledby="case-command-overview-title">
+          <p class="mini-label">Olemasolevad näidisjuhtumite käsud</p>
+          <h2 id="case-command-overview-title">Kuidas käsud veaotsingus kokku tulevad?</h2>
+          <p>Need on <a href="#juhtumid">pakiautomaadi näidisjuhtumites</a> kasutatud käsud. Tabel koondab korduvad kontrollid ühe korra ning näitab, mida iga käsk selles olukorras uurib. Teenus, failitee, liides ja aadress tuleb päris seadme järgi asendada.</p>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="Näidisjuhtumite käskude tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Näidisjuhtumi käsk</th><th scope="col">Mida kontrollib?</th><th scope="col">Tee või sihtkoha tähendus</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>systemctl status locker-agent.service --no-pager</code></th><td>Kas pakiautomaadi teenus töötab või on tõrkes?</td><td><code>locker-agent.service</code> on näidisteenuse nimi, mitte failitee.</td></tr>
+                <tr><th scope="row"><code>journalctl -u locker-agent.service --since "1 hour ago" -n 100 --no-pager</code></th><td>Millised on teenuse viimase tunni kuni 100 logikirjet?</td><td><code>-u</code> piirab väljundi selle näidisteenusega.</td></tr>
+                <tr><th scope="row"><code>ip -br address</code></th><td>Kas võrguliides on üleval ja sellel on IP-aadress?</td><td><code>address</code> tähendab liideste aadresse; failiteed pole.</td></tr>
+                <tr><th scope="row"><code>ip route</code></th><td>Kas marsruutimistabelis on vaikelüüs?</td><td><code>default via</code> väljundis viitab järgmisele võrguhüppele.</td></tr>
+                <tr><th scope="row"><code>ip route get 1.1.1.1</code></th><td>Millise marsruudi süsteem näidissihtkohale valiks?</td><td><code>1.1.1.1</code> on IP-aadress; käsk ise sihtkohta paketti ei saada.</td></tr>
+                <tr><th scope="row"><code>ping -c 4 192.168.10.1</code></th><td>Kas näidisvaikelüüs vastab neljale ICMP päringule?</td><td><code>192.168.10.1</code> on näite kohalik lüüs; vastuse puudumine võib tähendada ka ICMP blokeerimist.</td></tr>
+                <tr><th scope="row"><code>resolvectl query api.example.com</code></th><td>Kas süsteem lahendab API nime IP-aadressiks?</td><td><code>api.example.com</code> on näidisdomeen; käsk eeldab sobivat <code>systemd-resolved</code> seadistust.</td></tr>
+                <tr><th scope="row"><code>curl -I --connect-timeout 5 https://api.example.com/</code></th><td>Kas HTTPS-ühendus ja <code>HEAD</code> päring jõuavad vastuseni?</td><td>URL on veebiaadress, mitte Linuxi failitee. Ühendusaja piirang ei piira kogu päringut.</td></tr>
+                <tr><th scope="row"><code>df -h /</code></th><td>Kas juurfailisüsteemis on kirjutamiseks ruumi?</td><td><code>/</code> on juurfailisüsteemi asukoht; rakenduse andmed võivad olla ka teisel kettal.</td></tr>
+                <tr><th scope="row"><code>ls -lah /var/log</code></th><td>Millised logifailid on olemas ja kui suured need on?</td><td><code>/var/log</code> on süsteemi logide kaust.</td></tr>
+                <tr><th scope="row"><code>tail -n 50 /var/log/locker-agent.log</code></th><td>Millised on näidislogi viimased 50 rida?</td><td><code>/var/log/locker-agent.log</code> on väljamõeldud logifaili absoluutne tee.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="nginx-primer" aria-labelledby="nginx-primer-title">
+          <div class="nginx-primer-head"><div><p class="mini-label">Näidisjuhtum · veebileht</p><h2 id="nginx-primer-title">Veebileht vastab „404 Not Found“</h2><p>Näidispildil annab nginx HTTP vastuse <code>404</code>: küsitud ressurssi ei leitud. Vastus näitab, et päringule vastati, kuid üksi ei ütle, kas viga on aadressis, veebiserveri seadistuses või rakenduse marsruudis.</p></div><div class="nginx-error-card" aria-label="Väljamõeldud veebilehe 404 vastus"><span>shop.example.com</span><strong>404</strong><small>Not Found · näidis</small></div></div>
+          <div class="command-table-wrap" role="region" tabindex="0" aria-label="404 vea kontrollkäigu tabel, kitsal ekraanil keritav">
+            <table class="command-explanation-table">
+              <thead><tr><th scope="col">Samm ja käsk</th><th scope="col">Mida kontrollib?</th><th scope="col">Kuidas teed lugeda?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1. <code>curl -i --max-time 10 https://shop.example.com/</code></th><td>Teeb GET-päringu ning kuvab HTTP päised ja vastuse; <code>--max-time 10</code> piirab kogu toimingu kümne sekundiga.</td><td><code>https://shop.example.com/</code> on veebiaadress. Lõpus olev <code>/</code> on URL-i tee, mitte Linuxi juurkataloog.</td></tr>
+                <tr><th scope="row">2. <code>systemctl status nginx --no-pager</code></th><td>Näitab, kas nginx-i teenus töötab; oleku vaatamine ei taaskäivita seda.</td><td><code>nginx</code> on teenuse nimi, siin pole failiteed.</td></tr>
+                <tr><th scope="row">3. <code>nginx -T</code></th><td>Kontrollib seadistust ja väljastab selle. Otsi sobiva saidi <code>server_name</code>, <code>location</code> ja <code>root</code> määrangud.</td><td>Seadistuses olev <code>root</code> võib määrata kohaliku failikausta; käsk võib vajada õigusi ja väljundit ei tasu avalikult jagada.</td></tr>
+                <tr><th scope="row">4. <code>ls -lah /var/www/html</code></th><td>Vaatab faile näidiskaustas, kui seadistus suunab saidi just sinna.</td><td><code>/var/www/html</code> on Linuxi failitee. Tegelik veebikaust võib olla mujal või vastuse võib koostada rakendus.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nginx-primer-note">Aadress <code>shop.example.com</code>, vastus ja failitee on väljamõeldud näited. <code>404</code> ei tõesta ühte kindlat juurpõhjust.</p>
+          <p class="command-primer-sources">Allikad: <a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.5">HTTP 404 tähendus</a> ja <a href="https://nginx.org/en/docs/switches.html">nginx-i käsureavalikud</a>.</p>
+        </article>
+        <div class="linux-practice">
+          <h3>Võrgutõrke kontrollkäik Linuxis</h3>
+          <p>Näidispakiautomaadil on <code>192.168.10.24/24</code> ja lüüs <code>192.168.10.1</code>. Kontrolli kihte selles järjekorras; väärtused tuleb päris seadme järgi asendada.</p>
+          <ol class="practice-list"><li><code>ip -br address</code><span>Kas IP ja prefiks on liidesel olemas?</span></li><li><code>ip route</code><span>Kas vaikemarsruut osutab oodatud lüüsile?</span></li><li><code>ip route get 1.1.1.1</code><span>Milline liides ja lähteaadress valitaks?</span></li><li><code>ping -c 4 192.168.10.1</code><span>Kas kohalik lüüs vastab ICMP-le?</span></li><li><code>resolvectl query example.com</code><span>Kas DNS saab nime lahendada?</span></li><li><code>curl -I --connect-timeout 5 https://example.com/</code><span>Kas HTTPS ühendus ja esmane vastus toimivad?</span></li></ol>
+          <p>Need käsud piiritlevad tõrget, kuid üksik tulemus ei tõesta alati kogu juurpõhjust. <a href="#juhtumid">Vaata näidislogidega juhtumeid →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section journey-section" id="teekond" aria-labelledby="journey-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">04 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">04</span></div>
+        <div class="scenario-tabs" id="scenario-tabs" role="tablist" aria-label="Veaotsingu olukord"></div>
+        <div class="journey-layout" id="journey-panel" role="tabpanel">
+          <div class="journey-steps"><p class="mini-label">SOOVITATUD JÄRJEKORD</p><p class="journey-intro" id="journey-intro"></p><ol id="journey-list"></ol></div>
+          <article class="focus-panel" id="focus-panel" aria-live="polite"></article>
+        </div>
+        <p class="context-note">Teekond on näidis. Tegelik järgmine samm sõltub sinu süsteemist ja tulemustest. <a href="vorgu-alused.html">Vaata, kuidas IP ja mask võrgu määravad →</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span><a href="index.html">Failisüsteem</a> · <a href="linux-kasud.html">Linuxi käsud</a></span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

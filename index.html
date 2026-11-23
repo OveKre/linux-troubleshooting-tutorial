@@ -9,8 +9,6 @@
   <title>Linux</title>
   <link rel="stylesheet" href="styles.css">
   <script src="navigation.js" defer></script>
-  <script src="app.js" defer></script>
-  <script src="cases.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
@@ -19,7 +17,7 @@
       <nav aria-label="Peamenüü">
         <button type="button" class="nav-item" data-nav-target="#top" aria-current="page">Linux</button>
         <a class="nav-item" href="linux-kasud.html">Linux käsud</a>
-        <a class="nav-item" href="#juhtumid">Näidisjuhtumid</a>
+        <a class="nav-item" href="naidisjuhtumid.html#juhtumid">Näidisjuhtumid</a>
         <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
         <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
       </nav>
@@ -192,36 +190,8 @@
     </section>
 
     <section class="stats shell" aria-label="Projekti ülevaade"><div><strong>21</strong><span>veaotsingu käsku</span></div><div><strong>5</strong><span>teemavaldkonda</span></div><div><strong>4</strong><span>veaotsingu teekonda</span></div><div><strong>3</strong><span>pakiautomaadi näidisjuhtumit</span></div></section>
-
-    <section class="section cases-section" id="juhtumid" aria-labelledby="cases-title">
-      <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">03 / Näidisjuhtumid</p><h2 id="cases-title">Logist juurpõhjuseni</h2><p>Vali pakiautomaadi tõrge. Loe vealogi ning ava ükshaaval käsu näidisväljund, et näha, kuidas järgmise kontrollini jõuda.</p></div><span class="section-number" aria-hidden="true">03</span></div>
-        <p class="case-disclaimer">Kõik logid, aadressid, teenusenimed ja väljundid on väljamõeldud õppematerjal. Nupp „Kuva näidisväljund“ ei käivita käsku.</p>
-        <div class="case-options" id="case-options" role="group" aria-label="Vali pakiautomaadi näidisjuhtum"></div>
-        <div class="case-story" id="case-story">
-          <div class="case-story-head"><div><p class="mini-label">PAKIAUTOMAADI JUHTUM</p><h3 id="case-title"></h3><p id="case-symptom"></p></div><span class="case-status">NÄIDISLOGI</span></div>
-          <div class="case-log" aria-label="Väljamõeldud pakiautomaadi logi"><div class="case-log-bar"><span>locker-agent.log</span><span>ainult näide · ei ole päris seadme logi</span></div><div class="case-log-lines" id="case-log-lines"></div></div>
-          <div class="case-diagnostic"><div class="case-diagnostic-head"><div><p class="mini-label">DIAGNOOSI KÄIK</p><h4>Millise käsuga edasi?</h4></div><span id="case-progress" role="status"></span></div><ol class="case-steps" id="case-steps"></ol><div class="case-conclusion" id="case-conclusion" hidden tabindex="-1"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section journey-section" id="teekond" aria-labelledby="journey-title">
-      <div class="shell">
-        <div class="section-heading"><div><p class="eyebrow">04 / Veaotsingu teekond</p><h2 id="journey-title">Mis on sümptom?</h2><p>Vali kõige lähem olukord. Iga samm näitab, mida kontrollida ja millise käsuga alustada.</p></div><span class="section-number" aria-hidden="true">04</span></div>
-        <div class="scenario-tabs" id="scenario-tabs" role="tablist" aria-label="Veaotsingu olukord"></div>
-        <div class="journey-layout" id="journey-panel" role="tabpanel">
-          <div class="journey-steps"><p class="mini-label">SOOVITATUD JÄRJEKORD</p><p class="journey-intro" id="journey-intro"></p><ol id="journey-list"></ol></div>
-          <article class="focus-panel" id="focus-panel" aria-live="polite"></article>
-        </div>
-        <p class="context-note">Teekond on näidis. Tegelik järgmine samm sõltub sinu süsteemist ja tulemustest. <a href="vorgu-alused.html">Vaata, kuidas IP ja mask võrgu määravad →</a></p>
-      </div>
-    </section>
-
-
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span>Failisüsteem · Linuxi käsud · näidisjuhtumid</span></div></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer class="site-footer"><div class="shell footer-inner"><span><span class="brand-mark">&gt;_</span> Linux</span><span><a href="linux-kasud.html">Linuxi käsud</a> · <a href="naidisjuhtumid.html#juhtumid">Näidisjuhtumid</a></span></div></footer>
 </body>
 </html>
