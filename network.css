@@ -62,3 +62,12 @@
 .term-grid article>span,.network-sources a{color:#ffd7c2}
 .network-sources{background:#0c1723;border-top:1px solid var(--line)}
 @media(max-width:700px){.network-section.shell{width:min(100% - 32px,1160px)}}
+
+
+/* Reference tables for the IP networking glossary. */
+.glossary-section{border-top:1px solid var(--line);background:#101d2a}
+.glossary-topics{display:grid;gap:32px}
+.glossary-topic h3{margin:0 0 14px;font-size:clamp(20px,2.4vw,27px);line-height:1.25}
+.glossary-table{min-width:700px}
+.glossary-table tbody th{width:31%;white-space:normal;color:#ffd7c2;font-size:13px;line-height:1.55}
+.glossary-table tbody td{width:69%;color:#ead8e1;font-size:13px;line-height:1.65}

@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a111b">
-  <meta name="description" content="Linuxi põhikäsud, näidisjuhtumite käsud ja veaotsingu käsukataloog eesti keeles.">
+  <meta name="description" content="Linuxi põhikäsud ning SSH ja logide lugemise juhend eesti keeles.">
   <title>Linux käsud · Linux</title>
   <link rel="stylesheet" href="styles.css">
   <script src="navigation.js" defer></script>
-  <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Liigu sisu juurde</a>
@@ -18,8 +17,9 @@
       <nav aria-label="Peamenüü">
         <button type="button" class="nav-item" data-nav-target="index.html">Linux</button>
         <a class="nav-item" href="#kasud" aria-current="page">Linux käsud</a>
+        <a class="nav-item" href="veaotsingu-kasud.html#kataloog">Veaotsingu käsud</a>
         <a class="nav-item" href="naidisjuhtumid.html#juhtumid">Näidisjuhtumid</a>
-        <a class="nav-item" href="vorgu-alused.html#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="vorgu-alused.html#main">IP-võrgud</a>
         <a class="nav-item" href="vorgu-alused.html#terminid">Terminid</a>
       </nav>
     </div>
@@ -185,11 +185,6 @@ ssh root@203.0.113.10</code></pre>
           <p class="command-primer-sources">Lisalugemine: <a href="https://ubuntu.com/server/docs/openssh-server/">Ubuntu SSH</a>, <a href="https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html">Bashi käsuviip</a>, <a href="https://ubuntu.com/tutorials/viewing-and-monitoring-log-files">Ubuntu logifailid</a>, <a href="https://man7.org/linux/man-pages/man1/journalctl.1.html">journalctl käsiraamat</a>, <a href="https://nginx.org/en/docs/ngx_core_module.html#error_log">Nginxi vealogi</a>, <a href="https://dev.mysql.com/doc/refman/8.4/en/error-log.html">MySQL vealogi</a> ja <a href="https://www.php.net/manual/en/install.fpm.configuration.php">PHP-FPM seadistus</a>.</p>
         </article>
 
-        <h2 class="command-catalog-title">21 Linuxi veaotsingu käsku</h2>
-        <div class="toolbar"><label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Otsi käsku või märksõna</span><input id="search" type="search" placeholder="Otsi: timeout, võrk, mälu…" autocomplete="off"></label><span id="result-count" role="status"></span></div>
-        <div class="filters" id="filters" role="group" aria-label="Filtreeri teema järgi"></div>
-        <div class="command-grid" id="command-grid"></div>
-        <p class="no-results" id="no-results" hidden>Ühtegi käsku ei leitud. Proovi teist märksõna või vali „Kõik“.</p>
       </div>
     </section>
 

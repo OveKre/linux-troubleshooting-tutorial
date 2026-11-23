@@ -32,7 +32,7 @@ const scenarios = [
 ];
 
 const byId = new Map(commands.map((item) => [item.id, item]));
-const state = { scenario: "service", step: 0, category: "all", query: "" };
+const state = { scenario: "service", step: 0 };
 const $ = (selector) => document.querySelector(selector);
 
 function showToast(message) {
@@ -119,54 +119,64 @@ function renderJourney() {
   renderFocus();
 }
 
-function renderFilters() {
-  const container = $("#filters");
+function renderCommandTables() {
+  const container = $("#command-tables");
   container.replaceChildren();
-  ["Kõik", ...categories].forEach((label, index) => {
-    const value = index === 0 ? "all" : String(index - 1);
-    const button = element("button", value === state.category ? "filter active" : "filter", label);
-    button.type = "button";
-    button.setAttribute("aria-pressed", String(value === state.category));
-    button.addEventListener("click", () => { state.category = value; renderFilters(); renderCards(); });
-    container.append(button);
+
+  categories.forEach((category, categoryIndex) => {
+    const section = element("section", "catalog-group");
+    const heading = element("h2", "", category);
+    heading.id = `kategooria-${categoryIndex + 1}`;
+    section.setAttribute("aria-labelledby", heading.id);
+    section.append(heading);
+
+    const wrapper = element("div", "command-table-wrap");
+    wrapper.setAttribute("role", "region");
+    wrapper.setAttribute("aria-label", `${category} käskude tabel, kitsal ekraanil keritav`);
+    wrapper.tabIndex = 0;
+    const table = element("table", "command-explanation-table catalog-table");
+    const thead = element("thead", "");
+    const header = element("tr", "");
+    for (const label of ["Käsk", "Mida teeb ja millal kasutada?", "Käsu osad"]) {
+      const th = element("th", "", label);
+      th.scope = "col";
+      header.append(th);
+    }
+    thead.append(header);
+    const tbody = element("tbody", "");
+
+    for (const item of commands.filter((command) => command.category === categoryIndex)) {
+      const row = element("tr", "");
+      const commandCell = element("th", "");
+      commandCell.scope = "row";
+      commandCell.append(element("code", "", item.command));
+
+      const explanationCell = element("td", "");
+      explanationCell.append(element("p", "catalog-short", item.short));
+      const when = element("p", "catalog-when");
+      when.append(element("strong", "", "Millal kasutada: "), document.createTextNode(item.when));
+      explanationCell.append(when);
+
+      const partsCell = element("td", "");
+      const parts = element("dl", "catalog-parts");
+      for (const [part, meaning] of item.parts) {
+        parts.append(element("dt", "", part), element("dd", "", meaning));
+      }
+      partsCell.append(parts);
+      if (item.caution) partsCell.append(element("p", "catalog-caution", item.caution));
+
+      row.append(commandCell, explanationCell, partsCell);
+      tbody.append(row);
+    }
+
+    table.append(thead, tbody);
+    wrapper.append(table);
+    section.append(wrapper);
+    container.append(section);
   });
 }
 
-function renderCards() {
-  const grid = $("#command-grid");
-  grid.replaceChildren();
-  const query = state.query.trim().toLocaleLowerCase("et");
-  const filtered = commands.filter((item) => (state.category === "all" || String(item.category) === state.category) && `${item.command} ${item.short} ${item.when} ${item.tags} ${categories[item.category]}`.toLocaleLowerCase("et").includes(query));
-  $("#result-count").textContent = `${filtered.length} / ${commands.length} käsku`;
-  $("#no-results").hidden = filtered.length > 0;
-  filtered.forEach((item, index) => {
-    const card = element("article", "command-card");
-    const head = element("div", "card-head");
-    head.append(element("span", "card-index", String(index + 1).padStart(2, "0")), element("span", "topic-badge", categories[item.category]));
-    card.append(head, element("h3", "", item.short), element("code", "card-command", item.command));
-    const details = element("details", "card-details");
-    details.append(element("summary", "", "Selgitus ja kasutus"));
-    const inner = element("div", "card-details-inner");
-    inner.append(element("p", "", item.when));
-    const dl = element("dl", "parts-list");
-    for (const [part, meaning] of item.parts) dl.append(element("dt", "", part), element("dd", "", meaning));
-    inner.append(dl);
-    if (item.caution) inner.append(element("p", "caution", item.caution));
-    const copy = element("button", "small-copy", "Kopeeri käsk");
-    copy.type = "button";
-    copy.addEventListener("click", () => copyCommand(item.command));
-    inner.append(copy);
-    details.append(inner);
-    card.append(details);
-    grid.append(card);
-  });
-}
-
-if ($("#search")) {
-  $("#search").addEventListener("input", (event) => { state.query = event.target.value; renderCards(); });
-  renderFilters();
-  renderCards();
-}
+if ($("#command-tables")) renderCommandTables();
 
 if ($("#scenario-tabs")) {
   $("#scenario-tabs").addEventListener("keydown", (event) => {

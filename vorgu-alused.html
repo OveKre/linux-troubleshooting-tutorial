@@ -19,8 +19,9 @@
       <nav aria-label="Peamenüü">
         <button type="button" class="nav-item" data-nav-target="index.html">Linux</button>
         <a class="nav-item" href="linux-kasud.html">Linux käsud</a>
+        <a class="nav-item" href="veaotsingu-kasud.html#kataloog">Veaotsingu käsud</a>
         <a class="nav-item" href="naidisjuhtumid.html#juhtumid">Näidisjuhtumid</a>
-        <a class="nav-item" href="#kalkulaator">Binaarkalkulaator</a>
+        <a class="nav-item" href="#main" aria-current="page">IP-võrgud</a>
         <a class="nav-item" href="#terminid">Terminid</a>
       </nav>
     </div>
@@ -35,15 +36,15 @@
     </section>
 
     <section class="network-section shell topology-section" id="topoloogia" aria-labelledby="topology-heading">
-      <div class="network-heading"><p class="eyebrow">Alusta siit / Võrgu kaart</p><h2 id="topology-heading">Kuidas pakiautomaat serverini jõuab?</h2><p>Vaata kõigepealt seadmete asukohta võrgus. Sama kohtvõrgu seadmed saavad suhelda lüliti kaudu; teise võrku minev liiklus läheb vaikelüüsile.</p></div>
+      <div class="network-heading"><p class="eyebrow">Alusta siit / Võrgu kaart</p><h2 id="topology-heading">Kuidas SSH jõuab pakiautomaadi serverini?</h2><p>Hooldusarvuti loob SSH-ühenduse üle avaliku interneti. Liiklus liigub läbi kohaliku ruuteri ja teenusepakkuja võrguseadmete pakiautomaadi tulemüüri, lüliti ning Linuxi serverini.</p></div>
       <figure class="topology-figure">
-        <div class="topology-scroll" role="region" tabindex="0" aria-label="Võrgu topoloogia skeem, kitsal ekraanil horisontaalselt keritav"><img src="assets/topoloogia.svg" width="1280" height="550" alt="Pakiautomaat 192.168.10.24 ja hooldusarvuti 192.168.10.50 on samas 192.168.10.0/24 kohtvõrgus ning ühendatud lülitiga. Ruuter aadressiga 192.168.10.1 on vaikelüüs, mille kaudu jõuab liiklus internetis asuva rakendusserverini."></div>
+        <div class="topology-scroll" role="region" tabindex="0" aria-label="SSH ühenduse võrguteekonna skeem, kitsal ekraanil horisontaalselt keritav"><img src="assets/ssh-pakiautomaadi-topoloogia.png" width="2172" height="724" alt="SSH ühendus liigub hooldaja arvutist läbi kohaliku ruuteri, teenusepakkuja ruuterite ja avaliku interneti pakiautomaadi tulemüüri ning võrgulülitini. Sealt jõuab ühendus pakiautomaadi Linuxi serveris TCP pordil 22 kuulava sshd teenuseni. SSH sisu on krüpteeritud hooldaja arvutist serverini."></div>
         <figcaption>
           <p class="topology-scroll-hint">Kitsal ekraanil keri skeemi küljele →</p>
           <ol class="topology-steps">
-            <li><span>01 / SAMA VÕRK</span><strong>Mask näitab naabrit</strong><p><code>192.168.10.24/24</code> ja <code>192.168.10.50/24</code> on samas alamvõrgus. Nende omavaheline liiklus ei vaja vaikelüüsi.</p></li>
-            <li><span>02 / KOHTVÕRK</span><strong>Lüliti ühendab seadmed</strong><p>Lüliti vahendab kohtvõrgus kaadreid. Ruuter aadressiga <code>192.168.10.1</code> on järgmine samm siis, kui sihtkoht on teises võrgus.</p></li>
-            <li><span>03 / VÄLISVÕRK</span><strong>Ruuter valib edasise tee</strong><p>Server on väljaspool kohalikku alamvõrku. Kui kasutatakse serveri nime, tuleb see enne ühendust DNS-i abil aadressiks lahendada.</p></li>
+            <li><span>01 / LÄHTEVÕRK</span><strong>Arvuti ja kohalik ruuter</strong><p>Hooldaja käivitab SSH-kliendi. Kohalik ruuter edastab pakiautomaadi aadressile mõeldud liikluse teenusepakkuja võrku.</p></li>
+            <li><span>02 / AVALIK INTERNET</span><strong>SSH liiklus on krüpteeritud</strong><p>Paketid liiguvad läbi teenusepakkuja ruuterite ja avaliku interneti. SSH kasutab TCP porti <code>22</code>; ühenduse sisu jääb krüpteerituks kuni Linuxi serverini.</p></li>
+            <li><span>03 / PAKIAUTOMAADI VÕRK</span><strong>Tulemüürist Linuxi serverini</strong><p>Tulemüür või ruuter lubab seadistatud SSH-liikluse. Võrgulüliti edastab selle serverile, kus <code>sshd</code> kuulab TCP pordil <code>22</code>.</p></li>
           </ol>
           <p class="topology-caveat">Lihtsustatud näide: päris paigalduse kaablid, ruuterid ja aadressid võivad erineda.</p>
           <p class="network-note"><a href="vpn-konspekt.html">Loe VPN-i, netmaski ja gateway konspekti →</a></p>
@@ -84,6 +85,107 @@
         <article><span>11 · DIAGNOSTIKA</span><h3>ICMP ja ping</h3><p><code>ping</code> kasutab ICMP kajapäringut, et vastust ja viivitust mõõta. Kui vastust ei tule, võib ICMP olla lihtsalt blokeeritud; see ei tõesta kogu teenuse tõrget.</p></article>
         <article><span>12 · IPv6</span><h3>IPv6 prefiks ja SLAAC</h3><p>IPv6 kasutab 128-bitist aadressi ja kaldkriipsuga prefiksit, mitte IPv4 punktidega maski. Seade võib ruuteri reklaamitud prefiksist aadressi ise moodustada ning seejärel konflikti kontrollida.</p></article>
       </div></div></section>
+
+    <section class="network-section glossary-section" id="terminite-loend" aria-labelledby="glossary-title">
+      <div class="shell">
+        <div class="network-heading"><p class="eyebrow">05 / Mõistete loend</p><h2 id="glossary-title">IP-võrkude põhimõisted</h2><p>Siin on aadressimise, alamvõrkude, võrguseadmete ja protokollide mõisted ühes kohas.</p></div>
+        <div class="glossary-topics">
+          <section class="glossary-topic" aria-labelledby="glossary-topic-1">
+            <h3 id="glossary-topic-1">Põhimõisted ja adresseerimine</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Põhimõisted ja adresseerimine terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">IP-aadress (Internet Protocol Address)</th><td>seadmele määratud unikaalne numbriline tunnus arvutivõrgus, mille abil andmepaketid õige seadmeni jõuavad.</td></tr>
+                  <tr><th scope="row">IPv4 (Internet Protocol version 4)</th><td>klassikaline 32-bitine IP-aadressi formaat, mis kirjutatakse nelja punktiga eraldatud arvuna vahemikus 0–255 (nt 192.168.1.1). Mahutab umbes 4,3 miljardit aadressi.</td></tr>
+                  <tr><th scope="row">IPv6 (Internet Protocol version 6)</th><td>uuem 128-bitine IP-aadressi formaat, mis kasutab kuueteistkümnendsüsteemi ja kooloneid (nt 2001:0db8:85a3::8a2e:0370:7334). Loodud IPv4 aadresside lõppemise lahendamiseks.</td></tr>
+                  <tr><th scope="row">Oktett (Octet)</th><td>üks neljast 8-bitisest osast IPv4-aadressis (nt aadressis 192.168.1.10 on esimene oktett 192).</td></tr>
+                  <tr><th scope="row">MAC-aadress (Media Access Control Address)</th><td>võrgukaardi unikaalne füüsiline riistvaraline aadress, mis on tehases seadmele määratud ja toimib ainult kohalikus võrgus (Layer 2).</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="glossary-topic" aria-labelledby="glossary-topic-2">
+            <h3 id="glossary-topic-2">Võrgutüübid ja aadresside jaotus</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Võrgutüübid ja aadresside jaotus terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Avalik IP-aadress (Public IP)</th><td>internetiteenuse pakkuja (ISP) määratud ülemaailmselt unikaalne IP-aadress, mille kaudu sinu võrk suhtleb avaliku internetiga.</td></tr>
+                  <tr><th scope="row">Privaatne IP-aadress (Private IP)</th><td>sisevõrgus (kodus või kontoris) kasutatav aadress, mis ei ole otse internetist ligipääsetav (vahemikud 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).</td></tr>
+                  <tr><th scope="row">Staatiline IP (Static IP)</th><td>käsitsi määratud püsiv IP-aadress, mis ei muutu seadme või ruuteri taaskäivitamisel (kasutatakse serveritel).</td></tr>
+                  <tr><th scope="row">Dünaamiline IP (Dynamic IP)</th><td>automaatselt ja ajutiselt määratud IP-aadress, mis võib aja jooksul muutuda.</td></tr>
+                  <tr><th scope="row">Localhost / Loopback (127.0.0.1 või ::1)</th><td>eriline IP-aadress, mis viitab alati seadmele endale (kasutatakse tarkvara ja võrguteenuste testimiseks).</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="glossary-topic" aria-labelledby="glossary-topic-3">
+            <h3 id="glossary-topic-3">Alamvõrgud (Subnetting)</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Alamvõrgud (Subnetting) terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Alamvõrk (Subnet)</th><td>suurema IP-võrgu loogiline jaotus väiksemateks osadeks, et parandada turvalisust ja vähendada võrguliiklust.</td></tr>
+                  <tr><th scope="row">Alamvõrgu mask (Subnet Mask)</th><td>32-bitine number (nt 255.255.255.0), mis määrab, milline osa IP-aadressist tähistab võrku ja milline osa konkreetset seadet (hosti).</td></tr>
+                  <tr><th scope="row">CIDR (Classless Inter-Domain Routing)</th><td>lühendatud viis alamvõrgu maski kirjutamiseks kaldkriipsu ja bittide arvuga IP-aadressi lõpus (nt /24 vastab maskile 255.255.255.0).</td></tr>
+                  <tr><th scope="row">Võrguaadress (Network ID / Network Address)</th><td>alamvõrgu kõige esimene IP-aadress (nt 192.168.1.0), mis identifitseerib võrku tervikuna ja mida ei saa anda ühelegi seadmele.</td></tr>
+                  <tr><th scope="row">Leviaadress (Broadcast Address)</th><td>alamvõrgu kõige viimane IP-aadress (nt 192.168.1.255), millele saadetud pakett jõuab korraga kõigi selles alamvõrgus olevate seadmeteni.</td></tr>
+                  <tr><th scope="row">Vaikelüüs (Default Gateway)</th><td>ruuteri IP-aadress sisevõrgus (nt 192.168.1.1), kuhu seadmed saadavad kogu liikluse, mis on mõeldud väljapoole kohalikku võrku.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="glossary-topic" aria-labelledby="glossary-topic-4">
+            <h3 id="glossary-topic-4">Võrguseadmed ja liikluse juhtimine</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Võrguseadmed ja liikluse juhtimine terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Ruuter (Router)</th><td>seade, mis ühendab erinevaid võrke (nt koduse sisevõrgu ja interneti) ning suunab andmepakette IP-aadresside põhjal.</td></tr>
+                  <tr><th scope="row">Kommutaator (Switch)</th><td>seade, mis ühendab ühes kohtvõrgus olevaid seadmeid kaablitega ja suunab liiklust MAC-aadresside alusel.</td></tr>
+                  <tr><th scope="row">NAT (Network Address Translation)</th><td>tehnoloogia ruuteris, mis tõlgib mitme sisevõrgu seadme privaatsed IP-aadressid üheks avalikuks IP-aadressiks (ja vastupidi).</td></tr>
+                  <tr><th scope="row">Pordisuunamine (Port Forwarding)</th><td>ruuteri reegel, mis suunab avalikule IP-aadressile ja kindlale pordile saabunud päringu edasi konkreetsele sisevõrgu seadmele.</td></tr>
+                  <tr><th scope="row">Tulemüür (Firewall)</th><td>turvasüsteem (riistvaraline või tarkvaraline), mis lubab või blokeerib võrguliiklust vastavalt määratud reeglitele.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="glossary-topic" aria-labelledby="glossary-topic-5">
+            <h3 id="glossary-topic-5">Olulised võrguprotokollid ja teenused</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Olulised võrguprotokollid ja teenused terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">DHCP (Dynamic Host Configuration Protocol)</th><td>teenus, mis jagab võrku ühenduvatele seadmetele automaatselt IP-aadressi, alamvõrgu maski, vaikelüüsi ja DNS-serveri.</td></tr>
+                  <tr><th scope="row">DNS (Domain Name System)</th><td>&quot;interneti telefoniraamat&quot;, mis tõlgib inimloetavad domeeninimed (nt google.com) arvutitele arusaadavateks IP-aadressideks.</td></tr>
+                  <tr><th scope="row">ARP (Address Resolution Protocol)</th><td>protokoll, mis leiab kohalikus võrgus IP-aadressile vastava füüsilise MAC-aadressi.</td></tr>
+                  <tr><th scope="row">ICMP (Internet Control Message Protocol)</th><td>diagnostikaprotokoll, mida kasutavad näiteks ping ja traceroute võrguühenduse ja viiteaja testimiseks.</td></tr>
+                  <tr><th scope="row">TCP (Transmission Control Protocol)</th><td>ühenduspõhine andmeedastusprotokoll, mis kontrollib, et kõik andmepaketid jõuaksid kohale õiges järjekorras ja vigadeta (nt veebilehed, e-post).</td></tr>
+                  <tr><th scope="row">UDP (User Datagram Protocol)</th><td>kiire, ühenduseta andmeedastusprotokoll, mis ei kontrolli pakettide kohalejõudmist (nt videokõned, online-mängud, DNS).</td></tr>
+                  <tr><th scope="row">Port</th><td>loogiline number (vahemikus 0–65535), mis eristab ühes seadmes töötavaid erinevaid võrguteenuseid (nt port 80 on HTTP, 443 on HTTPS, 22 on SSH).</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="glossary-topic" aria-labelledby="glossary-topic-6">
+            <h3 id="glossary-topic-6">Arhitektuur ja turvalisus</h3>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Arhitektuur ja turvalisus terminite tabel, kitsal ekraanil keritav">
+              <table class="command-explanation-table glossary-table">
+                <thead><tr><th scope="col">Mõiste</th><th scope="col">Selgitus</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">LAN (Local Area Network)</th><td>kohtvõrk (nt kodu, kontori või kooli sisevõrk).</td></tr>
+                  <tr><th scope="row">WAN (Wide Area Network)</th><td>laivõrk, mis ühendab kaugemal asuvaid kohtvõrke (suurim WAN on internet).</td></tr>
+                  <tr><th scope="row">VLAN (Virtual Local Area Network)</th><td>virtuaalne kohtvõrk, mis võimaldab ühe füüsilise võrguseadme sees eraldada erinevad kasutajagrupid (nt külaliste Wi-Fi ja kontori sisevõrk).</td></tr>
+                  <tr><th scope="row">VPN (Virtual Private Network)</th><td>krüpteeritud tunnel üle avaliku interneti, mis ühendab seadme turvaliselt kaugvõrguga ja peidab tegeliku IP-aadressi.</td></tr>
+                  <tr><th scope="row">OSI mudel ja TCP/IP mudel</th><td>kontseptuaalsed kihtide mudelid, mis kirjeldavad, kuidas andmed liiguvad füüsilisest võrgukaablist kuni kasutaja rakenduseni.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
 
     <section class="network-sources"><div class="shell"><h2>Allikad</h2><p><a href="https://www.rfc-editor.org/info/rfc791/">IPv4</a> · <a href="https://www.rfc-editor.org/info/rfc4632/">CIDR</a> · <a href="https://www.rfc-editor.org/info/rfc1812/">Marsruudid</a> · <a href="https://www.rfc-editor.org/info/rfc2131/">DHCP</a> · <a href="https://www.rfc-editor.org/info/rfc2132/">DHCP valikud</a> · <a href="https://www.iana.org/help/private-addresses">IANA privaatplokid</a> · <a href="https://www.rfc-editor.org/info/rfc4291/">IPv6</a> · <a href="https://www.rfc-editor.org/info/rfc4862/">SLAAC</a> · <a href="https://www.rfc-editor.org/info/rfc826/">ARP</a> · <a href="https://www.rfc-editor.org/info/rfc3021/">/31</a> · <a href="https://www.rfc-editor.org/info/rfc9724/">MAC-aadressid</a> · <a href="https://www.rfc-editor.org/info/rfc3022/">NAT</a></p></div></section>
   </main>
