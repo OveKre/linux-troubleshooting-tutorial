@@ -90,34 +90,99 @@
         </article>
 
         <article class="command-primer" aria-labelledby="command-primer-title">
-          <p class="mini-label">Käsk ja failitee</p>
-          <h2 id="command-primer-title">Mida terminalis kirjutatud tee tähendab?</h2>
-          <p>Käsk on terminalis antud juhis. Näites <code>ls /var/log</code> on <code>ls</code> programmi nimi ja <code>/var/log</code> kaust, mille sisu küsitakse. Kui sisestad välise programmi nime ilma kaldkriipsuta, otsib käsukest seda oma <code>PATH</code> loendis olevatest kaustadest. Mõned käsud, näiteks Bashi <code>pwd</code>, võivad olla kesta sisse ehitatud.</p>
-          <div class="command-route" aria-label="Näide: ls on programmi nimi ja /var/log on uuritav kaust">
-            <div><small>Kirjutad</small><code>ls /var/log</code></div><span aria-hidden="true">→</span>
-            <div><small>Programmi näidistee</small><code>/bin/ls</code></div><span aria-hidden="true">+</span>
-            <div><small>Sihtkaust</small><code>/var/log</code></div>
-          </div>
-          <p class="command-primer-note"><code>/bin/ls</code> ja <code>/bin/cp</code> on võimalikud programmitäisteed. Mõnes süsteemis asuvad programmid tegelikult <code>/usr/bin</code> all ning <code>/bin</code> on sinna viitav link. Kontrolli oma masinas käsuga <code>type -a ls</code>.</p>
-          <div class="command-table-wrap" role="region" tabindex="0" aria-label="Käskude tabel, kitsal ekraanil keritav">
-            <table class="command-explanation-table">
-              <thead><tr><th scope="col">Terminalis</th><th scope="col">Mida teeb?</th><th scope="col">Mida tee või valik tähendab?</th></tr></thead>
-              <tbody>
-                <tr><th scope="row"><code>ls</code></th><td>Loetleb praeguse kausta sisu.</td><td>Teed pole antud; siht on praegune kaust.</td></tr>
-                <tr><th scope="row"><code>ls /var/log</code></th><td>Loetleb logikausta sisu.</td><td><code>/var/log</code> on uuritava kausta absoluutne tee, mitte käsu programmifail.</td></tr>
-                <tr><th scope="row"><code>cp -i raport.txt koopia.txt</code></th><td>Teeb failist koopia; <code>-i</code> küsib enne olemasoleva sihtfaili ülekirjutamist kinnitust.</td><td><code>raport.txt</code> on lähtefail ja <code>koopia.txt</code> sihtfail. Mõlemad on suhtelised teed praeguses kaustas.</td></tr>
-                <tr><th scope="row"><code>pwd</code></th><td>Näitab praeguse kausta absoluutset teed.</td><td>Väljund võib olla näiteks <code>/home/alex</code>. Bashis on <code>pwd</code> ka sisseehitatud käsk.</td></tr>
-                <tr><th scope="row"><code>type -a ls</code></th><td>Näitab, kuidas Bash nime <code>ls</code> tõlgendab.</td><td>Tulemuses võib olla alias, funktsioon ja üks või mitu programmifaili teed.</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="path-meaning-grid" aria-label="Failiteede osad">
-            <div><code>/bin/ls</code><p><code>/</code> on failipuu juur, <code>bin</code> viitab käivitatavatele programmidele (<em>binaries</em>) ja <code>ls</code> on programmi nimi.</p></div>
-            <div><code>/bin/cp</code><p>Sama kaust, teine programmifail: <code>cp</code> kopeerib faile. Kaustade kopeerimiseks on vaja näiteks valikut <code>-R</code>.</p></div>
-            <div><code>/var/log</code><p>See on andmete kaust. Käsk <code>ls</code> võib selle tee argumendina vastu võtta.</p></div>
-            <div><code>raport.txt</code><p>Alguses pole <code>/</code> märki: see on suhteline tee praeguse kausta suhtes.</p></div>
-          </div>
-          <p class="command-primer-sources">Lisalugemine: <a href="https://www.gnu.org/software/bash/manual/html_node/Command-Search-and-Execution.html">Bashi käsuotsing</a> ja <a href="https://www.gnu.org/software/coreutils/manual/coreutils.html">GNU Coreutilsi käsud</a>.</p>
+          <p class="mini-label">SSH → käsuviip → logid</p>
+          <h2 id="command-primer-title">SSH-ga Linuxi serverisse ja logideni</h2>
+          <p>Järgi samme selles järjekorras: loo kaugühendus, vaata millise kasutaja ja kaustaga serveris oled, leia sobiv logi ning loe ainult vajalikud read. Domeen, IP-aadress, teenusenimi ja failiteed on siin näited; kasuta oma serveri väärtusi.</p>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-login-title">
+            <h3 id="ssh-login-title"><span class="ssh-step-number">01</span> Ühendu serveriga</h3>
+            <p>Kirjuta <strong>oma arvuti terminalis</strong> üks neist käskudest. <code>root</code> on serveri kasutajanimi ja <code>example.com</code> või IP-aadress on serveri sihtkoht. SSH küsib autentimist; pärast õnnestunud sisselogimist töötavad järgmised käsud juba <strong>serveris</strong>.</p>
+            <div class="ssh-terminal" aria-label="SSH ühenduse näidiskäsud">
+              <div class="ssh-terminal-title"><span aria-hidden="true">● ● ●</span> Oma arvuti terminal</div>
+              <pre><code>ssh root@example.com
+ssh root@203.0.113.10</code></pre>
+            </div>
+            <p class="ssh-subnote">Vali neist üks ning asenda näidisaadress oma serveri päris aadressiga. Root-kasutaja SSH-sisselogimine peab olema serveris lubatud; sageli kasutatakse selle asemel tavalist kasutajakontot.</p>
+          </section>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-prompt-title">
+            <h3 id="ssh-prompt-title"><span class="ssh-step-number">02</span> Loe serveri käsuviipa</h3>
+            <div class="ssh-prompt-example"><span>Võimalik käsuviip pärast sisselogimist</span><code>root@example:~#</code></div>
+            <dl class="ssh-prompt-parts">
+              <div><dt><code>root</code></dt><dd>Kasutajanimi, kelle õigustes käsud serveris töötavad.</dd></div>
+              <div><dt><code>example</code></dt><dd>Serveri hostinimi käsuviibas; see ei pea olema sama mis SSH jaoks kasutatud domeen.</dd></div>
+              <div><dt><code>~</code></dt><dd>Praegune asukoht on selle kasutaja kodukaust. Root-kasutajal tähendab see tavaliselt <code>/root</code>. Kontrolli täpset teed käsuga <code>pwd</code>.</dd></div>
+              <div><dt><code>#</code></dt><dd>Tavalises Bashi käsuviibas näitab root-õigustes kesta; tavakasutajal on sageli <code>$</code>. Käsuviiba välimus võib olla muudetud.</dd></div>
+            </dl>
+            <p class="ssh-subnote"><code>root@example:~#</code> on käsuviip, mitte käsk, mida tuleb sisestada. Näiteks kirjuta selle järele <code>pwd</code>, et näha tegelikku asukohta.</p>
+          </section>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-system-logs-title">
+            <h3 id="ssh-system-logs-title"><span class="ssh-step-number">03</span> Leia süsteemi- ja turvalogid</h3>
+            <p>Alusta serveris käsust <code>ls -lah /var/log</code>: see loetleb olemasolevad logid. Tee alguses olev <code>/</code> tähendab failisüsteemi juurt; <code>/var/log</code> on logide kataloog ja näiteks <code>syslog</code> on selle sees olev failinimi.</p>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Süsteemilogide asukohad, kitsal ekraanil keritav">
+              <table class="command-explanation-table">
+                <thead><tr><th scope="col">Logi liik</th><th scope="col">Näidistee serveris</th><th scope="col">Mida sealt otsida?</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Süsteemi teated</th><td><code>/var/log/syslog</code></td><td>Üldised süsteemi- ja teenuseteated. See võib sisaldada ka osa tuuma teateid.</td></tr>
+                  <tr><th scope="row">Tuuma (<em>kernel</em>) teated</th><td><code>/var/log/kern.log</code></td><td>Riistvara, draiverite ja tuuma teated. Kui faili pole, vaata sama käivituse tuumateateid käsuga <code>journalctl -k -b</code>.</td></tr>
+                  <tr><th scope="row">Autentimine ja turvalisus</th><td><code>/var/log/auth.log</code></td><td>SSH-sisselogimised, autentimise tõrked ja näiteks <code>sudo</code> kasutamine.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="ssh-subnote">Need on eelkõige Ubuntu/Debiani näidisteed. Mõnes paigalduses puudub vastav tekstifail ning teated on ainult systemd päevikus või mujal.</p>
+          </section>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-journal-title">
+            <h3 id="ssh-journal-title"><span class="ssh-step-number">04</span> Loe systemd teenuste logisid</h3>
+            <p><strong>Systemd</strong> käivitab ja haldab Linuxi teenuseid. Teenuse teated, sealhulgas tavaväljund ja veaväljund, jõuavad paljudes seadistustes <strong>systemd päevikusse</strong> (<em>journal</em>). <code>journalctl</code> loeb seda päevikut; <code>-u</code> abil näed kindla teenuse kirjeid koos aja ja teenuse nimega. See ei ole üks tavaline tekstifail asukohas <code>/var/log</code>.</p>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Journalctl käskude selgitused, kitsal ekraanil keritav">
+              <table class="command-explanation-table">
+                <thead><tr><th scope="col">Käsk serveris</th><th scope="col">Mida teeb?</th><th scope="col">Millal kasutada?</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><code>journalctl -xe</code></th><td><code>-e</code> avab vaate päeviku lõpus; <code>-x</code> lisab mõnele kirjele selgitava abiteksti, kui see on saadaval. Käsk ei filtreeri välja ainult vigu.</td><td>Kui soovid kiiresti näha päeviku viimaseid sündmusi ja võimalikke selgitusi.</td></tr>
+                  <tr><th scope="row"><code>journalctl -u [teenuse_nimi]</code></th><td><code>-u</code> piirab väljundi valitud systemd teenuse kirjetega. Näide: <code>journalctl -u nginx.service</code>.</td><td>Kui tead, milline teenus tõrkub. Asenda nurksulgudes kohatäide päris teenusenimega.</td></tr>
+                  <tr><th scope="row"><code>journalctl -p err -b</code></th><td><code>-p err</code> valib veataseme ja sellest tõsisemad kirjed; <code>-b</code> piirab tulemuse praeguse käivitusega.</td><td>Kui otsid pärast viimast käivitust tekkinud tõsisemaid süsteemivigu.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="ssh-subnote">Käsu nimi on <code>journalctl</code>, mitte <code>journal</code>. Päeviku lugemiseks võib sõltuvalt kasutajast vaja minna täiendavaid õigusi.</p>
+          </section>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-app-logs-title">
+            <h3 id="ssh-app-logs-title"><span class="ssh-step-number">05</span> Leia veebiserveri ja andmebaasi vealogid</h3>
+            <p>Kui serveris töötab veebileht või rakendus, võivad selle komponendid kirjutada eraldi vealogidesse. Allolevad teed on levinud näited, mitte kõigis serverites kehtivad kindlad asukohad.</p>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Veebiserverite ja andmebaaside logiteed, kitsal ekraanil keritav">
+              <table class="command-explanation-table">
+                <thead><tr><th scope="col">Komponent</th><th scope="col">Võimalik vealogi tee</th><th scope="col">Mida see näitab?</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Nginx</th><td><code>/var/log/nginx/error.log</code></td><td>Veebiserveri vead, näiteks ühenduse või seadistuse probleemid.</td></tr>
+                  <tr><th scope="row">Apache</th><td><code>/var/log/apache2/error.log</code> (Debian/Ubuntu)<br><code>/var/log/httpd/error_log</code> (RHEL/CentOS)</td><td>Apache veebiserveri veateated; täpne tee sõltub jaotusest ja seadistusest.</td></tr>
+                  <tr><th scope="row">MySQL / MariaDB</th><td><code>/var/log/mysql/error.log</code></td><td>Andmebaasiserveri käivitus- ja töövead, kui see on seadistatud siia logima.</td></tr>
+                  <tr><th scope="row">PHP-FPM</th><td><code>/var/log/php[versioon]-fpm.log</code></td><td>PHP-FPM protsessihalduri vead. <code>[versioon]</code> tuleb asendada tegeliku versiooniga, näiteks <code>8.3</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="ssh-subnote">Logi võib asuda mujal või jõuda ainult päevikusse. Näiteks MySQL vealogi tee sõltub <code>log_error</code> seadistusest ning PHP rakenduse vealogi võib olla PHP-FPM logidest eraldi.</p>
+          </section>
+
+          <section class="ssh-log-section" aria-labelledby="ssh-read-logs-title">
+            <h3 id="ssh-read-logs-title"><span class="ssh-step-number">06</span> Loe vajalikud logiread</h3>
+            <p>Suure logi korral alusta viimastest ridadest või otsi märksõna. Järgmised käsud loevad faile ega muuda neid.</p>
+            <div class="command-table-wrap" role="region" tabindex="0" aria-label="Logide lugemise praktilised käsud, kitsal ekraanil keritav">
+              <table class="command-explanation-table">
+                <thead><tr><th scope="col">Käsk serveris</th><th scope="col">Mida teeb?</th><th scope="col">Millal kasutada?</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><code>tail -f /var/log/syslog</code></th><td>Jälgib faili lõppu ja kuvab juurde tekkivad logiread jooksvalt.</td><td>Käivita enne probleemi kordamist; lõpetamiseks vajuta <kbd>Ctrl</kbd>+<kbd>C</kbd>.</td></tr>
+                  <tr><th scope="row"><code>tail -n 50 /var/log/nginx/error.log</code></th><td>Kuvab Nginxi näidisvealogi viimased 50 rida.</td><td>Kui tahad kiiresti näha värskeimaid veebiserveri veateateid.</td></tr>
+                  <tr><th scope="row"><code>grep -i "error" /var/log/syslog</code></th><td>Otsib ridu, kus esineb <code>error</code>, eirates suur- ja väiketähti.</td><td>Kui otsid kindlat sõna; <code>-n</code> lisamisel näed ka reanumbreid.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="ssh-subnote">Kui fail on olemas, kuid lugemine annab „Permission denied“, kasuta selle lugemiskäsu ees <code>sudo</code> ainult vajalike õigustega kontol.</p>
+          </section>
+
+          <p class="command-primer-sources">Lisalugemine: <a href="https://ubuntu.com/server/docs/openssh-server/">Ubuntu SSH</a>, <a href="https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html">Bashi käsuviip</a>, <a href="https://ubuntu.com/tutorials/viewing-and-monitoring-log-files">Ubuntu logifailid</a>, <a href="https://man7.org/linux/man-pages/man1/journalctl.1.html">journalctl käsiraamat</a>, <a href="https://nginx.org/en/docs/ngx_core_module.html#error_log">Nginxi vealogi</a>, <a href="https://dev.mysql.com/doc/refman/8.4/en/error-log.html">MySQL vealogi</a> ja <a href="https://www.php.net/manual/en/install.fpm.configuration.php">PHP-FPM seadistus</a>.</p>
         </article>
 
         <article class="case-command-overview" aria-labelledby="case-command-overview-title">
